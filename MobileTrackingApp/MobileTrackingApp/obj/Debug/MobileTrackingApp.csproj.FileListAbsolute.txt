@@ -11,3 +11,4 @@ C:\Users\Jeff\Documents\Projects\MobileTrackingApp\MobileTrackingApp\MobileTrack
 C:\Users\Jeff\Documents\Projects\MobileTrackingApp\MobileTrackingApp\MobileTrackingApp\obj\Debug\MobileTrackingApp.csproj.GenerateResource.Cache
 C:\Users\Jeff\Documents\Projects\MobileTrackingApp\MobileTrackingApp\MobileTrackingApp\obj\Debug\MobileTrackingApp.exe
 C:\Users\Jeff\Documents\Projects\MobileTrackingApp\MobileTrackingApp\MobileTrackingApp\obj\Debug\MobileTrackingApp.pdb
+C:\Users\Jeff\Documents\Projects\MobileTrackingApp\MobileTrackingApp\MobileTrackingApp\obj\Debug\MobileTrackingApp.csprojResolveAssemblyReference.cache

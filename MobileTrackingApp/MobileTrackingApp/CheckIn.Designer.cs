@@ -31,11 +31,11 @@
             this.label4 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.textBox5 = new System.Windows.Forms.TextBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.textBoxPID = new System.Windows.Forms.TextBox();
+            this.textBoxDevice = new System.Windows.Forms.TextBox();
             this.buttonCheckIn = new System.Windows.Forms.Button();
             this.buttonBack = new System.Windows.Forms.Button();
+            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
             this.SuspendLayout();
             // 
             // label4
@@ -65,26 +65,19 @@
             this.label1.TabIndex = 16;
             this.label1.Text = "Device";
             // 
-            // textBox5
+            // textBoxPID
             // 
-            this.textBox5.Location = new System.Drawing.Point(124, 88);
-            this.textBox5.Name = "textBox5";
-            this.textBox5.Size = new System.Drawing.Size(100, 20);
-            this.textBox5.TabIndex = 15;
+            this.textBoxPID.Location = new System.Drawing.Point(124, 62);
+            this.textBoxPID.Name = "textBoxPID";
+            this.textBoxPID.Size = new System.Drawing.Size(100, 20);
+            this.textBoxPID.TabIndex = 14;
             // 
-            // textBox2
+            // textBoxDevice
             // 
-            this.textBox2.Location = new System.Drawing.Point(124, 62);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(100, 20);
-            this.textBox2.TabIndex = 14;
-            // 
-            // textBox1
-            // 
-            this.textBox1.Location = new System.Drawing.Point(124, 35);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(100, 20);
-            this.textBox1.TabIndex = 13;
+            this.textBoxDevice.Location = new System.Drawing.Point(124, 35);
+            this.textBoxDevice.Name = "textBoxDevice";
+            this.textBoxDevice.Size = new System.Drawing.Size(100, 20);
+            this.textBoxDevice.TabIndex = 13;
             // 
             // buttonCheckIn
             // 
@@ -94,6 +87,7 @@
             this.buttonCheckIn.TabIndex = 12;
             this.buttonCheckIn.Text = "Check In";
             this.buttonCheckIn.UseVisualStyleBackColor = true;
+            this.buttonCheckIn.Click += new System.EventHandler(this.buttonCheckIn_Click);
             // 
             // buttonBack
             // 
@@ -105,21 +99,30 @@
             this.buttonBack.UseVisualStyleBackColor = true;
             this.buttonBack.Click += new System.EventHandler(this.buttonBack_Click);
             // 
+            // dateTimePicker1
+            // 
+            this.dateTimePicker1.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dateTimePicker1.Location = new System.Drawing.Point(124, 88);
+            this.dateTimePicker1.Name = "dateTimePicker1";
+            this.dateTimePicker1.Size = new System.Drawing.Size(100, 20);
+            this.dateTimePicker1.TabIndex = 19;
+            // 
             // CheckIn
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(471, 234);
+            this.Controls.Add(this.dateTimePicker1);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.textBox5);
-            this.Controls.Add(this.textBox2);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.textBoxPID);
+            this.Controls.Add(this.textBoxDevice);
             this.Controls.Add(this.buttonCheckIn);
             this.Controls.Add(this.buttonBack);
             this.Name = "CheckIn";
-            this.Text = "CheckIn";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.Text = "Check In Form";
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -130,10 +133,10 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TextBox textBox5;
-        private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox textBoxPID;
+        private System.Windows.Forms.TextBox textBoxDevice;
         private System.Windows.Forms.Button buttonCheckIn;
         private System.Windows.Forms.Button buttonBack;
+        private System.Windows.Forms.DateTimePicker dateTimePicker1;
     }
 }
