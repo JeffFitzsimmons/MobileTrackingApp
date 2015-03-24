@@ -1,0 +1,30 @@
+﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows.Forms;
+
+namespace MobileTrackingApp
+{
+    public partial class CheckIn : Form
+    {
+        public CheckIn()
+        {
+            InitializeComponent();
+        }
+
+        private void buttonBack_Click(object sender, EventArgs e)
+        {
+            this.Visible = false;
+
+            Home form = new Home();
+            form.Show();
+
+            this.Dispose();
+        }
+    }
+}

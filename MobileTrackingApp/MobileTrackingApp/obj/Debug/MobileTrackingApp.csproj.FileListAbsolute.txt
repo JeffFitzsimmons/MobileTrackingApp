@@ -1,0 +1,13 @@
+C:\Users\Jeff\Documents\Projects\MobileTrackingApp\MobileTrackingApp\MobileTrackingApp\bin\Debug\MobileTrackingApp.exe.config
+C:\Users\Jeff\Documents\Projects\MobileTrackingApp\MobileTrackingApp\MobileTrackingApp\bin\Debug\MobileTrackingApp.exe
+C:\Users\Jeff\Documents\Projects\MobileTrackingApp\MobileTrackingApp\MobileTrackingApp\bin\Debug\MobileTrackingApp.pdb
+C:\Users\Jeff\Documents\Projects\MobileTrackingApp\MobileTrackingApp\MobileTrackingApp\obj\Debug\MobileTrackingApp.CheckIn.resources
+C:\Users\Jeff\Documents\Projects\MobileTrackingApp\MobileTrackingApp\MobileTrackingApp\obj\Debug\MobileTrackingApp.CheckOut.resources
+C:\Users\Jeff\Documents\Projects\MobileTrackingApp\MobileTrackingApp\MobileTrackingApp\obj\Debug\MobileTrackingApp.Home.resources
+C:\Users\Jeff\Documents\Projects\MobileTrackingApp\MobileTrackingApp\MobileTrackingApp\obj\Debug\MobileTrackingApp.Login.resources
+C:\Users\Jeff\Documents\Projects\MobileTrackingApp\MobileTrackingApp\MobileTrackingApp\obj\Debug\MobileTrackingApp.NewCheckOut.resources
+C:\Users\Jeff\Documents\Projects\MobileTrackingApp\MobileTrackingApp\MobileTrackingApp\obj\Debug\MobileTrackingApp.Properties.Resources.resources
+C:\Users\Jeff\Documents\Projects\MobileTrackingApp\MobileTrackingApp\MobileTrackingApp\obj\Debug\MobileTrackingApp.Search.resources
+C:\Users\Jeff\Documents\Projects\MobileTrackingApp\MobileTrackingApp\MobileTrackingApp\obj\Debug\MobileTrackingApp.csproj.GenerateResource.Cache
+C:\Users\Jeff\Documents\Projects\MobileTrackingApp\MobileTrackingApp\MobileTrackingApp\obj\Debug\MobileTrackingApp.exe
+C:\Users\Jeff\Documents\Projects\MobileTrackingApp\MobileTrackingApp\MobileTrackingApp\obj\Debug\MobileTrackingApp.pdb

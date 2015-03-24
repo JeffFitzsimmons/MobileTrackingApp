@@ -1,0 +1,16 @@
+C:\Users\Jeff\Documents\Projects\MobileTrackingApp\MobileTrackingApp\MobileTrackingApp\bin\x86\Debug\MobileTrackingApp.exe.config
+C:\Users\Jeff\Documents\Projects\MobileTrackingApp\MobileTrackingApp\MobileTrackingApp\bin\x86\Debug\MobileTrackingApp.exe
+C:\Users\Jeff\Documents\Projects\MobileTrackingApp\MobileTrackingApp\MobileTrackingApp\bin\x86\Debug\MobileTrackingApp.pdb
+C:\Users\Jeff\Documents\Projects\MobileTrackingApp\MobileTrackingApp\MobileTrackingApp\bin\x86\Debug\System.Data.SQLite.dll
+C:\Users\Jeff\Documents\Projects\MobileTrackingApp\MobileTrackingApp\MobileTrackingApp\bin\x86\Debug\System.Data.SQLite.xml
+C:\Users\Jeff\Documents\Projects\MobileTrackingApp\MobileTrackingApp\MobileTrackingApp\obj\x86\Debug\MobileTrackingApp.CheckIn.resources
+C:\Users\Jeff\Documents\Projects\MobileTrackingApp\MobileTrackingApp\MobileTrackingApp\obj\x86\Debug\MobileTrackingApp.CheckOut.resources
+C:\Users\Jeff\Documents\Projects\MobileTrackingApp\MobileTrackingApp\MobileTrackingApp\obj\x86\Debug\MobileTrackingApp.Home.resources
+C:\Users\Jeff\Documents\Projects\MobileTrackingApp\MobileTrackingApp\MobileTrackingApp\obj\x86\Debug\MobileTrackingApp.Login.resources
+C:\Users\Jeff\Documents\Projects\MobileTrackingApp\MobileTrackingApp\MobileTrackingApp\obj\x86\Debug\MobileTrackingApp.NewCheckOut.resources
+C:\Users\Jeff\Documents\Projects\MobileTrackingApp\MobileTrackingApp\MobileTrackingApp\obj\x86\Debug\MobileTrackingApp.Properties.Resources.resources
+C:\Users\Jeff\Documents\Projects\MobileTrackingApp\MobileTrackingApp\MobileTrackingApp\obj\x86\Debug\MobileTrackingApp.Search.resources
+C:\Users\Jeff\Documents\Projects\MobileTrackingApp\MobileTrackingApp\MobileTrackingApp\obj\x86\Debug\MobileTrackingApp.csproj.GenerateResource.Cache
+C:\Users\Jeff\Documents\Projects\MobileTrackingApp\MobileTrackingApp\MobileTrackingApp\obj\x86\Debug\MobileTrackingApp.exe
+C:\Users\Jeff\Documents\Projects\MobileTrackingApp\MobileTrackingApp\MobileTrackingApp\obj\x86\Debug\MobileTrackingApp.pdb
+C:\Users\Jeff\Documents\Projects\MobileTrackingApp\MobileTrackingApp\MobileTrackingApp\obj\x86\Debug\MobileTrackingApp.csprojResolveAssemblyReference.cache
