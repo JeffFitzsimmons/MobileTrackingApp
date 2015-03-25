@@ -37,7 +37,7 @@
             // 
             // buttonCheckOut
             // 
-            this.buttonCheckOut.Location = new System.Drawing.Point(97, 61);
+            this.buttonCheckOut.Location = new System.Drawing.Point(99, 32);
             this.buttonCheckOut.Name = "buttonCheckOut";
             this.buttonCheckOut.Size = new System.Drawing.Size(114, 56);
             this.buttonCheckOut.TabIndex = 0;
@@ -47,7 +47,7 @@
             // 
             // buttonCheckIn
             // 
-            this.buttonCheckIn.Location = new System.Drawing.Point(97, 141);
+            this.buttonCheckIn.Location = new System.Drawing.Point(99, 112);
             this.buttonCheckIn.Name = "buttonCheckIn";
             this.buttonCheckIn.Size = new System.Drawing.Size(114, 56);
             this.buttonCheckIn.TabIndex = 5;
@@ -57,7 +57,7 @@
             // 
             // buttonNewCheckOut
             // 
-            this.buttonNewCheckOut.Location = new System.Drawing.Point(233, 61);
+            this.buttonNewCheckOut.Location = new System.Drawing.Point(235, 32);
             this.buttonNewCheckOut.Name = "buttonNewCheckOut";
             this.buttonNewCheckOut.Size = new System.Drawing.Size(114, 56);
             this.buttonNewCheckOut.TabIndex = 6;
@@ -67,7 +67,7 @@
             // 
             // buttonSearch
             // 
-            this.buttonSearch.Location = new System.Drawing.Point(233, 141);
+            this.buttonSearch.Location = new System.Drawing.Point(235, 112);
             this.buttonSearch.Name = "buttonSearch";
             this.buttonSearch.Size = new System.Drawing.Size(114, 56);
             this.buttonSearch.TabIndex = 7;
@@ -77,7 +77,7 @@
             // 
             // buttonEditDatabase
             // 
-            this.buttonEditDatabase.Location = new System.Drawing.Point(165, 262);
+            this.buttonEditDatabase.Location = new System.Drawing.Point(168, 190);
             this.buttonEditDatabase.Name = "buttonEditDatabase";
             this.buttonEditDatabase.Size = new System.Drawing.Size(114, 56);
             this.buttonEditDatabase.TabIndex = 8;
@@ -88,7 +88,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(478, 330);
+            this.ClientSize = new System.Drawing.Size(459, 268);
             this.Controls.Add(this.buttonEditDatabase);
             this.Controls.Add(this.buttonSearch);
             this.Controls.Add(this.buttonNewCheckOut);

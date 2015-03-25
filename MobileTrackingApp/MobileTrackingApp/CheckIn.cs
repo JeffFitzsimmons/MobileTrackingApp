@@ -32,7 +32,16 @@ namespace MobileTrackingApp
         {
             // Code for converting necessary PID and Date fields so the database doesn't have problems
             int PIDparse;
-            int pid = Int32.Parse(textBoxPID.Text);
+
+            if (string.IsNullOrWhiteSpace(textBoxPID.Text))
+            {
+                MessageBox.Show("Please enter the student's PID.");
+            }
+            else
+            {
+                int pid = Int32.Parse(textBoxPID.Text);
+            }
+     
             DateTimePicker dtp = new DateTimePicker();
             string date = dtp.Value.Date.ToShortDateString();
 
@@ -43,10 +52,6 @@ namespace MobileTrackingApp
             }
 
             // Verify that the PID is approprite in length and type (6 numbers)
-            else if (string.IsNullOrWhiteSpace(textBoxPID.Text))
-            {
-                MessageBox.Show("Please enter the student's PID.");
-            }
             else if (textBoxPID.Text.Length != 6 || !int.TryParse(textBoxPID.Text, out PIDparse))
             {
                 MessageBox.Show("The PID entered was not valid. Please enter a valid PID (6 numbers long)");
@@ -55,18 +60,17 @@ namespace MobileTrackingApp
             else
             {
                 // Prompts the user for any last changes
-                if (MessageBox.Show("Are you sure you want to add this new check out record? (Make sure to verify the check out date)", "Confirmation", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                if (MessageBox.Show("Are you sure you want to check this device in?", "Confirmation", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                 {
                     SQLiteConnection connect = new SQLiteConnection(Login.connection);
                     try
                     {
                         String studentPID = textBoxPID.Text.ToString();
-                        String query = "INSERT INTO Students (CheckInDate) VALUES (@CheckInDate) WHERE " +  studentPID + " = PID";
+                        String studentDevice = textBoxDevice.Text.ToString();
+                        String query = "UPDATE Students SET CheckInDate = @CheckInDate WHERE PID = " + studentPID + " AND Device = " + studentDevice + ";";
                         SQLiteCommand cmd = new SQLiteCommand(query, connect);
                         connect.Open();
 
-                        //cmd.Parameters.AddWithValue("@Device", textBoxDevice.Text);
-                        cmd.Parameters.AddWithValue("@PID", textBoxPID.Text);
                         cmd.Parameters.AddWithValue("@CheckInDate", date);
                         cmd.ExecuteNonQuery();
                         connect.Close();

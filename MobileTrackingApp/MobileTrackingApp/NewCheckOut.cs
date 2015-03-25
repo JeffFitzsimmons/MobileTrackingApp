@@ -68,7 +68,7 @@ namespace MobileTrackingApp
             else
             {
                 // Prompts the user for any last changes
-                if (MessageBox.Show("Are you sure you want to add this new check out record? (Make sure to verify the check out date)", "Confirmation", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                if (MessageBox.Show("Are you sure you want to check this device out? (Make sure to verify the check out date)", "Confirmation", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                 {
                     SQLiteConnection connect = new SQLiteConnection(Login.connection);
                     try
