@@ -61,7 +61,7 @@ namespace MobileTrackingApp
                     try
                     {
                         String studentPID = textBoxPID.Text.ToString();
-                        String query = "INSERT INTO Students (CheckInDate) VALUES (@CheckInDate) WHERE PID = '@PID'";
+                        String query = "INSERT INTO Students (CheckInDate) VALUES (@CheckInDate) WHERE " +  studentPID + " = PID";
                         SQLiteCommand cmd = new SQLiteCommand(query, connect);
                         connect.Open();
 
