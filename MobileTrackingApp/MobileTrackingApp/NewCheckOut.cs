@@ -21,6 +21,7 @@ namespace MobileTrackingApp
         // Back to the home screen
         private void buttonBack_Click(object sender, EventArgs e)
         {
+            // Return to Home screen
             this.Visible = false;
 
             Home form = new Home();
@@ -38,7 +39,6 @@ namespace MobileTrackingApp
             int pid = Int32.Parse(textBoxPID.Text);
             DateTimePicker dtp = new DateTimePicker();
             String date = dtp.Value.Date.ToShortDateString();
-
             
             // Check for any blank fields
             if (string.IsNullOrWhiteSpace(textBoxDevice.Text))

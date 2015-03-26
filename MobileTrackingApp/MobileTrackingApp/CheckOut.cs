@@ -59,8 +59,6 @@ namespace MobileTrackingApp
                         SQLiteCommand cmd = new SQLiteCommand(query, connect);
                         connect.Open();
 
-                        //cmd.Parameters.AddWithValue("@Device", textBoxDevice.Text);
-                        //cmd.Parameters.AddWithValue("@PID", pid);
                         cmd.Parameters.AddWithValue("@CheckOutDate", date);
                         cmd.ExecuteNonQuery();
                         connect.Close();
@@ -94,6 +92,7 @@ namespace MobileTrackingApp
         
         private void buttonBack_Click(object sender, EventArgs e)
         {
+            // Return to Home screen
             this.Visible = false;
 
             Home form = new Home();
