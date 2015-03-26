@@ -12,3 +12,4 @@ C:\Users\Jeff\Documents\Projects\MobileTrackingApp\MobileTrackingApp\MobileTrack
 C:\Users\Jeff\Documents\Projects\MobileTrackingApp\MobileTrackingApp\MobileTrackingApp\obj\Debug\MobileTrackingApp.exe
 C:\Users\Jeff\Documents\Projects\MobileTrackingApp\MobileTrackingApp\MobileTrackingApp\obj\Debug\MobileTrackingApp.pdb
 C:\Users\Jeff\Documents\Projects\MobileTrackingApp\MobileTrackingApp\MobileTrackingApp\obj\Debug\MobileTrackingApp.csprojResolveAssemblyReference.cache
+C:\Users\Jeff\Documents\Projects\MobileTrackingApp\MobileTrackingApp\MobileTrackingApp\obj\Debug\MobileTrackingApp.EditDatabase.resources

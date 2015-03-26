@@ -20,6 +20,7 @@ namespace MobileTrackingApp
 
         private void buttonBack_Click(object sender, EventArgs e)
         {
+            // Return to Home screen
             this.Visible = false;
 
             Home form = new Home();
@@ -66,8 +67,8 @@ namespace MobileTrackingApp
                     try
                     {
                         String studentPID = textBoxPID.Text.ToString();
-                        String studentDevice = textBoxDevice.Text.ToString();
-                        String query = "UPDATE Students SET CheckInDate = @CheckInDate WHERE PID = " + studentPID + " AND Device = " + studentDevice + ";";
+                        //String studentDevice = textBoxDevice.Text.ToString();
+                        String query = "UPDATE Students SET CheckInDate = @CheckInDate WHERE PID = " + studentPID + ";";
                         SQLiteCommand cmd = new SQLiteCommand(query, connect);
                         connect.Open();
 

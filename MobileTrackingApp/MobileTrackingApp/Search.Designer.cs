@@ -125,7 +125,7 @@
             // 
             // buttonBack
             // 
-            this.buttonBack.Location = new System.Drawing.Point(76, 194);
+            this.buttonBack.Location = new System.Drawing.Point(72, 194);
             this.buttonBack.Name = "buttonBack";
             this.buttonBack.Size = new System.Drawing.Size(131, 51);
             this.buttonBack.TabIndex = 26;

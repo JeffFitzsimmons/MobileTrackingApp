@@ -66,11 +66,11 @@ namespace MobileTrackingApp
                     
                     if (login == true && textBoxUsername.Text == "admin")
                     {
-                        //User has administrator rights. Access to edit database form is available.
-                        //this.Visible = false;
+                        //User has administrator rights, Edit Database is available
+                        this.Visible = false;
 
-                        //ManageUsersForm form = new ManageUsersForm();
-                        //form.Visible = true;
+                        EditDatabase form = new EditDatabase();
+                        form.Visible = true;
                     }
                     else if (login == true && textBoxUsername.Text != "admin")
                     {
