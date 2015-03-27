@@ -100,5 +100,10 @@ namespace MobileTrackingApp
 
             this.Dispose();
         }
+
+        private void CheckOut_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            Application.Exit();
+        }
     }
 }

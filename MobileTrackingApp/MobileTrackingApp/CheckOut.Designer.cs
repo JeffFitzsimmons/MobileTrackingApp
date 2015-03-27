@@ -123,6 +123,7 @@
             this.Name = "CheckOut";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Check Out Form";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.CheckOut_FormClosing);
             this.ResumeLayout(false);
             this.PerformLayout();
 

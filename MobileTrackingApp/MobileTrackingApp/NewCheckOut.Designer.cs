@@ -174,6 +174,7 @@
             this.Name = "NewCheckOut";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "NewCheckOut";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.NewCheckOut_FormClosing);
             this.ResumeLayout(false);
             this.PerformLayout();
 

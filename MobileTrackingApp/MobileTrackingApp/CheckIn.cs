@@ -102,5 +102,10 @@ namespace MobileTrackingApp
                 }
             }
         }
+
+        private void CheckIn_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            Application.Exit();
+        }
     }
 }

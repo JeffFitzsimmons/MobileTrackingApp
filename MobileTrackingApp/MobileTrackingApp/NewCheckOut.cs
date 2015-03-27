@@ -111,5 +111,10 @@ namespace MobileTrackingApp
                 }
             }         
         }
+
+        private void NewCheckOut_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            Application.Exit();
+        }
     }
 }

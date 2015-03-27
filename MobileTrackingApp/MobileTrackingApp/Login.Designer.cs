@@ -85,6 +85,7 @@
             // 
             this.textBoxPassword.Location = new System.Drawing.Point(81, 103);
             this.textBoxPassword.Name = "textBoxPassword";
+            this.textBoxPassword.PasswordChar = '●';
             this.textBoxPassword.Size = new System.Drawing.Size(117, 20);
             this.textBoxPassword.TabIndex = 5;
             // 
@@ -111,6 +112,7 @@
             this.Name = "Login";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Login";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Login_FormClosing);
             this.ResumeLayout(false);
             this.PerformLayout();
 
