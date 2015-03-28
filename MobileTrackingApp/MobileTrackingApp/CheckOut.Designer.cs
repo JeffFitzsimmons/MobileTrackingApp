@@ -36,6 +36,8 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.dateTimePicker = new System.Windows.Forms.DateTimePicker();
+            this.label3 = new System.Windows.Forms.Label();
+            this.textBoxSerial = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // buttonBack
@@ -107,11 +109,29 @@
             this.dateTimePicker.Size = new System.Drawing.Size(99, 20);
             this.dateTimePicker.TabIndex = 11;
             // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(237, 72);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(27, 13);
+            this.label3.TabIndex = 13;
+            this.label3.Text = "S/N";
+            // 
+            // textBoxSerial
+            // 
+            this.textBoxSerial.Location = new System.Drawing.Point(270, 69);
+            this.textBoxSerial.Name = "textBoxSerial";
+            this.textBoxSerial.Size = new System.Drawing.Size(126, 20);
+            this.textBoxSerial.TabIndex = 12;
+            // 
             // CheckOut
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(486, 252);
+            this.Controls.Add(this.label3);
+            this.Controls.Add(this.textBoxSerial);
             this.Controls.Add(this.dateTimePicker);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label2);
@@ -139,5 +159,7 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.DateTimePicker dateTimePicker;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.TextBox textBoxSerial;
     }
 }

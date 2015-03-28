@@ -73,11 +73,12 @@ namespace MobileTrackingApp
                     SQLiteConnection connect = new SQLiteConnection(Login.connection);
                     try
                     {
-                        String query = "INSERT INTO Students (Device, PID, FirstName, LastName, CheckOutDate) VALUES (@Device, @PID, @FirstName, @LastName, @CheckOutDate)";
+                        String query = "INSERT INTO Students (Device, SerialNumber, PID, FirstName, LastName, CheckOutDate) VALUES (@Device, @SerialNumber, @PID, @FirstName, @LastName, @CheckOutDate)";
                         SQLiteCommand cmd = new SQLiteCommand(query, connect);
                         connect.Open();
                         
                         cmd.Parameters.AddWithValue("@Device", textBoxDevice.Text);
+                        cmd.Parameters.AddWithValue("@SerialNumber", textBoxSerial.Text);
                         cmd.Parameters.AddWithValue("@PID", pid);
                         cmd.Parameters.AddWithValue("@FirstName", textBoxFirstName.Text);
                         cmd.Parameters.AddWithValue("@LastName", textBoxLastName.Text);

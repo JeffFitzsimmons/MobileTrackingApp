@@ -41,6 +41,8 @@
             this.buttonCheckOut = new System.Windows.Forms.Button();
             this.buttonBack = new System.Windows.Forms.Button();
             this.dateTimeSelect = new System.Windows.Forms.DateTimePicker();
+            this.textBoxSerial = new System.Windows.Forms.TextBox();
+            this.label7 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // label6
@@ -91,11 +93,11 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(74, 31);
+            this.label1.Location = new System.Drawing.Point(43, 31);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(41, 13);
+            this.label1.Size = new System.Drawing.Size(72, 13);
             this.label1.TabIndex = 20;
-            this.label1.Text = "Device";
+            this.label1.Text = "Device Name";
             // 
             // textBoxLastName
             // 
@@ -153,11 +155,29 @@
             this.dateTimeSelect.Size = new System.Drawing.Size(100, 20);
             this.dateTimeSelect.TabIndex = 26;
             // 
+            // textBoxSerial
+            // 
+            this.textBoxSerial.Location = new System.Drawing.Point(275, 28);
+            this.textBoxSerial.Name = "textBoxSerial";
+            this.textBoxSerial.Size = new System.Drawing.Size(135, 20);
+            this.textBoxSerial.TabIndex = 27;
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(242, 31);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(27, 13);
+            this.label7.TabIndex = 28;
+            this.label7.Text = "S/N";
+            // 
             // NewCheckOut
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(455, 289);
+            this.Controls.Add(this.label7);
+            this.Controls.Add(this.textBoxSerial);
             this.Controls.Add(this.dateTimeSelect);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.label5);
@@ -195,5 +215,7 @@
         private System.Windows.Forms.Button buttonCheckOut;
         private System.Windows.Forms.Button buttonBack;
         private System.Windows.Forms.DateTimePicker dateTimeSelect;
+        private System.Windows.Forms.TextBox textBoxSerial;
+        private System.Windows.Forms.Label label7;
     }
 }
