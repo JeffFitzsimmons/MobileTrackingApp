@@ -35,7 +35,9 @@
             this.textBoxDevice = new System.Windows.Forms.TextBox();
             this.buttonCheckIn = new System.Windows.Forms.Button();
             this.buttonBack = new System.Windows.Forms.Button();
-            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
+            this.dateTimeSelect = new System.Windows.Forms.DateTimePicker();
+            this.label3 = new System.Windows.Forms.Label();
+            this.textBoxSerial = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // label4
@@ -99,20 +101,38 @@
             this.buttonBack.UseVisualStyleBackColor = true;
             this.buttonBack.Click += new System.EventHandler(this.buttonBack_Click);
             // 
-            // dateTimePicker1
+            // dateTimeSelect
             // 
-            this.dateTimePicker1.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dateTimePicker1.Location = new System.Drawing.Point(124, 88);
-            this.dateTimePicker1.Name = "dateTimePicker1";
-            this.dateTimePicker1.Size = new System.Drawing.Size(100, 20);
-            this.dateTimePicker1.TabIndex = 19;
+            this.dateTimeSelect.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dateTimeSelect.Location = new System.Drawing.Point(124, 88);
+            this.dateTimeSelect.Name = "dateTimeSelect";
+            this.dateTimeSelect.Size = new System.Drawing.Size(100, 20);
+            this.dateTimeSelect.TabIndex = 19;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(256, 38);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(27, 13);
+            this.label3.TabIndex = 21;
+            this.label3.Text = "S/N";
+            // 
+            // textBoxSerial
+            // 
+            this.textBoxSerial.Location = new System.Drawing.Point(289, 35);
+            this.textBoxSerial.Name = "textBoxSerial";
+            this.textBoxSerial.Size = new System.Drawing.Size(126, 20);
+            this.textBoxSerial.TabIndex = 20;
             // 
             // CheckIn
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(471, 234);
-            this.Controls.Add(this.dateTimePicker1);
+            this.Controls.Add(this.label3);
+            this.Controls.Add(this.textBoxSerial);
+            this.Controls.Add(this.dateTimeSelect);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
@@ -138,6 +158,8 @@
         private System.Windows.Forms.TextBox textBoxDevice;
         private System.Windows.Forms.Button buttonCheckIn;
         private System.Windows.Forms.Button buttonBack;
-        private System.Windows.Forms.DateTimePicker dateTimePicker1;
+        private System.Windows.Forms.DateTimePicker dateTimeSelect;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.TextBox textBoxSerial;
     }
 }

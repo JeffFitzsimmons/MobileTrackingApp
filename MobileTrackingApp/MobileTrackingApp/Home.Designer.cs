@@ -32,6 +32,7 @@
             this.buttonCheckIn = new System.Windows.Forms.Button();
             this.buttonNewCheckOut = new System.Windows.Forms.Button();
             this.buttonSearch = new System.Windows.Forms.Button();
+            this.buttonLogout = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // buttonCheckOut
@@ -74,11 +75,22 @@
             this.buttonSearch.UseVisualStyleBackColor = true;
             this.buttonSearch.Click += new System.EventHandler(this.buttonSearch_Click);
             // 
+            // buttonLogout
+            // 
+            this.buttonLogout.Location = new System.Drawing.Point(372, 233);
+            this.buttonLogout.Name = "buttonLogout";
+            this.buttonLogout.Size = new System.Drawing.Size(75, 23);
+            this.buttonLogout.TabIndex = 8;
+            this.buttonLogout.Text = "Logout";
+            this.buttonLogout.UseVisualStyleBackColor = true;
+            this.buttonLogout.Click += new System.EventHandler(this.buttonLogout_Click);
+            // 
             // Home
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(459, 268);
+            this.Controls.Add(this.buttonLogout);
             this.Controls.Add(this.buttonSearch);
             this.Controls.Add(this.buttonNewCheckOut);
             this.Controls.Add(this.buttonCheckIn);
@@ -97,5 +109,6 @@
         private System.Windows.Forms.Button buttonCheckIn;
         private System.Windows.Forms.Button buttonNewCheckOut;
         private System.Windows.Forms.Button buttonSearch;
+        private System.Windows.Forms.Button buttonLogout;
     }
 }

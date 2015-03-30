@@ -37,11 +37,15 @@ namespace MobileTrackingApp
             // Code for converting necessary PID and Date fields so the database doesn't have problems
             int PIDparse;
             int pid = Int32.Parse(textBoxPID.Text);
-            DateTimePicker dtp = new DateTimePicker();
-            String date = dtp.Value.Date.ToShortDateString();
-            
+            String date = dateTimeSelect.Value.ToShortDateString();
+
             // Check for any blank fields
             if (string.IsNullOrWhiteSpace(textBoxDevice.Text))
+            {
+                MessageBox.Show("Please type in the device name.");
+            }
+
+            if (string.IsNullOrWhiteSpace(textBoxSerial.Text))
             {
                 MessageBox.Show("Please use the scanner or manually input the device serial number.");
             }
@@ -55,7 +59,8 @@ namespace MobileTrackingApp
             {
                 MessageBox.Show("The PID entered was not valid. Please enter a valid PID (6 numbers long)");
             }
-            
+
+            // Check for a blank first or last name
             else if (string.IsNullOrWhiteSpace(textBoxFirstName.Text))
             {
                 MessageBox.Show("Please enter the student's first name.");

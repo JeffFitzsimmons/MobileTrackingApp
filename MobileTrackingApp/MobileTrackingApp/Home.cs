@@ -61,5 +61,16 @@ namespace MobileTrackingApp
         {
             Application.Exit();
         }
+
+        private void buttonLogout_Click(object sender, EventArgs e)
+        {
+            // Logs the user out and returns to the login screen            
+            this.Visible = false;
+
+            Login form = new Login();
+            form.Show();
+
+            this.Dispose();
+        }
     }
 }

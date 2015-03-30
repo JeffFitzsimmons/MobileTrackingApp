@@ -71,7 +71,7 @@ namespace MobileTrackingApp
         {
             string deviceName = (string)listBoxItems.SelectedItem.ToString();
                         
-            String query = "SELECT Device, FirstName, LastName, PID, CheckOutDate, CheckInDate FROM Students WHERE Device = '" + deviceName + "';";
+            String query = "SELECT Device, FirstName, LastName, PID, CheckOutDate, CheckInDate, SerialNumber FROM Students WHERE Device = '" + deviceName + "';";
             DataSet data = new DataSet();
             SQLiteConnection connect = new SQLiteConnection(Login.connection);
             
@@ -84,6 +84,7 @@ namespace MobileTrackingApp
                 connect.Close();
 
                 textBoxDevice.Text = data.Tables["Students"].Rows[0]["Device"].ToString();
+                textBoxSerial.Text = data.Tables["Students"].Rows[0]["SerialNumber"].ToString();
                 textBoxFirstName.Text = data.Tables["Students"].Rows[0]["FirstName"].ToString();
                 textBoxLastName.Text = data.Tables["Students"].Rows[0]["LastName"].ToString();
                 textBoxPID.Text = data.Tables["Students"].Rows[0]["PID"].ToString();

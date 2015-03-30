@@ -42,12 +42,16 @@ namespace MobileTrackingApp
             {
                 int pid = Int32.Parse(textBoxPID.Text);
             }
-     
-            DateTimePicker dtp = new DateTimePicker();
-            string date = dtp.Value.Date.ToShortDateString();
+
+            String date = dateTimeSelect.Value.ToShortDateString();
 
             // Check for any blank fields
             if (string.IsNullOrWhiteSpace(textBoxDevice.Text))
+            {
+                MessageBox.Show("Please type in the device name.");
+            }
+
+            if (string.IsNullOrWhiteSpace(textBoxSerial.Text))
             {
                 MessageBox.Show("Please use the scanner or manually input the device serial number.");
             }

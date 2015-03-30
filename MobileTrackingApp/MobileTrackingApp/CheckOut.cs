@@ -38,6 +38,11 @@ namespace MobileTrackingApp
             // Check for any blank fields
             if (string.IsNullOrWhiteSpace(textBoxDevice.Text))
             {
+                MessageBox.Show("Please type in the device name.");
+            }
+
+            if (string.IsNullOrWhiteSpace(textBoxSerial.Text))
+            {
                 MessageBox.Show("Please use the scanner or manually input the device serial number.");
             }
 
@@ -56,7 +61,7 @@ namespace MobileTrackingApp
                     try
                     {
                         String studentPID = textBoxPID.Text.ToString();
-                        String query = "UPDATE Students SET Device = @Device, SerialNumber = @SerialNumber,  CheckOutDate = @CheckOutDate, WHERE PID = " + studentPID + ";";
+                        String query = "UPDATE Students SET Device = @Device, SerialNumber = @SerialNumber, CheckOutDate = @CheckOutDate WHERE PID = " + studentPID + ";";
                         SQLiteCommand cmd = new SQLiteCommand(query, connect);
                         connect.Open();
 
