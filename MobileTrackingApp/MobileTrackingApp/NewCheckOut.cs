@@ -37,7 +37,8 @@ namespace MobileTrackingApp
             // Code for converting necessary PID and Date fields so the database doesn't have problems
             int PIDparse;
             int pid = Int32.Parse(textBoxPID.Text);
-            String date = dateTimeSelect.Value.ToShortDateString();
+            String checkOutDate = dateTimeCheckOut.Value.ToShortDateString();
+            String dueDate = dateTimeDueDate.Value.ToShortDateString();
 
             // Check for any blank fields
             if (string.IsNullOrWhiteSpace(textBoxDevice.Text))
@@ -78,18 +79,31 @@ namespace MobileTrackingApp
                     SQLiteConnection connect = new SQLiteConnection(Login.connection);
                     try
                     {
-                        String query = "INSERT INTO Students (Device, SerialNumber, PID, FirstName, LastName, CheckOutDate) VALUES (@Device, @SerialNumber, @PID, @FirstName, @LastName, @CheckOutDate)";
-                        SQLiteCommand cmd = new SQLiteCommand(query, connect);
-                        connect.Open();
+                        String[] queries = new String[3];
                         
-                        cmd.Parameters.AddWithValue("@Device", textBoxDevice.Text);
-                        cmd.Parameters.AddWithValue("@SerialNumber", textBoxSerial.Text);
-                        cmd.Parameters.AddWithValue("@PID", pid);
-                        cmd.Parameters.AddWithValue("@FirstName", textBoxFirstName.Text);
-                        cmd.Parameters.AddWithValue("@LastName", textBoxLastName.Text);
-                        cmd.Parameters.AddWithValue("@CheckOutDate", date);
-                        cmd.ExecuteNonQuery();
-                        connect.Close();
+                        queries[0] = "INSERT INTO CheckOut (Device, SerialNumber, PID, CheckOutDate, DueDate, Comments, Assets) VALUES (@Device, @SerialNumber, @PID, @CheckOutDate, @DueDate, @Comments, @Assets)";
+                        queries[1] = "INSERT INTO Students (PID, FirstName, LastName) VALUES (@PID, @FirstName, @LastName)";
+                        queries[2] = "UPDATE Device SET CheckOut = 'True' WHERE SerialNumber = @SerialNumber AND Device = @Device";
+                        
+                         foreach (String query in queries)
+                         {                        
+                            SQLiteCommand cmd = new SQLiteCommand(query, connect);
+                            connect.Open();
+                        
+                            cmd.Parameters.AddWithValue("@Device", textBoxDevice.Text);
+                            cmd.Parameters.AddWithValue("@SerialNumber", textBoxSerial.Text);
+                            cmd.Parameters.AddWithValue("@PID", pid);
+                            cmd.Parameters.AddWithValue("@FirstName", textBoxFirstName.Text);
+                            cmd.Parameters.AddWithValue("@LastName", textBoxLastName.Text);
+                            cmd.Parameters.AddWithValue("@CheckOutDate", checkOutDate);
+                            cmd.Parameters.AddWithValue("@DueDate", dueDate);
+                            cmd.Parameters.AddWithValue("@Comments", textBoxComments.Text);
+                            cmd.Parameters.AddWithValue("@Assets", comboBoxAsset.Text);
+                            cmd.ExecuteNonQuery();
+                            connect.Close();
+                        }
+
+                        
                     }
                     catch (SQLiteException exception)
                     {   

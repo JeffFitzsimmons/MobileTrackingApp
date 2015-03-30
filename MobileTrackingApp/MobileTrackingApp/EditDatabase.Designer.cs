@@ -62,6 +62,7 @@
             this.label17 = new System.Windows.Forms.Label();
             this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
             this.dateTimePicker2 = new System.Windows.Forms.DateTimePicker();
+            this.buttonAddDevice = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // listBoxItems
@@ -69,7 +70,7 @@
             this.listBoxItems.FormattingEnabled = true;
             this.listBoxItems.Location = new System.Drawing.Point(12, 30);
             this.listBoxItems.Name = "listBoxItems";
-            this.listBoxItems.Size = new System.Drawing.Size(167, 277);
+            this.listBoxItems.Size = new System.Drawing.Size(167, 251);
             this.listBoxItems.TabIndex = 2;
             this.listBoxItems.SelectedIndexChanged += new System.EventHandler(this.listBoxSelect_SelectedIndexChanged);
             // 
@@ -84,7 +85,7 @@
             // 
             // buttonSave
             // 
-            this.buttonSave.Location = new System.Drawing.Point(596, 231);
+            this.buttonSave.Location = new System.Drawing.Point(579, 242);
             this.buttonSave.Name = "buttonSave";
             this.buttonSave.Size = new System.Drawing.Size(112, 37);
             this.buttonSave.TabIndex = 14;
@@ -94,9 +95,9 @@
             // 
             // buttonLogout
             // 
-            this.buttonLogout.Location = new System.Drawing.Point(626, 277);
+            this.buttonLogout.Location = new System.Drawing.Point(297, 242);
             this.buttonLogout.Name = "buttonLogout";
-            this.buttonLogout.Size = new System.Drawing.Size(82, 30);
+            this.buttonLogout.Size = new System.Drawing.Size(112, 37);
             this.buttonLogout.TabIndex = 13;
             this.buttonLogout.Text = "Logout";
             this.buttonLogout.UseVisualStyleBackColor = true;
@@ -353,11 +354,22 @@
             this.dateTimePicker2.Size = new System.Drawing.Size(129, 20);
             this.dateTimePicker2.TabIndex = 73;
             // 
+            // buttonAddDevice
+            // 
+            this.buttonAddDevice.Location = new System.Drawing.Point(440, 242);
+            this.buttonAddDevice.Name = "buttonAddDevice";
+            this.buttonAddDevice.Size = new System.Drawing.Size(112, 37);
+            this.buttonAddDevice.TabIndex = 74;
+            this.buttonAddDevice.Text = "Add Device";
+            this.buttonAddDevice.UseVisualStyleBackColor = true;
+            this.buttonAddDevice.Click += new System.EventHandler(this.buttonAddDevice_Click);
+            // 
             // EditDatabase
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(738, 332);
+            this.ClientSize = new System.Drawing.Size(738, 300);
+            this.Controls.Add(this.buttonAddDevice);
             this.Controls.Add(this.dateTimePicker2);
             this.Controls.Add(this.dateTimePicker1);
             this.Controls.Add(this.label17);
@@ -437,5 +449,6 @@
         private System.Windows.Forms.Label label17;
         private System.Windows.Forms.DateTimePicker dateTimePicker1;
         private System.Windows.Forms.DateTimePicker dateTimePicker2;
+        private System.Windows.Forms.Button buttonAddDevice;
     }
 }

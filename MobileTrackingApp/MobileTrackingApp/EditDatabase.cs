@@ -196,5 +196,15 @@ namespace MobileTrackingApp
                 }
             }
         }
+
+        private void buttonAddDevice_Click(object sender, EventArgs e)
+        {
+            this.Visible = false;
+
+            AddDevice form = new AddDevice();
+            form.Show();
+
+            this.Dispose();
+        }
     }
 }

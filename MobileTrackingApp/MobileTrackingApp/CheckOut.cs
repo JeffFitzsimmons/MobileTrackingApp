@@ -33,7 +33,7 @@ namespace MobileTrackingApp
             }
 
             DateTimePicker dtp = new DateTimePicker();
-            string date = dtp.Value.Date.ToShortDateString();
+            string date = dtp.Value.Date.ToString();
 
             // Check for any blank fields
             if (string.IsNullOrWhiteSpace(textBoxDevice.Text))

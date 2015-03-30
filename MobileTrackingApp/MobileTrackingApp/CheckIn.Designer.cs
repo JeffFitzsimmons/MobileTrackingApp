@@ -38,6 +38,8 @@
             this.dateTimeSelect = new System.Windows.Forms.DateTimePicker();
             this.label3 = new System.Windows.Forms.Label();
             this.textBoxSerial = new System.Windows.Forms.TextBox();
+            this.label10 = new System.Windows.Forms.Label();
+            this.textBoxComments = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // label4
@@ -83,7 +85,7 @@
             // 
             // buttonCheckIn
             // 
-            this.buttonCheckIn.Location = new System.Drawing.Point(289, 136);
+            this.buttonCheckIn.Location = new System.Drawing.Point(289, 246);
             this.buttonCheckIn.Name = "buttonCheckIn";
             this.buttonCheckIn.Size = new System.Drawing.Size(129, 51);
             this.buttonCheckIn.TabIndex = 12;
@@ -93,7 +95,7 @@
             // 
             // buttonBack
             // 
-            this.buttonBack.Location = new System.Drawing.Point(68, 136);
+            this.buttonBack.Location = new System.Drawing.Point(93, 246);
             this.buttonBack.Name = "buttonBack";
             this.buttonBack.Size = new System.Drawing.Size(131, 51);
             this.buttonBack.TabIndex = 11;
@@ -125,11 +127,30 @@
             this.textBoxSerial.Size = new System.Drawing.Size(126, 20);
             this.textBoxSerial.TabIndex = 20;
             // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Location = new System.Drawing.Point(62, 145);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(56, 13);
+            this.label10.TabIndex = 35;
+            this.label10.Text = "Comments";
+            // 
+            // textBoxComments
+            // 
+            this.textBoxComments.Location = new System.Drawing.Point(124, 142);
+            this.textBoxComments.Multiline = true;
+            this.textBoxComments.Name = "textBoxComments";
+            this.textBoxComments.Size = new System.Drawing.Size(291, 85);
+            this.textBoxComments.TabIndex = 34;
+            // 
             // CheckIn
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(471, 234);
+            this.ClientSize = new System.Drawing.Size(473, 309);
+            this.Controls.Add(this.label10);
+            this.Controls.Add(this.textBoxComments);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.textBoxSerial);
             this.Controls.Add(this.dateTimeSelect);
@@ -161,5 +182,7 @@
         private System.Windows.Forms.DateTimePicker dateTimeSelect;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.TextBox textBoxSerial;
+        private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.TextBox textBoxComments;
     }
 }

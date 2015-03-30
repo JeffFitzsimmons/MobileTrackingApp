@@ -71,12 +71,15 @@ namespace MobileTrackingApp
                     try
                     {
                         String studentPID = textBoxPID.Text.ToString();
-                        //String studentDevice = textBoxDevice.Text.ToString();
-                        String query = "UPDATE Students SET CheckInDate = @CheckInDate WHERE PID = " + studentPID + ";";
+                        String studentDevice = textBoxDevice.Text.ToString();
+                        String studentSerial = textBoxSerial.Text.ToString();
+
+                        String query = "UPDATE CheckOut SET CheckInDate = @CheckInDate, ReturnComments = @ReturnComments WHERE PID = '" + studentPID + "' AND Device = '" + studentDevice + "' AND SerialNumber = '" + studentSerial + "';";
                         SQLiteCommand cmd = new SQLiteCommand(query, connect);
                         connect.Open();
 
                         cmd.Parameters.AddWithValue("@CheckInDate", date);
+                        cmd.Parameters.AddWithValue("@ReturnComments", textBoxComments.Text);
                         cmd.ExecuteNonQuery();
                         connect.Close();
                     }
