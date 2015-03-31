@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(CheckOut));
             this.buttonBack = new System.Windows.Forms.Button();
             this.buttonCheckOut = new System.Windows.Forms.Button();
             this.textBoxPID = new System.Windows.Forms.TextBox();
@@ -218,6 +219,7 @@
             this.Controls.Add(this.textBoxPID);
             this.Controls.Add(this.buttonCheckOut);
             this.Controls.Add(this.buttonBack);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "CheckOut";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Check Out Form";

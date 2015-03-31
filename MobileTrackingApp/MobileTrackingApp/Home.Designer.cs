@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Home));
             this.buttonCheckOut = new System.Windows.Forms.Button();
             this.buttonCheckIn = new System.Windows.Forms.Button();
             this.buttonNewCheckOut = new System.Windows.Forms.Button();
@@ -95,6 +96,7 @@
             this.Controls.Add(this.buttonNewCheckOut);
             this.Controls.Add(this.buttonCheckIn);
             this.Controls.Add(this.buttonCheckOut);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Home";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Home";

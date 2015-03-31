@@ -43,7 +43,7 @@ namespace MobileTrackingApp
                 int pid = Int32.Parse(textBoxPID.Text);
             }
 
-            String date = dateTimeSelect.Value.ToShortDateString();
+            String date = dateTimeSelect.Value.ToString();
 
             // Check for any blank fields
             if (string.IsNullOrWhiteSpace(textBoxDevice.Text))
@@ -73,15 +73,27 @@ namespace MobileTrackingApp
                         String studentPID = textBoxPID.Text.ToString();
                         String studentDevice = textBoxDevice.Text.ToString();
                         String studentSerial = textBoxSerial.Text.ToString();
+                        String[] queries = new String[2];
 
-                        String query = "UPDATE CheckOut SET CheckInDate = @CheckInDate, ReturnComments = @ReturnComments WHERE PID = '" + studentPID + "' AND Device = '" + studentDevice + "' AND SerialNumber = '" + studentSerial + "';";
-                        SQLiteCommand cmd = new SQLiteCommand(query, connect);
-                        connect.Open();
+                        //queries[0] = "UPDATE CheckOut SET CheckInDate = @CheckInDate, ReturnComments = @ReturnComments WHERE PID = '" + studentPID + "' AND Device = '" + studentDevice + "' AND SerialNumber = '" + studentSerial + "';";
+                        //queries[1] = "UPDATE Device SET CheckOut = 'True' SerialNumber = '" + studentSerial + "' AND Device = '" + studentDevice + "';";
+                        queries[0] = "UPDATE CheckOut SET CheckInDate = @CheckInDate, ReturnComments = @ReturnComments WHERE PID = @PID AND Device = @Device AND SerialNumber = @SerialNumber";
+                        queries[1] = "UPDATE Device SET CheckOut = 'True' WHERE SerialNumber = @SerialNumber AND Device = @Device";
 
-                        cmd.Parameters.AddWithValue("@CheckInDate", date);
-                        cmd.Parameters.AddWithValue("@ReturnComments", textBoxComments.Text);
-                        cmd.ExecuteNonQuery();
-                        connect.Close();
+                        foreach (String query in queries)
+                        {
+                            SQLiteCommand cmd = new SQLiteCommand(query, connect);
+                            connect.Open();
+
+                            cmd.Parameters.AddWithValue("@CheckInDate", date);
+                            cmd.Parameters.AddWithValue("@ReturnComments", textBoxComments.Text);
+                            cmd.Parameters.AddWithValue("@PID", textBoxPID.Text);
+                            cmd.Parameters.AddWithValue("@Device", textBoxDevice.Text);
+                            cmd.Parameters.AddWithValue("@SerialNumber", textBoxSerial.Text);
+                            cmd.ExecuteNonQuery();
+                            connect.Close();
+                        }
+                        
                     }
                     catch (SQLiteException exception)
                     {

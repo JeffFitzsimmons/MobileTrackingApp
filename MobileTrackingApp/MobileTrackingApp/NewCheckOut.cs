@@ -37,7 +37,7 @@ namespace MobileTrackingApp
             // Code for converting necessary PID and Date fields so the database doesn't have problems
             int PIDparse;
             int pid = Int32.Parse(textBoxPID.Text);
-            String checkOutDate = dateTimeCheckOut.Value.ToShortDateString();
+            String checkOutDate = dateTimeCheckOut.Value.ToString();
             String dueDate = dateTimeDueDate.Value.ToShortDateString();
 
             // Check for any blank fields

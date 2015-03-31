@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Search));
             this.buttonBack = new System.Windows.Forms.Button();
             this.listBoxItems = new System.Windows.Forms.ListBox();
             this.textBoxFirstName = new System.Windows.Forms.TextBox();
@@ -229,9 +230,9 @@
             this.label10.AutoSize = true;
             this.label10.Location = new System.Drawing.Point(209, 248);
             this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(50, 13);
+            this.label10.Size = new System.Drawing.Size(56, 13);
             this.label10.TabIndex = 47;
-            this.label10.Text = "Check In";
+            this.label10.Text = "Comments";
             // 
             // textBoxComments
             // 
@@ -269,6 +270,7 @@
             this.Controls.Add(this.textBoxFirstName);
             this.Controls.Add(this.listBoxItems);
             this.Controls.Add(this.buttonBack);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Search";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Search";
