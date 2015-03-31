@@ -33,7 +33,7 @@
             this.textBoxPID = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
-            this.dateTimePicker = new System.Windows.Forms.DateTimePicker();
+            this.dateTimeCheckOut = new System.Windows.Forms.DateTimePicker();
             this.label9 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.textBoxSerial = new System.Windows.Forms.TextBox();
@@ -92,13 +92,13 @@
             this.label4.TabIndex = 10;
             this.label4.Text = "Check Out Date";
             // 
-            // dateTimePicker
+            // dateTimeCheckOut
             // 
-            this.dateTimePicker.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dateTimePicker.Location = new System.Drawing.Point(108, 83);
-            this.dateTimePicker.Name = "dateTimePicker";
-            this.dateTimePicker.Size = new System.Drawing.Size(103, 20);
-            this.dateTimePicker.TabIndex = 11;
+            this.dateTimeCheckOut.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dateTimeCheckOut.Location = new System.Drawing.Point(108, 83);
+            this.dateTimeCheckOut.Name = "dateTimeCheckOut";
+            this.dateTimeCheckOut.Size = new System.Drawing.Size(103, 20);
+            this.dateTimeCheckOut.TabIndex = 11;
             // 
             // label9
             // 
@@ -212,7 +212,7 @@
             this.Controls.Add(this.textBoxSerial);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.textBoxDevice);
-            this.Controls.Add(this.dateTimePicker);
+            this.Controls.Add(this.dateTimeCheckOut);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.textBoxPID);
@@ -234,7 +234,7 @@
         private System.Windows.Forms.TextBox textBoxPID;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.DateTimePicker dateTimePicker;
+        private System.Windows.Forms.DateTimePicker dateTimeCheckOut;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.TextBox textBoxSerial;

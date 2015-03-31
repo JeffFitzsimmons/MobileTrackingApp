@@ -20,20 +20,18 @@ namespace MobileTrackingApp
 
         private void buttonCheckOut_Click(object sender, EventArgs e)
         {
-            // Code for converting necessary PID and Date fields so the database doesn't have problems
-            int PIDparse;
+            
 
             if (string.IsNullOrWhiteSpace(textBoxPID.Text))
             {
                 MessageBox.Show("Please enter the student's PID.");
             }
-            else
-            {
-                int pid = Int32.Parse(textBoxPID.Text);
-            }
 
-            DateTimePicker dtp = new DateTimePicker();
-            string date = dtp.Value.Date.ToString();
+            // Code for converting necessary PID and Date fields so the database doesn't have problems
+            int PIDparse;
+            String checkOutDate = dateTimeCheckOut.Value.ToShortDateString();
+            String dueDate = dateTimeDueDate.Value.ToShortDateString();
+            int pid = Int32.Parse(textBoxPID.Text);
 
             // Check for any blank fields
             if (string.IsNullOrWhiteSpace(textBoxDevice.Text))
@@ -61,15 +59,26 @@ namespace MobileTrackingApp
                     try
                     {
                         String studentPID = textBoxPID.Text.ToString();
-                        String query = "UPDATE Students SET Device = @Device, SerialNumber = @SerialNumber, CheckOutDate = @CheckOutDate WHERE PID = " + studentPID + ";";
-                        SQLiteCommand cmd = new SQLiteCommand(query, connect);
-                        connect.Open();
+                        String[] queries = new String[2];
 
-                        cmd.Parameters.AddWithValue("@Device", textBoxDevice.Text);
-                        cmd.Parameters.AddWithValue("@SerialNumber", textBoxSerial.Text);
-                        cmd.Parameters.AddWithValue("@CheckOutDate", date);
-                        cmd.ExecuteNonQuery();
-                        connect.Close();
+                        queries[0] = "INSERT INTO CheckOut (Device, SerialNumber, PID, CheckOutDate, DueDate, Comments, Assets) VALUES (@Device, @SerialNumber, @PID, @CheckOutDate, @DueDate, @Comments, @Assets)";
+                        queries[1] = "UPDATE Device SET CheckOut = 'True' WHERE SerialNumber = @SerialNumber AND Device = @Device";
+                        //queries[2] = "INSERT INTO CheckOut (FirstName, LastName) SELECT FirstName, LastName FROM Students WHERE PID = '" + studentPID + "';";
+                        foreach (String query in queries)
+                        {
+                            SQLiteCommand cmd = new SQLiteCommand(query, connect);
+                            connect.Open();
+
+                            cmd.Parameters.AddWithValue("@Device", textBoxDevice.Text);
+                            cmd.Parameters.AddWithValue("@SerialNumber", textBoxSerial.Text);
+                            cmd.Parameters.AddWithValue("@PID", pid);
+                            cmd.Parameters.AddWithValue("@CheckOutDate", checkOutDate);
+                            cmd.Parameters.AddWithValue("@DueDate", dueDate);
+                            cmd.Parameters.AddWithValue("@Comments", textBoxComments.Text);
+                            cmd.Parameters.AddWithValue("@Assets", comboBoxAsset.Text);
+                            cmd.ExecuteNonQuery();
+                            connect.Close();
+                        }
                     }
                     catch (SQLiteException exception)
                     {
