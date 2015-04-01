@@ -17,7 +17,7 @@ namespace MobileTrackingApp
         {
             InitializeComponent();
 
-            String query = "SELECT Device FROM Device";
+            String query = "SELECT Device FROM Device WHERE CheckOut = 'False'";
             DataSet data = new DataSet();
             SQLiteConnection connect = new SQLiteConnection(Login.connection);
 
@@ -65,7 +65,7 @@ namespace MobileTrackingApp
         {
             string deviceName = (string)listBoxItems.SelectedItem.ToString();
                         
-            String query = "SELECT CheckOut.PID, CheckOut.SerialNumber, Checkout.Device, CheckOut.CheckOutDate, CheckOut.DueDate, CheckOut.CheckInDate, Checkout.Assets, CheckOut.Comments, Students.FirstName, Students.LastName FROM CheckOut INNER JOIN Students ON CheckOut.PID = Students.PID WHERE CheckOut.Device = '" + deviceName + "';";
+            String query = "SELECT History.PID, History.SerialNumber, History.Device, history.CheckOutDate, History.DueDate, History.CheckInDate, History.Assets, History.Comments, Students.FirstName, Students.LastName FROM History INNER JOIN Students ON History.PID = Students.PID WHERE History.Device = '" + deviceName + "';";
             DataSet data = new DataSet();
             SQLiteConnection connect = new SQLiteConnection(Login.connection);
             
@@ -74,17 +74,17 @@ namespace MobileTrackingApp
                 connect.Open();
                 SQLiteDataAdapter adapter = new SQLiteDataAdapter(query, connect);
                 
-                adapter.Fill(data, "CheckOut");
+                adapter.Fill(data, "History");
                 connect.Close();
 
-                textBoxPID.Text = data.Tables["CheckOut"].Rows[0]["PID"].ToString();
-                textBoxSerial.Text = data.Tables["CheckOut"].Rows[0]["SerialNumber"].ToString();
-                textBoxDevice.Text = data.Tables["Checkout"].Rows[0]["Device"].ToString();
-                textBoxCheckOut.Text = data.Tables["CheckOut"].Rows[0]["CheckOutDate"].ToString();
-                textBoxDueDate.Text = data.Tables["CheckOut"].Rows[0]["DueDate"].ToString();
-                textBoxCheckIn.Text = data.Tables["CheckOut"].Rows[0]["CheckInDate"].ToString();
-                textBoxAsset.Text = data.Tables["CheckOut"].Rows[0]["Assets"].ToString();
-                textBoxComments.Text = data.Tables["CheckOut"].Rows[0]["Comments"].ToString();
+                textBoxPID.Text = data.Tables["History"].Rows[0]["PID"].ToString();
+                textBoxSerial.Text = data.Tables["History"].Rows[0]["SerialNumber"].ToString();
+                textBoxDevice.Text = data.Tables["History"].Rows[0]["Device"].ToString();
+                textBoxCheckOut.Text = data.Tables["History"].Rows[0]["CheckOutDate"].ToString();
+                textBoxDueDate.Text = data.Tables["History"].Rows[0]["DueDate"].ToString();
+                textBoxCheckIn.Text = data.Tables["History"].Rows[0]["CheckInDate"].ToString();
+                textBoxAsset.Text = data.Tables["History"].Rows[0]["Assets"].ToString();
+                textBoxComments.Text = data.Tables["History"].Rows[0]["Comments"].ToString();
 
 
                 connect.Open();
@@ -112,6 +112,11 @@ namespace MobileTrackingApp
         private void Search_FormClosing(object sender, FormClosingEventArgs e)
         {
             Application.Exit();
+        }
+
+        private void Search_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

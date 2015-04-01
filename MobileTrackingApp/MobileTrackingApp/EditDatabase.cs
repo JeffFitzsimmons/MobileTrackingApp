@@ -170,6 +170,7 @@ namespace MobileTrackingApp
                 }
             }
 
+            // List Student records that can be edited
             if (comboBoxSelect.SelectedIndex == 1)
             {
                 listBoxList.Items.Clear();

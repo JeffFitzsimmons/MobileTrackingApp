@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Diagnostics;
 
 namespace MobileTrackingApp
 {
@@ -71,6 +72,17 @@ namespace MobileTrackingApp
             form.Show();
 
             this.Dispose();
+        }
+
+        private void aboutTheMobileDeviceTrackingSystemToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("The Mobile Device Tracking System was designed and developed for the Colorado State University - Pueblo" +
+                " Propel Center. Authors: Jeffrey Fitzsimmons, Daniel Santistevan and William Vaupel");
+        }
+
+        private void operationInstructionsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Process.Start(@"Innovative Technologies_Support Documentation 1.3.pdf");
         }
     }
 }

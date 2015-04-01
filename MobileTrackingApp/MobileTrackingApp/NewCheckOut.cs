@@ -79,11 +79,12 @@ namespace MobileTrackingApp
                     SQLiteConnection connect = new SQLiteConnection(Login.connection);
                     try
                     {
-                        String[] queries = new String[3];
+                        String[] queries = new String[4];
                         
                         queries[0] = "INSERT INTO CheckOut (Device, SerialNumber, PID, CheckOutDate, DueDate, Comments, Assets) VALUES (@Device, @SerialNumber, @PID, @CheckOutDate, @DueDate, @Comments, @Assets)";
-                        queries[1] = "INSERT INTO Students (PID, FirstName, LastName) VALUES (@PID, @FirstName, @LastName)";
-                        queries[2] = "UPDATE Device SET CheckOut = 'True' WHERE SerialNumber = @SerialNumber AND Device = @Device";
+                        queries[1] = "INSERT INTO History (Device, SerialNumber, PID, CheckOutDate, DueDate, Comments, Assets) VALUES (@Device, @SerialNumber, @PID, @CheckOutDate, @DueDate, @Comments, @Assets)";
+                        queries[2] = "INSERT INTO Students (PID, FirstName, LastName) VALUES (@PID, @FirstName, @LastName)";
+                        queries[3] = "UPDATE Device SET CheckOut = 'True' WHERE SerialNumber = @SerialNumber AND Device = @Device";
                         
                          foreach (String query in queries)
                          {                        
@@ -135,6 +136,39 @@ namespace MobileTrackingApp
         private void NewCheckOut_FormClosing(object sender, FormClosingEventArgs e)
         {
             Application.Exit();
+        }
+
+        private void textBoxSerial_TextChanged(object sender, EventArgs e)
+        {
+            //if (textBoxSerial.Text.ToString().Length == 12)
+            //{
+            //    String serialNumber = textBoxSerial.Text.ToString();
+            //    String query = "SELECT Device FROM Device WHERE SerialNumber = '" + serialNumber + "';";
+            //    SQLiteConnection connect = new SQLiteConnection(Login.connection);
+            //    DataSet data = new DataSet();
+
+            //    try
+            //    {
+            //        connect.Open();
+            //        SQLiteDataAdapter adapter = new SQLiteDataAdapter(query, connect);
+
+            //        adapter.Fill(data, "Device");
+            //        connect.Close();
+
+            //        textBoxDevice.Text = data.Tables["Device"].Rows[0]["Device"].ToString();
+            //    }
+            //    catch (SQLiteException exception)
+            //    {
+            //        MessageBox.Show(exception.Message.ToString());
+            //    }
+            //    finally
+            //    {
+            //        if (connect.State == ConnectionState.Open)
+            //        {
+            //            connect.Close();
+            //        }
+            //    }
+            //}
         }
     }
 }

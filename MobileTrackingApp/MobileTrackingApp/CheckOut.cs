@@ -60,11 +60,12 @@ namespace MobileTrackingApp
                     try
                     {
                         String studentPID = textBoxPID.Text.ToString();
-                        String[] queries = new String[2];
+                        String[] queries = new String[3];
 
                         queries[0] = "INSERT INTO CheckOut (Device, SerialNumber, PID, CheckOutDate, DueDate, Comments, Assets) VALUES (@Device, @SerialNumber, @PID, @CheckOutDate, @DueDate, @Comments, @Assets)";
-                        queries[1] = "UPDATE Device SET CheckOut = 'True' WHERE SerialNumber = @SerialNumber AND Device = @Device";
-                        //queries[2] = "INSERT INTO CheckOut (FirstName, LastName) SELECT FirstName, LastName FROM Students WHERE PID = '" + studentPID + "';";
+                        queries[1] = "INSERT INTO History (Device, SerialNumber, PID, CheckOutDate, DueDate, Comments, Assets) VALUES (@Device, @SerialNumber, @PID, @CheckOutDate, @DueDate, @Comments, @Assets)";
+                        queries[2] = "UPDATE Device SET CheckOut = 'True' WHERE SerialNumber = @SerialNumber AND Device = @Device";
+                        
                         foreach (String query in queries)
                         {
                             SQLiteCommand cmd = new SQLiteCommand(query, connect);

@@ -51,6 +51,7 @@
             this.textBoxAsset = new System.Windows.Forms.TextBox();
             this.label10 = new System.Windows.Forms.Label();
             this.textBoxComments = new System.Windows.Forms.TextBox();
+            this.textBoxReults = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // buttonBack
@@ -77,7 +78,7 @@
             this.textBoxFirstName.Location = new System.Drawing.Point(265, 63);
             this.textBoxFirstName.Name = "textBoxFirstName";
             this.textBoxFirstName.ReadOnly = true;
-            this.textBoxFirstName.Size = new System.Drawing.Size(226, 20);
+            this.textBoxFirstName.Size = new System.Drawing.Size(131, 20);
             this.textBoxFirstName.TabIndex = 28;
             // 
             // textBoxLastName
@@ -85,7 +86,7 @@
             this.textBoxLastName.Location = new System.Drawing.Point(265, 89);
             this.textBoxLastName.Name = "textBoxLastName";
             this.textBoxLastName.ReadOnly = true;
-            this.textBoxLastName.Size = new System.Drawing.Size(226, 20);
+            this.textBoxLastName.Size = new System.Drawing.Size(131, 20);
             this.textBoxLastName.TabIndex = 29;
             // 
             // textBoxPID
@@ -93,7 +94,7 @@
             this.textBoxPID.Location = new System.Drawing.Point(265, 115);
             this.textBoxPID.Name = "textBoxPID";
             this.textBoxPID.ReadOnly = true;
-            this.textBoxPID.Size = new System.Drawing.Size(226, 20);
+            this.textBoxPID.Size = new System.Drawing.Size(131, 20);
             this.textBoxPID.TabIndex = 30;
             // 
             // label1
@@ -137,7 +138,7 @@
             this.textBoxDevice.Location = new System.Drawing.Point(265, 12);
             this.textBoxDevice.Name = "textBoxDevice";
             this.textBoxDevice.ReadOnly = true;
-            this.textBoxDevice.Size = new System.Drawing.Size(226, 20);
+            this.textBoxDevice.Size = new System.Drawing.Size(131, 20);
             this.textBoxDevice.TabIndex = 34;
             // 
             // label5
@@ -154,7 +155,7 @@
             this.textBoxCheckOut.Location = new System.Drawing.Point(265, 141);
             this.textBoxCheckOut.Name = "textBoxCheckOut";
             this.textBoxCheckOut.ReadOnly = true;
-            this.textBoxCheckOut.Size = new System.Drawing.Size(226, 20);
+            this.textBoxCheckOut.Size = new System.Drawing.Size(131, 20);
             this.textBoxCheckOut.TabIndex = 36;
             // 
             // label6
@@ -171,7 +172,7 @@
             this.textBoxCheckIn.Location = new System.Drawing.Point(265, 193);
             this.textBoxCheckIn.Name = "textBoxCheckIn";
             this.textBoxCheckIn.ReadOnly = true;
-            this.textBoxCheckIn.Size = new System.Drawing.Size(226, 20);
+            this.textBoxCheckIn.Size = new System.Drawing.Size(131, 20);
             this.textBoxCheckIn.TabIndex = 38;
             // 
             // label7
@@ -188,7 +189,7 @@
             this.textBoxSerial.Location = new System.Drawing.Point(265, 37);
             this.textBoxSerial.Name = "textBoxSerial";
             this.textBoxSerial.ReadOnly = true;
-            this.textBoxSerial.Size = new System.Drawing.Size(226, 20);
+            this.textBoxSerial.Size = new System.Drawing.Size(131, 20);
             this.textBoxSerial.TabIndex = 40;
             // 
             // label8
@@ -205,7 +206,7 @@
             this.textBoxDueDate.Location = new System.Drawing.Point(265, 167);
             this.textBoxDueDate.Name = "textBoxDueDate";
             this.textBoxDueDate.ReadOnly = true;
-            this.textBoxDueDate.Size = new System.Drawing.Size(226, 20);
+            this.textBoxDueDate.Size = new System.Drawing.Size(131, 20);
             this.textBoxDueDate.TabIndex = 42;
             // 
             // label9
@@ -222,7 +223,7 @@
             this.textBoxAsset.Location = new System.Drawing.Point(265, 219);
             this.textBoxAsset.Name = "textBoxAsset";
             this.textBoxAsset.ReadOnly = true;
-            this.textBoxAsset.Size = new System.Drawing.Size(226, 20);
+            this.textBoxAsset.Size = new System.Drawing.Size(131, 20);
             this.textBoxAsset.TabIndex = 44;
             // 
             // label10
@@ -240,14 +241,23 @@
             this.textBoxComments.Multiline = true;
             this.textBoxComments.Name = "textBoxComments";
             this.textBoxComments.ReadOnly = true;
-            this.textBoxComments.Size = new System.Drawing.Size(226, 63);
+            this.textBoxComments.Size = new System.Drawing.Size(131, 63);
             this.textBoxComments.TabIndex = 46;
+            // 
+            // textBoxReults
+            // 
+            this.textBoxReults.Location = new System.Drawing.Point(265, 324);
+            this.textBoxReults.Multiline = true;
+            this.textBoxReults.Name = "textBoxReults";
+            this.textBoxReults.Size = new System.Drawing.Size(100, 20);
+            this.textBoxReults.TabIndex = 48;
             // 
             // Search
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(548, 415);
+            this.Controls.Add(this.textBoxReults);
             this.Controls.Add(this.label10);
             this.Controls.Add(this.textBoxComments);
             this.Controls.Add(this.label9);
@@ -275,6 +285,7 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Search";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Search_FormClosing);
+            this.Load += new System.EventHandler(this.Search_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -304,6 +315,7 @@
         private System.Windows.Forms.TextBox textBoxAsset;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.TextBox textBoxComments;
+        private System.Windows.Forms.TextBox textBoxReults;
 
     }
 }

@@ -73,12 +73,11 @@ namespace MobileTrackingApp
                         String studentPID = textBoxPID.Text.ToString();
                         String studentDevice = textBoxDevice.Text.ToString();
                         String studentSerial = textBoxSerial.Text.ToString();
-                        String[] queries = new String[2];
+                        String[] queries = new String[3];
 
-                        //queries[0] = "UPDATE CheckOut SET CheckInDate = @CheckInDate, ReturnComments = @ReturnComments WHERE PID = '" + studentPID + "' AND Device = '" + studentDevice + "' AND SerialNumber = '" + studentSerial + "';";
-                        //queries[1] = "UPDATE Device SET CheckOut = 'True' SerialNumber = '" + studentSerial + "' AND Device = '" + studentDevice + "';";
-                        queries[0] = "UPDATE CheckOut SET CheckInDate = @CheckInDate, ReturnComments = @ReturnComments WHERE PID = @PID AND Device = @Device AND SerialNumber = @SerialNumber";
-                        queries[1] = "UPDATE Device SET CheckOut = 'True' WHERE SerialNumber = @SerialNumber AND Device = @Device";
+                        queries[0] = "UPDATE History SET CheckInDate = @CheckInDate, ReturnComments = @ReturnComments WHERE SerialNumber = @SerialNumber";
+                        queries[1] = "UPDATE Device SET CheckOut = 'False' WHERE SerialNumber = @SerialNumber AND Device = @Device";
+                        queries[2] = "DELETE FROM CheckOut WHERE SerialNumber = @SerialNumber";
 
                         foreach (String query in queries)
                         {

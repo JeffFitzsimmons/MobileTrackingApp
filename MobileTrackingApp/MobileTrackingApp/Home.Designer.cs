@@ -34,6 +34,12 @@
             this.buttonNewCheckOut = new System.Windows.Forms.Button();
             this.buttonSearch = new System.Windows.Forms.Button();
             this.buttonLogout = new System.Windows.Forms.Button();
+            this.menuStrip = new System.Windows.Forms.MenuStrip();
+            this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.aboutTheMobileDeviceTrackingSystemToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.operationInstructionsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.menuStrip.SuspendLayout();
             this.SuspendLayout();
             // 
             // buttonCheckOut
@@ -86,6 +92,47 @@
             this.buttonLogout.UseVisualStyleBackColor = true;
             this.buttonLogout.Click += new System.EventHandler(this.buttonLogout_Click);
             // 
+            // menuStrip
+            // 
+            this.menuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStripMenuItem1,
+            this.aboutToolStripMenuItem});
+            this.menuStrip.Location = new System.Drawing.Point(0, 0);
+            this.menuStrip.Name = "menuStrip";
+            this.menuStrip.Size = new System.Drawing.Size(459, 24);
+            this.menuStrip.TabIndex = 9;
+            this.menuStrip.Text = "menuStrip1";
+            // 
+            // toolStripMenuItem1
+            // 
+            this.toolStripMenuItem1.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.operationInstructionsToolStripMenuItem});
+            this.toolStripMenuItem1.Name = "toolStripMenuItem1";
+            this.toolStripMenuItem1.Size = new System.Drawing.Size(44, 20);
+            this.toolStripMenuItem1.Text = "Help";
+            // 
+            // aboutToolStripMenuItem
+            // 
+            this.aboutToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.aboutTheMobileDeviceTrackingSystemToolStripMenuItem});
+            this.aboutToolStripMenuItem.Name = "aboutToolStripMenuItem";
+            this.aboutToolStripMenuItem.Size = new System.Drawing.Size(52, 20);
+            this.aboutToolStripMenuItem.Text = "About";
+            // 
+            // aboutTheMobileDeviceTrackingSystemToolStripMenuItem
+            // 
+            this.aboutTheMobileDeviceTrackingSystemToolStripMenuItem.Name = "aboutTheMobileDeviceTrackingSystemToolStripMenuItem";
+            this.aboutTheMobileDeviceTrackingSystemToolStripMenuItem.Size = new System.Drawing.Size(295, 22);
+            this.aboutTheMobileDeviceTrackingSystemToolStripMenuItem.Text = "About the Mobile Device Tracking System";
+            this.aboutTheMobileDeviceTrackingSystemToolStripMenuItem.Click += new System.EventHandler(this.aboutTheMobileDeviceTrackingSystemToolStripMenuItem_Click);
+            // 
+            // operationInstructionsToolStripMenuItem
+            // 
+            this.operationInstructionsToolStripMenuItem.Name = "operationInstructionsToolStripMenuItem";
+            this.operationInstructionsToolStripMenuItem.Size = new System.Drawing.Size(192, 22);
+            this.operationInstructionsToolStripMenuItem.Text = "Operation Instructions";
+            this.operationInstructionsToolStripMenuItem.Click += new System.EventHandler(this.operationInstructionsToolStripMenuItem_Click);
+            // 
             // Home
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -96,12 +143,17 @@
             this.Controls.Add(this.buttonNewCheckOut);
             this.Controls.Add(this.buttonCheckIn);
             this.Controls.Add(this.buttonCheckOut);
+            this.Controls.Add(this.menuStrip);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.MainMenuStrip = this.menuStrip;
             this.Name = "Home";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Home";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Home_FormClosing);
+            this.menuStrip.ResumeLayout(false);
+            this.menuStrip.PerformLayout();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -112,5 +164,10 @@
         private System.Windows.Forms.Button buttonNewCheckOut;
         private System.Windows.Forms.Button buttonSearch;
         private System.Windows.Forms.Button buttonLogout;
+        private System.Windows.Forms.MenuStrip menuStrip;
+        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem1;
+        private System.Windows.Forms.ToolStripMenuItem operationInstructionsToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem aboutToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem aboutTheMobileDeviceTrackingSystemToolStripMenuItem;
     }
 }

@@ -169,6 +169,7 @@
             this.textBoxSerial.Name = "textBoxSerial";
             this.textBoxSerial.Size = new System.Drawing.Size(135, 20);
             this.textBoxSerial.TabIndex = 27;
+            this.textBoxSerial.TextChanged += new System.EventHandler(this.textBoxSerial_TextChanged);
             // 
             // label7
             // 
@@ -273,7 +274,7 @@
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "NewCheckOut";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "NewCheckOut";
+            this.Text = "New Check Out Form";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.NewCheckOut_FormClosing);
             this.ResumeLayout(false);
             this.PerformLayout();
