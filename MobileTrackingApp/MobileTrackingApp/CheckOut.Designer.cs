@@ -53,7 +53,7 @@
             this.buttonBack.Location = new System.Drawing.Point(108, 318);
             this.buttonBack.Name = "buttonBack";
             this.buttonBack.Size = new System.Drawing.Size(131, 51);
-            this.buttonBack.TabIndex = 0;
+            this.buttonBack.TabIndex = 9;
             this.buttonBack.Text = "Back";
             this.buttonBack.UseVisualStyleBackColor = true;
             this.buttonBack.Click += new System.EventHandler(this.buttonBack_Click);
@@ -63,7 +63,7 @@
             this.buttonCheckOut.Location = new System.Drawing.Point(279, 318);
             this.buttonCheckOut.Name = "buttonCheckOut";
             this.buttonCheckOut.Size = new System.Drawing.Size(129, 51);
-            this.buttonCheckOut.TabIndex = 1;
+            this.buttonCheckOut.TabIndex = 8;
             this.buttonCheckOut.Text = "Check Out";
             this.buttonCheckOut.UseVisualStyleBackColor = true;
             this.buttonCheckOut.Click += new System.EventHandler(this.buttonCheckOut_Click);
@@ -99,7 +99,7 @@
             this.dateTimeCheckOut.Location = new System.Drawing.Point(108, 83);
             this.dateTimeCheckOut.Name = "dateTimeCheckOut";
             this.dateTimeCheckOut.Size = new System.Drawing.Size(103, 20);
-            this.dateTimeCheckOut.TabIndex = 11;
+            this.dateTimeCheckOut.TabIndex = 4;
             // 
             // label9
             // 
@@ -124,7 +124,7 @@
             this.textBoxSerial.Location = new System.Drawing.Point(279, 30);
             this.textBoxSerial.Name = "textBoxSerial";
             this.textBoxSerial.Size = new System.Drawing.Size(135, 20);
-            this.textBoxSerial.TabIndex = 40;
+            this.textBoxSerial.TabIndex = 2;
             // 
             // label1
             // 
@@ -140,7 +140,7 @@
             this.textBoxDevice.Location = new System.Drawing.Point(107, 30);
             this.textBoxDevice.Name = "textBoxDevice";
             this.textBoxDevice.Size = new System.Drawing.Size(150, 20);
-            this.textBoxDevice.TabIndex = 38;
+            this.textBoxDevice.TabIndex = 1;
             // 
             // dateTimeDueDate
             // 
@@ -148,7 +148,7 @@
             this.dateTimeDueDate.Location = new System.Drawing.Point(107, 109);
             this.dateTimeDueDate.Name = "dateTimeDueDate";
             this.dateTimeDueDate.Size = new System.Drawing.Size(104, 20);
-            this.dateTimeDueDate.TabIndex = 48;
+            this.dateTimeDueDate.TabIndex = 5;
             // 
             // label11
             // 
@@ -174,7 +174,7 @@
             this.textBoxComments.Multiline = true;
             this.textBoxComments.Name = "textBoxComments";
             this.textBoxComments.Size = new System.Drawing.Size(307, 85);
-            this.textBoxComments.TabIndex = 45;
+            this.textBoxComments.TabIndex = 7;
             // 
             // label8
             // 
@@ -195,7 +195,7 @@
             this.comboBoxAsset.Location = new System.Drawing.Point(108, 165);
             this.comboBoxAsset.Name = "comboBoxAsset";
             this.comboBoxAsset.Size = new System.Drawing.Size(150, 21);
-            this.comboBoxAsset.TabIndex = 43;
+            this.comboBoxAsset.TabIndex = 6;
             // 
             // CheckOut
             // 

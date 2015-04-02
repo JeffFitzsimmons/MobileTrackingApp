@@ -112,35 +112,35 @@
             this.textBoxLastName.Location = new System.Drawing.Point(293, 95);
             this.textBoxLastName.Name = "textBoxLastName";
             this.textBoxLastName.Size = new System.Drawing.Size(135, 20);
-            this.textBoxLastName.TabIndex = 18;
+            this.textBoxLastName.TabIndex = 5;
             // 
             // textBoxFirstName
             // 
             this.textBoxFirstName.Location = new System.Drawing.Point(121, 95);
             this.textBoxFirstName.Name = "textBoxFirstName";
             this.textBoxFirstName.Size = new System.Drawing.Size(150, 20);
-            this.textBoxFirstName.TabIndex = 17;
+            this.textBoxFirstName.TabIndex = 4;
             // 
             // textBoxPID
             // 
             this.textBoxPID.Location = new System.Drawing.Point(121, 55);
             this.textBoxPID.Name = "textBoxPID";
             this.textBoxPID.Size = new System.Drawing.Size(150, 20);
-            this.textBoxPID.TabIndex = 16;
+            this.textBoxPID.TabIndex = 3;
             // 
             // textBoxDevice
             // 
             this.textBoxDevice.Location = new System.Drawing.Point(121, 28);
             this.textBoxDevice.Name = "textBoxDevice";
             this.textBoxDevice.Size = new System.Drawing.Size(150, 20);
-            this.textBoxDevice.TabIndex = 15;
+            this.textBoxDevice.TabIndex = 1;
             // 
             // buttonCheckOut
             // 
             this.buttonCheckOut.Location = new System.Drawing.Point(245, 343);
             this.buttonCheckOut.Name = "buttonCheckOut";
             this.buttonCheckOut.Size = new System.Drawing.Size(129, 51);
-            this.buttonCheckOut.TabIndex = 14;
+            this.buttonCheckOut.TabIndex = 10;
             this.buttonCheckOut.Text = "Check Out";
             this.buttonCheckOut.UseVisualStyleBackColor = true;
             this.buttonCheckOut.Click += new System.EventHandler(this.buttonCheckOut_Click);
@@ -150,7 +150,7 @@
             this.buttonBack.Location = new System.Drawing.Point(92, 343);
             this.buttonBack.Name = "buttonBack";
             this.buttonBack.Size = new System.Drawing.Size(131, 51);
-            this.buttonBack.TabIndex = 13;
+            this.buttonBack.TabIndex = 11;
             this.buttonBack.Text = "Back";
             this.buttonBack.UseVisualStyleBackColor = true;
             this.buttonBack.Click += new System.EventHandler(this.buttonBack_Click);
@@ -161,14 +161,14 @@
             this.dateTimeCheckOut.Location = new System.Drawing.Point(121, 139);
             this.dateTimeCheckOut.Name = "dateTimeCheckOut";
             this.dateTimeCheckOut.Size = new System.Drawing.Size(150, 20);
-            this.dateTimeCheckOut.TabIndex = 26;
+            this.dateTimeCheckOut.TabIndex = 6;
             // 
             // textBoxSerial
             // 
             this.textBoxSerial.Location = new System.Drawing.Point(293, 28);
             this.textBoxSerial.Name = "textBoxSerial";
             this.textBoxSerial.Size = new System.Drawing.Size(135, 20);
-            this.textBoxSerial.TabIndex = 27;
+            this.textBoxSerial.TabIndex = 2;
             this.textBoxSerial.TextChanged += new System.EventHandler(this.textBoxSerial_TextChanged);
             // 
             // label7
@@ -190,7 +190,7 @@
             this.comboBoxAsset.Location = new System.Drawing.Point(121, 221);
             this.comboBoxAsset.Name = "comboBoxAsset";
             this.comboBoxAsset.Size = new System.Drawing.Size(150, 21);
-            this.comboBoxAsset.TabIndex = 29;
+            this.comboBoxAsset.TabIndex = 8;
             // 
             // label8
             // 
@@ -216,7 +216,7 @@
             this.textBoxComments.Multiline = true;
             this.textBoxComments.Name = "textBoxComments";
             this.textBoxComments.Size = new System.Drawing.Size(307, 85);
-            this.textBoxComments.TabIndex = 32;
+            this.textBoxComments.TabIndex = 9;
             // 
             // label10
             // 
@@ -233,7 +233,7 @@
             this.dateTimeDueDate.Location = new System.Drawing.Point(121, 165);
             this.dateTimeDueDate.Name = "dateTimeDueDate";
             this.dateTimeDueDate.Size = new System.Drawing.Size(150, 20);
-            this.dateTimeDueDate.TabIndex = 35;
+            this.dateTimeDueDate.TabIndex = 7;
             // 
             // label11
             // 

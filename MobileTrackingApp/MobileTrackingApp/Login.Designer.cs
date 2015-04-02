@@ -43,7 +43,7 @@
             this.buttonLogin.Location = new System.Drawing.Point(101, 138);
             this.buttonLogin.Name = "buttonLogin";
             this.buttonLogin.Size = new System.Drawing.Size(75, 23);
-            this.buttonLogin.TabIndex = 0;
+            this.buttonLogin.TabIndex = 3;
             this.buttonLogin.Text = "Login";
             this.buttonLogin.UseVisualStyleBackColor = true;
             this.buttonLogin.Click += new System.EventHandler(this.buttonLogin_Click);
@@ -54,7 +54,7 @@
             this.label1.Location = new System.Drawing.Point(78, 9);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(120, 13);
-            this.label1.TabIndex = 1;
+            this.label1.TabIndex = 10;
             this.label1.Text = "Please login to continue";
             // 
             // label2
@@ -80,7 +80,7 @@
             this.textBoxUsername.Location = new System.Drawing.Point(81, 63);
             this.textBoxUsername.Name = "textBoxUsername";
             this.textBoxUsername.Size = new System.Drawing.Size(117, 20);
-            this.textBoxUsername.TabIndex = 4;
+            this.textBoxUsername.TabIndex = 1;
             // 
             // textBoxPassword
             // 
@@ -88,7 +88,7 @@
             this.textBoxPassword.Name = "textBoxPassword";
             this.textBoxPassword.PasswordChar = '●';
             this.textBoxPassword.Size = new System.Drawing.Size(117, 20);
-            this.textBoxPassword.TabIndex = 5;
+            this.textBoxPassword.TabIndex = 2;
             // 
             // labelAlert
             // 

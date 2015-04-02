@@ -61,7 +61,7 @@
             this.textBoxSerial.Location = new System.Drawing.Point(261, 40);
             this.textBoxSerial.Name = "textBoxSerial";
             this.textBoxSerial.Size = new System.Drawing.Size(135, 20);
-            this.textBoxSerial.TabIndex = 34;
+            this.textBoxSerial.TabIndex = 2;
             // 
             // label1
             // 
@@ -77,14 +77,14 @@
             this.textBoxDevice.Location = new System.Drawing.Point(89, 40);
             this.textBoxDevice.Name = "textBoxDevice";
             this.textBoxDevice.Size = new System.Drawing.Size(127, 20);
-            this.textBoxDevice.TabIndex = 32;
+            this.textBoxDevice.TabIndex = 1;
             // 
             // buttonBack
             // 
             this.buttonBack.Location = new System.Drawing.Point(85, 109);
             this.buttonBack.Name = "buttonBack";
             this.buttonBack.Size = new System.Drawing.Size(131, 51);
-            this.buttonBack.TabIndex = 37;
+            this.buttonBack.TabIndex = 4;
             this.buttonBack.Text = "Back";
             this.buttonBack.UseVisualStyleBackColor = true;
             this.buttonBack.Click += new System.EventHandler(this.buttonBack_Click);
@@ -94,7 +94,7 @@
             this.buttonAddDevice.Location = new System.Drawing.Point(261, 109);
             this.buttonAddDevice.Name = "buttonAddDevice";
             this.buttonAddDevice.Size = new System.Drawing.Size(131, 51);
-            this.buttonAddDevice.TabIndex = 38;
+            this.buttonAddDevice.TabIndex = 3;
             this.buttonAddDevice.Text = "Add Device";
             this.buttonAddDevice.UseVisualStyleBackColor = true;
             this.buttonAddDevice.Click += new System.EventHandler(this.buttonAddDevice_Click);

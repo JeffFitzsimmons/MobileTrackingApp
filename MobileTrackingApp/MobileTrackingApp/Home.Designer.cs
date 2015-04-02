@@ -36,9 +36,9 @@
             this.buttonLogout = new System.Windows.Forms.Button();
             this.menuStrip = new System.Windows.Forms.MenuStrip();
             this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.operationInstructionsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.aboutTheMobileDeviceTrackingSystemToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.operationInstructionsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -47,7 +47,7 @@
             this.buttonCheckOut.Location = new System.Drawing.Point(101, 54);
             this.buttonCheckOut.Name = "buttonCheckOut";
             this.buttonCheckOut.Size = new System.Drawing.Size(114, 56);
-            this.buttonCheckOut.TabIndex = 0;
+            this.buttonCheckOut.TabIndex = 1;
             this.buttonCheckOut.Text = "Check Out";
             this.buttonCheckOut.UseVisualStyleBackColor = true;
             this.buttonCheckOut.Click += new System.EventHandler(this.buttonCheckOut_Click);
@@ -57,7 +57,7 @@
             this.buttonCheckIn.Location = new System.Drawing.Point(101, 134);
             this.buttonCheckIn.Name = "buttonCheckIn";
             this.buttonCheckIn.Size = new System.Drawing.Size(114, 56);
-            this.buttonCheckIn.TabIndex = 5;
+            this.buttonCheckIn.TabIndex = 3;
             this.buttonCheckIn.Text = "Check In";
             this.buttonCheckIn.UseVisualStyleBackColor = true;
             this.buttonCheckIn.Click += new System.EventHandler(this.buttonCheckIn_Click);
@@ -67,7 +67,7 @@
             this.buttonNewCheckOut.Location = new System.Drawing.Point(237, 54);
             this.buttonNewCheckOut.Name = "buttonNewCheckOut";
             this.buttonNewCheckOut.Size = new System.Drawing.Size(114, 56);
-            this.buttonNewCheckOut.TabIndex = 6;
+            this.buttonNewCheckOut.TabIndex = 2;
             this.buttonNewCheckOut.Text = "New Check Out";
             this.buttonNewCheckOut.UseVisualStyleBackColor = true;
             this.buttonNewCheckOut.Click += new System.EventHandler(this.buttonNewCheckOut_Click);
@@ -77,7 +77,7 @@
             this.buttonSearch.Location = new System.Drawing.Point(237, 134);
             this.buttonSearch.Name = "buttonSearch";
             this.buttonSearch.Size = new System.Drawing.Size(114, 56);
-            this.buttonSearch.TabIndex = 7;
+            this.buttonSearch.TabIndex = 4;
             this.buttonSearch.Text = "Search";
             this.buttonSearch.UseVisualStyleBackColor = true;
             this.buttonSearch.Click += new System.EventHandler(this.buttonSearch_Click);
@@ -87,7 +87,7 @@
             this.buttonLogout.Location = new System.Drawing.Point(372, 233);
             this.buttonLogout.Name = "buttonLogout";
             this.buttonLogout.Size = new System.Drawing.Size(75, 23);
-            this.buttonLogout.TabIndex = 8;
+            this.buttonLogout.TabIndex = 5;
             this.buttonLogout.Text = "Logout";
             this.buttonLogout.UseVisualStyleBackColor = true;
             this.buttonLogout.Click += new System.EventHandler(this.buttonLogout_Click);
@@ -111,6 +111,13 @@
             this.toolStripMenuItem1.Size = new System.Drawing.Size(44, 20);
             this.toolStripMenuItem1.Text = "Help";
             // 
+            // operationInstructionsToolStripMenuItem
+            // 
+            this.operationInstructionsToolStripMenuItem.Name = "operationInstructionsToolStripMenuItem";
+            this.operationInstructionsToolStripMenuItem.Size = new System.Drawing.Size(192, 22);
+            this.operationInstructionsToolStripMenuItem.Text = "Operation Instructions";
+            this.operationInstructionsToolStripMenuItem.Click += new System.EventHandler(this.operationInstructionsToolStripMenuItem_Click);
+            // 
             // aboutToolStripMenuItem
             // 
             this.aboutToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -125,13 +132,6 @@
             this.aboutTheMobileDeviceTrackingSystemToolStripMenuItem.Size = new System.Drawing.Size(295, 22);
             this.aboutTheMobileDeviceTrackingSystemToolStripMenuItem.Text = "About the Mobile Device Tracking System";
             this.aboutTheMobileDeviceTrackingSystemToolStripMenuItem.Click += new System.EventHandler(this.aboutTheMobileDeviceTrackingSystemToolStripMenuItem_Click);
-            // 
-            // operationInstructionsToolStripMenuItem
-            // 
-            this.operationInstructionsToolStripMenuItem.Name = "operationInstructionsToolStripMenuItem";
-            this.operationInstructionsToolStripMenuItem.Size = new System.Drawing.Size(192, 22);
-            this.operationInstructionsToolStripMenuItem.Text = "Operation Instructions";
-            this.operationInstructionsToolStripMenuItem.Click += new System.EventHandler(this.operationInstructionsToolStripMenuItem_Click);
             // 
             // Home
             // 

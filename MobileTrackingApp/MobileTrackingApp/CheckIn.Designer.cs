@@ -75,21 +75,21 @@
             this.textBoxPID.Location = new System.Drawing.Point(124, 62);
             this.textBoxPID.Name = "textBoxPID";
             this.textBoxPID.Size = new System.Drawing.Size(100, 20);
-            this.textBoxPID.TabIndex = 14;
+            this.textBoxPID.TabIndex = 3;
             // 
             // textBoxDevice
             // 
             this.textBoxDevice.Location = new System.Drawing.Point(124, 35);
             this.textBoxDevice.Name = "textBoxDevice";
             this.textBoxDevice.Size = new System.Drawing.Size(100, 20);
-            this.textBoxDevice.TabIndex = 13;
+            this.textBoxDevice.TabIndex = 1;
             // 
             // buttonCheckIn
             // 
             this.buttonCheckIn.Location = new System.Drawing.Point(289, 246);
             this.buttonCheckIn.Name = "buttonCheckIn";
             this.buttonCheckIn.Size = new System.Drawing.Size(129, 51);
-            this.buttonCheckIn.TabIndex = 12;
+            this.buttonCheckIn.TabIndex = 6;
             this.buttonCheckIn.Text = "Check In";
             this.buttonCheckIn.UseVisualStyleBackColor = true;
             this.buttonCheckIn.Click += new System.EventHandler(this.buttonCheckIn_Click);
@@ -99,7 +99,7 @@
             this.buttonBack.Location = new System.Drawing.Point(93, 246);
             this.buttonBack.Name = "buttonBack";
             this.buttonBack.Size = new System.Drawing.Size(131, 51);
-            this.buttonBack.TabIndex = 11;
+            this.buttonBack.TabIndex = 7;
             this.buttonBack.Text = "Back";
             this.buttonBack.UseVisualStyleBackColor = true;
             this.buttonBack.Click += new System.EventHandler(this.buttonBack_Click);
@@ -110,7 +110,7 @@
             this.dateTimeSelect.Location = new System.Drawing.Point(124, 88);
             this.dateTimeSelect.Name = "dateTimeSelect";
             this.dateTimeSelect.Size = new System.Drawing.Size(100, 20);
-            this.dateTimeSelect.TabIndex = 19;
+            this.dateTimeSelect.TabIndex = 4;
             // 
             // label3
             // 
@@ -126,7 +126,7 @@
             this.textBoxSerial.Location = new System.Drawing.Point(289, 35);
             this.textBoxSerial.Name = "textBoxSerial";
             this.textBoxSerial.Size = new System.Drawing.Size(126, 20);
-            this.textBoxSerial.TabIndex = 20;
+            this.textBoxSerial.TabIndex = 2;
             // 
             // label10
             // 
@@ -143,7 +143,7 @@
             this.textBoxComments.Multiline = true;
             this.textBoxComments.Name = "textBoxComments";
             this.textBoxComments.Size = new System.Drawing.Size(291, 85);
-            this.textBoxComments.TabIndex = 34;
+            this.textBoxComments.TabIndex = 5;
             // 
             // CheckIn
             // 
