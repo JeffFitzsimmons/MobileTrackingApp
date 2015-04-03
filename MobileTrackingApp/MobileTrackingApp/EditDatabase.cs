@@ -13,6 +13,9 @@ namespace MobileTrackingApp
 {
     public partial class EditDatabase : Form
     {
+
+        public static String studentPIDSaved;
+        
         public EditDatabase()
         {
             InitializeComponent();
@@ -39,9 +42,7 @@ namespace MobileTrackingApp
         {
             int PIDparse;
             int pid = Int32.Parse(textBoxPID.Text);
-            //String dateCheckOut = dateTimePickerNewCheckOut.Value.ToString();
-            //String dateCheckIn = dateTimePickerNewCheckIn.Value.ToString();
-            //String dateDueDate = dateTimePickerNewDueDate.Value.ToShortDateString();
+           
 
             // Check for any blank fields
             if (string.IsNullOrWhiteSpace(textBoxNewDevice.Text))
@@ -54,6 +55,27 @@ namespace MobileTrackingApp
                 MessageBox.Show("Please use the scanner or manually input the device serial number.");
             }
 
+            if (string.IsNullOrWhiteSpace(textBoxNewCheckOut.Text))
+            {
+                MessageBox.Show("Please indicate the correct check out date.");
+            }
+
+            if (string.IsNullOrWhiteSpace(textBoxNewDueDate.Text))
+            {
+                MessageBox.Show("Please indicate the correct due date.");
+            }
+
+            //if (string.IsNullOrWhiteSpace(textBoxNewCheckIn.Text))
+            //{
+            //    MessageBox.Show("Please indicate the correct check in date.");
+            //}
+
+            if (string.IsNullOrWhiteSpace(textBoxNewDueDate.Text))
+            {
+                MessageBox.Show("Please indicate the correct due date.");
+            }
+
+
             // Verify that the PID is approprite in length and type (6 numbers)
             else if (string.IsNullOrWhiteSpace(textBoxNewPID.Text))
             {
@@ -64,16 +86,6 @@ namespace MobileTrackingApp
                 MessageBox.Show("The PID entered was not valid. Please enter a valid PID (6 numbers long)");
             }
             
-            // Check for a blank first or last name
-            else if (string.IsNullOrWhiteSpace(textBoxNewFirstName.Text))
-            {
-                MessageBox.Show("Please enter the student's first name.");
-            }
-            else if (string.IsNullOrWhiteSpace(textBoxNewLastName.Text))
-            {
-                MessageBox.Show("Please enter the student's last name.");
-            }
-
             else
             {
                 if (MessageBox.Show("Are you sure you want to change the information in the database?", "Confirmation", MessageBoxButtons.YesNo) == DialogResult.Yes)
@@ -83,18 +95,19 @@ namespace MobileTrackingApp
                     try
                     {
                         String studentPID = textBoxPID.Text.ToString();
-                        String query = "UPDATE History ";
+                        String query = "UPDATE History SET DueDate = @DueDate, Assets = @Assets, Comments = @Comments, CheckInDate = @CheckInDate, ReturnComments = @ReturnComments " +
+                            "WHERE PID = '" + textBoxPID.Text + "' AND CheckOutDate = '" + textBoxCheckOut.Text + "';";
                         SQLiteCommand cmd = new SQLiteCommand(query, connect);
                         connect.Open();
 
-                        cmd.Parameters.AddWithValue("@Device", textBoxNewDevice);
-                        cmd.Parameters.AddWithValue("@SerialNumber", textBoxNewSerial);
-                        cmd.Parameters.AddWithValue("@FirstName", textBoxNewFirstName);
-                        cmd.Parameters.AddWithValue("@LastName", textBoxNewLastName);
-                        cmd.Parameters.AddWithValue("@PID", textBoxNewPID);
-                        cmd.Parameters.AddWithValue("@CheckOutDate", textBoxNewCheckOut);
-                        cmd.Parameters.AddWithValue("@DueDate", textBoxNewDueDate);
-                        cmd.Parameters.AddWithValue("@CheckInDate", textBoxNewCheckIn);
+                        //cmd.Parameters.AddWithValue("@Device", textBoxNewDevice.Text);
+                        //cmd.Parameters.AddWithValue("@SerialNumber", textBoxNewSerial.Text);
+                        //cmd.Parameters.AddWithValue("@CheckOutDate", textBoxNewCheckOut.Text);
+                        cmd.Parameters.AddWithValue("@DueDate", textBoxNewDueDate.Text);
+                        cmd.Parameters.AddWithValue("@CheckInDate", textBoxNewCheckIn.Text);
+                        cmd.Parameters.AddWithValue("@Comments", textBoxNewComments.Text);
+                        cmd.Parameters.AddWithValue("@Assets", textBoxNewAsset.Text);
+                        cmd.Parameters.AddWithValue("@ReturnComments", textBoxNewReturnComments.Text);
                         cmd.ExecuteNonQuery();
                         connect.Close();
                     }
@@ -232,6 +245,9 @@ namespace MobileTrackingApp
                         textBoxNewComments.Text = dr["Comments"].ToString();
                         textBoxNewCheckIn.Text = dr["CheckInDate"].ToString();
                         textBoxNewReturnComments.Text = dr["ReturnComments"].ToString();
+
+                        studentPIDSaved = dr["PID"].ToString();
+
                     }
                 }
                 catch (SQLiteException exp)
@@ -282,6 +298,16 @@ namespace MobileTrackingApp
             {
 
             }
+        }
+
+        private void buttonEditStudent_Click(object sender, EventArgs e)
+        {
+            this.Visible = false;
+
+            EditStudent form = new EditStudent();
+            form.Show();
+
+            this.Dispose();
         }
     }
 }

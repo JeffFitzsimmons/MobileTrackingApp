@@ -43,10 +43,11 @@ namespace MobileTrackingApp
             // Check for any blank fields
             if (string.IsNullOrWhiteSpace(textBoxDevice.Text))
             {
-                MessageBox.Show("Please type in the device name.");
+                MessageBox.Show("Please scan the serial number and device name will populate itself.");
             }
 
-            if (string.IsNullOrWhiteSpace(textBoxSerial.Text))
+            //if (string.IsNullOrWhiteSpace(textBoxSerial.Text) || textBoxSerial.Text.Length != 12)
+            if (string.IsNullOrWhiteSpace(textBoxSerial.Text) || textBoxSerial.Text.Length != 9)
             {
                 MessageBox.Show("Please use the scanner or manually input the device serial number.");
             }
@@ -76,55 +77,66 @@ namespace MobileTrackingApp
                 // Prompts the user for any last changes
                 if (MessageBox.Show("Are you sure you want to check this device out? (Make sure to verify the check out date)", "Confirmation", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                 {
-                    SQLiteConnection connect = new SQLiteConnection(Login.connection);
-                    try
-                    {
-                        String[] queries = new String[4];
-                        
-                        queries[0] = "INSERT INTO CheckOut (Device, SerialNumber, PID, CheckOutDate, DueDate, Comments, Assets) VALUES (@Device, @SerialNumber, @PID, @CheckOutDate, @DueDate, @Comments, @Assets)";
-                        queries[1] = "INSERT INTO History (Device, SerialNumber, PID, CheckOutDate, DueDate, Comments, Assets) VALUES (@Device, @SerialNumber, @PID, @CheckOutDate, @DueDate, @Comments, @Assets)";
-                        queries[2] = "INSERT INTO Students (PID, FirstName, LastName) VALUES (@PID, @FirstName, @LastName)";
-                        queries[3] = "UPDATE Device SET CheckOut = 'True' WHERE SerialNumber = @SerialNumber AND Device = @Device";
-                        
-                         foreach (String query in queries)
-                         {                        
-                            SQLiteCommand cmd = new SQLiteCommand(query, connect);
-                            connect.Open();
-                        
-                            cmd.Parameters.AddWithValue("@Device", textBoxDevice.Text);
-                            cmd.Parameters.AddWithValue("@SerialNumber", textBoxSerial.Text);
-                            cmd.Parameters.AddWithValue("@PID", pid);
-                            cmd.Parameters.AddWithValue("@FirstName", textBoxFirstName.Text);
-                            cmd.Parameters.AddWithValue("@LastName", textBoxLastName.Text);
-                            cmd.Parameters.AddWithValue("@CheckOutDate", checkOutDate);
-                            cmd.Parameters.AddWithValue("@DueDate", dueDate);
-                            cmd.Parameters.AddWithValue("@Comments", textBoxComments.Text);
-                            cmd.Parameters.AddWithValue("@Assets", comboBoxAsset.Text);
-                            cmd.ExecuteNonQuery();
-                            connect.Close();
-                        }
+                    SQLiteConnection connectAvailable = new SQLiteConnection(Login.connection);
+                    connectAvailable.Open();
+                    String queryAvailable = "SELECT Device FROM CheckOut WHERE Device = '" + textBoxDevice.Text + "';";
+                    SQLiteCommand cmdCheck = new SQLiteCommand(queryAvailable, connectAvailable);
+                    object check = cmdCheck.ExecuteScalar();
 
-                        
-                    }
-                    catch (SQLiteException exception)
-                    {   
-                        MessageBox.Show(exception.Message.ToString());
-                    }
-                    finally
+                    if (check == null)
                     {
-                        if (connect.State == ConnectionState.Open)
+                        SQLiteConnection connect = new SQLiteConnection(Login.connection);
+                        try
                         {
-                            connect.Close();
+                            String[] queries = new String[4];
+
+                            queries[0] = "INSERT INTO CheckOut (Device, SerialNumber, PID, CheckOutDate, DueDate, Comments, Assets) VALUES (@Device, @SerialNumber, @PID, @CheckOutDate, @DueDate, @Comments, @Assets)";
+                            queries[1] = "INSERT INTO History (Device, SerialNumber, PID, CheckOutDate, DueDate, Comments, Assets) VALUES (@Device, @SerialNumber, @PID, @CheckOutDate, @DueDate, @Comments, @Assets)";
+                            queries[2] = "INSERT INTO Students (PID, FirstName, LastName) VALUES (@PID, @FirstName, @LastName)";
+                            queries[3] = "UPDATE Device SET CheckOut = 'True' WHERE SerialNumber = @SerialNumber AND Device = @Device";
+
+                            foreach (String query in queries)
+                            {
+                                SQLiteCommand cmd = new SQLiteCommand(query, connect);
+                                connect.Open();
+
+                                cmd.Parameters.AddWithValue("@Device", textBoxDevice.Text);
+                                cmd.Parameters.AddWithValue("@SerialNumber", textBoxSerial.Text);
+                                cmd.Parameters.AddWithValue("@PID", pid);
+                                cmd.Parameters.AddWithValue("@FirstName", textBoxFirstName.Text);
+                                cmd.Parameters.AddWithValue("@LastName", textBoxLastName.Text);
+                                cmd.Parameters.AddWithValue("@CheckOutDate", checkOutDate);
+                                cmd.Parameters.AddWithValue("@DueDate", dueDate);
+                                cmd.Parameters.AddWithValue("@Comments", textBoxComments.Text);
+                                cmd.Parameters.AddWithValue("@Assets", comboBoxAsset.Text);
+                                cmd.ExecuteNonQuery();
+                                connect.Close();
+                            }
                         }
+                        catch (SQLiteException exception)
+                        {
+                            MessageBox.Show(exception.Message.ToString());
+                        }
+                        finally
+                        {
+                            if (connect.State == ConnectionState.Open)
+                            {
+                                connect.Close();
+                            }
+                        }
+
+                        // Refresh back to Home after New Check Out is completed
+                        this.Visible = false;
+
+                        Home form = new Home();
+                        form.Show();
+
+                        this.Dispose();
                     }
-
-                    // Refresh back to Home after New Check Out is completed
-                    this.Visible = false;
-
-                    Home form = new Home();
-                    form.Show();
-
-                    this.Dispose();
+                    else
+                    {
+                        MessageBox.Show("This device is already checked out. Please verify the device name and serial number on the label.");
+                    }
                 }
                 else
                 {
@@ -141,34 +153,35 @@ namespace MobileTrackingApp
         private void textBoxSerial_TextChanged(object sender, EventArgs e)
         {
             //if (textBoxSerial.Text.ToString().Length == 12)
-            //{
-            //    String serialNumber = textBoxSerial.Text.ToString();
-            //    String query = "SELECT Device FROM Device WHERE SerialNumber = '" + serialNumber + "';";
-            //    SQLiteConnection connect = new SQLiteConnection(Login.connection);
-            //    DataSet data = new DataSet();
+            if (textBoxSerial.Text.ToString().Length == 9)
+            {
+                String serialNumber = textBoxSerial.Text.ToString();
+                String query = "SELECT Device FROM Device WHERE SerialNumber = '" + serialNumber + "';";
+                SQLiteConnection connect = new SQLiteConnection(Login.connection);
+                DataSet data = new DataSet();
 
-            //    try
-            //    {
-            //        connect.Open();
-            //        SQLiteDataAdapter adapter = new SQLiteDataAdapter(query, connect);
+                try
+                {
+                    connect.Open();
+                    SQLiteDataAdapter adapter = new SQLiteDataAdapter(query, connect);
 
-            //        adapter.Fill(data, "Device");
-            //        connect.Close();
+                    adapter.Fill(data, "Device");
+                    connect.Close();
 
-            //        textBoxDevice.Text = data.Tables["Device"].Rows[0]["Device"].ToString();
-            //    }
-            //    catch (SQLiteException exception)
-            //    {
-            //        MessageBox.Show(exception.Message.ToString());
-            //    }
-            //    finally
-            //    {
-            //        if (connect.State == ConnectionState.Open)
-            //        {
-            //            connect.Close();
-            //        }
-            //    }
-            //}
+                    textBoxDevice.Text = data.Tables["Device"].Rows[0]["Device"].ToString();
+                }
+                catch (SQLiteException exception)
+                {
+                    MessageBox.Show(exception.Message.ToString());
+                }
+                finally
+                {
+                    if (connect.State == ConnectionState.Open)
+                    {
+                        connect.Close();
+                    }
+                }
+            }
         }
     }
 }

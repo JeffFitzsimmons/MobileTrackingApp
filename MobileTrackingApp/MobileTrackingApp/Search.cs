@@ -124,7 +124,6 @@ namespace MobileTrackingApp
         {
             SQLiteConnection connect = new SQLiteConnection(Login.connection);
             String query = "SELECT * From CheckOut";
-            //String query = "SELECT * FROM History INNER JOIN Device ON History.Device = (SELECT Device.Device FROM Device WHERE CheckOut = 'False')";
 
             try
             {

@@ -82,12 +82,13 @@
             this.textBoxNewCheckOut = new System.Windows.Forms.TextBox();
             this.textBoxNewDueDate = new System.Windows.Forms.TextBox();
             this.textBoxNewCheckIn = new System.Windows.Forms.TextBox();
+            this.buttonEditStudent = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewSearch)).BeginInit();
             this.SuspendLayout();
             // 
             // buttonSave
             // 
-            this.buttonSave.Location = new System.Drawing.Point(1110, 498);
+            this.buttonSave.Location = new System.Drawing.Point(753, 498);
             this.buttonSave.Name = "buttonSave";
             this.buttonSave.Size = new System.Drawing.Size(112, 37);
             this.buttonSave.TabIndex = 15;
@@ -97,10 +98,10 @@
             // 
             // buttonLogout
             // 
-            this.buttonLogout.Location = new System.Drawing.Point(872, 498);
+            this.buttonLogout.Location = new System.Drawing.Point(1107, 498);
             this.buttonLogout.Name = "buttonLogout";
             this.buttonLogout.Size = new System.Drawing.Size(112, 37);
-            this.buttonLogout.TabIndex = 17;
+            this.buttonLogout.TabIndex = 18;
             this.buttonLogout.Text = "Logout";
             this.buttonLogout.UseVisualStyleBackColor = true;
             this.buttonLogout.Click += new System.EventHandler(this.buttonLogout_Click);
@@ -120,7 +121,7 @@
             this.textBoxSerial.Name = "textBoxSerial";
             this.textBoxSerial.ReadOnly = true;
             this.textBoxSerial.Size = new System.Drawing.Size(129, 20);
-            this.textBoxSerial.TabIndex = 54;
+            this.textBoxSerial.TabIndex = 27;
             // 
             // label5
             // 
@@ -137,7 +138,7 @@
             this.textBoxCheckOut.Name = "textBoxCheckOut";
             this.textBoxCheckOut.ReadOnly = true;
             this.textBoxCheckOut.Size = new System.Drawing.Size(129, 20);
-            this.textBoxCheckOut.TabIndex = 50;
+            this.textBoxCheckOut.TabIndex = 31;
             // 
             // label4
             // 
@@ -154,7 +155,7 @@
             this.textBoxDevice.Name = "textBoxDevice";
             this.textBoxDevice.ReadOnly = true;
             this.textBoxDevice.Size = new System.Drawing.Size(129, 20);
-            this.textBoxDevice.TabIndex = 48;
+            this.textBoxDevice.TabIndex = 26;
             // 
             // label3
             // 
@@ -189,7 +190,7 @@
             this.textBoxPID.Name = "textBoxPID";
             this.textBoxPID.ReadOnly = true;
             this.textBoxPID.Size = new System.Drawing.Size(129, 20);
-            this.textBoxPID.TabIndex = 44;
+            this.textBoxPID.TabIndex = 30;
             // 
             // textBoxLastName
             // 
@@ -197,7 +198,7 @@
             this.textBoxLastName.Name = "textBoxLastName";
             this.textBoxLastName.ReadOnly = true;
             this.textBoxLastName.Size = new System.Drawing.Size(129, 20);
-            this.textBoxLastName.TabIndex = 43;
+            this.textBoxLastName.TabIndex = 29;
             // 
             // textBoxFirstName
             // 
@@ -205,7 +206,7 @@
             this.textBoxFirstName.Name = "textBoxFirstName";
             this.textBoxFirstName.ReadOnly = true;
             this.textBoxFirstName.Size = new System.Drawing.Size(129, 20);
-            this.textBoxFirstName.TabIndex = 42;
+            this.textBoxFirstName.TabIndex = 28;
             // 
             // label9
             // 
@@ -220,8 +221,9 @@
             // 
             this.textBoxNewSerial.Location = new System.Drawing.Point(781, 75);
             this.textBoxNewSerial.Name = "textBoxNewSerial";
+            this.textBoxNewSerial.ReadOnly = true;
             this.textBoxNewSerial.Size = new System.Drawing.Size(129, 20);
-            this.textBoxNewSerial.TabIndex = 5;
+            this.textBoxNewSerial.TabIndex = 21;
             // 
             // label10
             // 
@@ -252,10 +254,12 @@
             // 
             // textBoxNewDevice
             // 
+            this.textBoxNewDevice.HideSelection = false;
             this.textBoxNewDevice.Location = new System.Drawing.Point(781, 50);
             this.textBoxNewDevice.Name = "textBoxNewDevice";
+            this.textBoxNewDevice.ReadOnly = true;
             this.textBoxNewDevice.Size = new System.Drawing.Size(129, 20);
-            this.textBoxNewDevice.TabIndex = 4;
+            this.textBoxNewDevice.TabIndex = 20;
             // 
             // label13
             // 
@@ -288,22 +292,25 @@
             // 
             this.textBoxNewPID.Location = new System.Drawing.Point(781, 153);
             this.textBoxNewPID.Name = "textBoxNewPID";
+            this.textBoxNewPID.ReadOnly = true;
             this.textBoxNewPID.Size = new System.Drawing.Size(129, 20);
-            this.textBoxNewPID.TabIndex = 8;
+            this.textBoxNewPID.TabIndex = 25;
             // 
             // textBoxNewLastName
             // 
             this.textBoxNewLastName.Location = new System.Drawing.Point(781, 127);
             this.textBoxNewLastName.Name = "textBoxNewLastName";
+            this.textBoxNewLastName.ReadOnly = true;
             this.textBoxNewLastName.Size = new System.Drawing.Size(129, 20);
-            this.textBoxNewLastName.TabIndex = 7;
+            this.textBoxNewLastName.TabIndex = 24;
             // 
             // textBoxNewFirstName
             // 
             this.textBoxNewFirstName.Location = new System.Drawing.Point(781, 101);
             this.textBoxNewFirstName.Name = "textBoxNewFirstName";
+            this.textBoxNewFirstName.ReadOnly = true;
             this.textBoxNewFirstName.Size = new System.Drawing.Size(129, 20);
-            this.textBoxNewFirstName.TabIndex = 6;
+            this.textBoxNewFirstName.TabIndex = 23;
             // 
             // label16
             // 
@@ -325,7 +332,7 @@
             // 
             // buttonAddDevice
             // 
-            this.buttonAddDevice.Location = new System.Drawing.Point(990, 498);
+            this.buttonAddDevice.Location = new System.Drawing.Point(871, 498);
             this.buttonAddDevice.Name = "buttonAddDevice";
             this.buttonAddDevice.Size = new System.Drawing.Size(112, 37);
             this.buttonAddDevice.TabIndex = 16;
@@ -471,7 +478,7 @@
             this.textBoxNewReturnComments.Multiline = true;
             this.textBoxNewReturnComments.Name = "textBoxNewReturnComments";
             this.textBoxNewReturnComments.Size = new System.Drawing.Size(129, 63);
-            this.textBoxNewReturnComments.TabIndex = 14;
+            this.textBoxNewReturnComments.TabIndex = 8;
             // 
             // label24
             // 
@@ -488,7 +495,7 @@
             this.textBoxNewComments.Multiline = true;
             this.textBoxNewComments.Name = "textBoxNewComments";
             this.textBoxNewComments.Size = new System.Drawing.Size(129, 63);
-            this.textBoxNewComments.TabIndex = 12;
+            this.textBoxNewComments.TabIndex = 6;
             // 
             // label25
             // 
@@ -504,7 +511,7 @@
             this.textBoxNewAsset.Location = new System.Drawing.Point(781, 232);
             this.textBoxNewAsset.Name = "textBoxNewAsset";
             this.textBoxNewAsset.Size = new System.Drawing.Size(129, 20);
-            this.textBoxNewAsset.TabIndex = 11;
+            this.textBoxNewAsset.TabIndex = 5;
             // 
             // label23
             // 
@@ -519,6 +526,7 @@
             // 
             this.textBoxNewCheckOut.Location = new System.Drawing.Point(781, 180);
             this.textBoxNewCheckOut.Name = "textBoxNewCheckOut";
+            this.textBoxNewCheckOut.ReadOnly = true;
             this.textBoxNewCheckOut.Size = new System.Drawing.Size(129, 20);
             this.textBoxNewCheckOut.TabIndex = 105;
             // 
@@ -527,20 +535,31 @@
             this.textBoxNewDueDate.Location = new System.Drawing.Point(781, 206);
             this.textBoxNewDueDate.Name = "textBoxNewDueDate";
             this.textBoxNewDueDate.Size = new System.Drawing.Size(129, 20);
-            this.textBoxNewDueDate.TabIndex = 106;
+            this.textBoxNewDueDate.TabIndex = 4;
             // 
             // textBoxNewCheckIn
             // 
             this.textBoxNewCheckIn.Location = new System.Drawing.Point(781, 327);
             this.textBoxNewCheckIn.Name = "textBoxNewCheckIn";
             this.textBoxNewCheckIn.Size = new System.Drawing.Size(129, 20);
-            this.textBoxNewCheckIn.TabIndex = 107;
+            this.textBoxNewCheckIn.TabIndex = 7;
+            // 
+            // buttonEditStudent
+            // 
+            this.buttonEditStudent.Location = new System.Drawing.Point(989, 498);
+            this.buttonEditStudent.Name = "buttonEditStudent";
+            this.buttonEditStudent.Size = new System.Drawing.Size(112, 37);
+            this.buttonEditStudent.TabIndex = 17;
+            this.buttonEditStudent.Text = "Edit Student";
+            this.buttonEditStudent.UseVisualStyleBackColor = true;
+            this.buttonEditStudent.Click += new System.EventHandler(this.buttonEditStudent_Click);
             // 
             // EditDatabase
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1235, 547);
+            this.Controls.Add(this.buttonEditStudent);
             this.Controls.Add(this.textBoxNewCheckIn);
             this.Controls.Add(this.textBoxNewDueDate);
             this.Controls.Add(this.textBoxNewCheckOut);
@@ -661,5 +680,6 @@
         private System.Windows.Forms.TextBox textBoxNewCheckOut;
         private System.Windows.Forms.TextBox textBoxNewDueDate;
         private System.Windows.Forms.TextBox textBoxNewCheckIn;
+        private System.Windows.Forms.Button buttonEditStudent;
     }
 }

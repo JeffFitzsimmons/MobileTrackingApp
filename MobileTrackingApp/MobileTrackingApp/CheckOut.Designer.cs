@@ -125,6 +125,7 @@
             this.textBoxSerial.Name = "textBoxSerial";
             this.textBoxSerial.Size = new System.Drawing.Size(135, 20);
             this.textBoxSerial.TabIndex = 2;
+            this.textBoxSerial.TextChanged += new System.EventHandler(this.textBoxSerial_TextChanged);
             // 
             // label1
             // 
@@ -139,6 +140,7 @@
             // 
             this.textBoxDevice.Location = new System.Drawing.Point(107, 30);
             this.textBoxDevice.Name = "textBoxDevice";
+            this.textBoxDevice.ReadOnly = true;
             this.textBoxDevice.Size = new System.Drawing.Size(150, 20);
             this.textBoxDevice.TabIndex = 1;
             // 

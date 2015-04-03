@@ -132,6 +132,7 @@
             // 
             this.textBoxDevice.Location = new System.Drawing.Point(121, 28);
             this.textBoxDevice.Name = "textBoxDevice";
+            this.textBoxDevice.ReadOnly = true;
             this.textBoxDevice.Size = new System.Drawing.Size(150, 20);
             this.textBoxDevice.TabIndex = 1;
             // 
