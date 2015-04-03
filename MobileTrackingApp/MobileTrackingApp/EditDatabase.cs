@@ -39,8 +39,9 @@ namespace MobileTrackingApp
         {
             int PIDparse;
             int pid = Int32.Parse(textBoxPID.Text);
-            String dateCheckOut = dateTimePicker1.Value.ToString();
-            String dateCheckIn = dateTimePicker2.Value.ToShortDateString();
+            //String dateCheckOut = dateTimePickerNewCheckOut.Value.ToString();
+            //String dateCheckIn = dateTimePickerNewCheckIn.Value.ToString();
+            //String dateDueDate = dateTimePickerNewDueDate.Value.ToShortDateString();
 
             // Check for any blank fields
             if (string.IsNullOrWhiteSpace(textBoxNewDevice.Text))
@@ -82,7 +83,7 @@ namespace MobileTrackingApp
                     try
                     {
                         String studentPID = textBoxPID.Text.ToString();
-                        String query = "UPDATE Students SET Device = @Device, SerialNumber = @SerialNumber, FirstName = @FirstName, LastName = @LastName, PID = @PID, CheckOutDate = @CheckOutDate, CheckInDate = @CheckInDate WHERE PID = " + studentPID + ";";
+                        String query = "UPDATE History ";
                         SQLiteCommand cmd = new SQLiteCommand(query, connect);
                         connect.Open();
 
@@ -91,8 +92,9 @@ namespace MobileTrackingApp
                         cmd.Parameters.AddWithValue("@FirstName", textBoxNewFirstName);
                         cmd.Parameters.AddWithValue("@LastName", textBoxNewLastName);
                         cmd.Parameters.AddWithValue("@PID", textBoxNewPID);
-                        cmd.Parameters.AddWithValue("@CheckOutDate", dateCheckOut);
-                        cmd.Parameters.AddWithValue("@CheckInDate", dateCheckIn);
+                        cmd.Parameters.AddWithValue("@CheckOutDate", textBoxNewCheckOut);
+                        cmd.Parameters.AddWithValue("@DueDate", textBoxNewDueDate);
+                        cmd.Parameters.AddWithValue("@CheckInDate", textBoxNewCheckIn);
                         cmd.ExecuteNonQuery();
                         connect.Close();
                     }
@@ -133,142 +135,153 @@ namespace MobileTrackingApp
             this.Dispose();
         }
 
-        private void comboBoxSelect_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            if (comboBoxSelect.SelectedIndex == 0)
-            {
-                listBoxList.Items.Clear();
-                String query = "SELECT Device FROM Device";
-                DataSet data = new DataSet();
-                SQLiteConnection connect = new SQLiteConnection(Login.connection);
-
-                try
-                {
-                    connect.Open();
-                    SQLiteDataAdapter adapter = new SQLiteDataAdapter(query, connect);
-                    adapter.Fill(data, "Device");
-                    connect.Close();
-
-                    int i = 0;
-                    foreach (DataRow row in data.Tables[0].Rows)
-                    {
-                        listBoxList.Items.Add(data.Tables["Device"].Rows[i]["Device"]);
-                        i++;
-                    }
-                    listBoxList.Sorted = true;
-                }
-                catch (SQLiteException exp)
-                {
-                    MessageBox.Show(exp.Message.ToString());
-                }
-                finally
-                {
-                    if (connect.State == ConnectionState.Open)
-                    {
-                        connect.Close();
-                    }
-                }
-            }
-
-            // List Student records that can be edited
-            if (comboBoxSelect.SelectedIndex == 1)
-            {
-                listBoxList.Items.Clear();
-                String query = "SELECT PID FROM Students";
-                DataSet data = new DataSet();
-                SQLiteConnection connect = new SQLiteConnection(Login.connection);
-
-                try
-                {
-                    connect.Open();
-                    SQLiteDataAdapter adapter = new SQLiteDataAdapter(query, connect);
-                    adapter.Fill(data, "Students");
-                    connect.Close();
-
-                    int i = 0;
-                    foreach (DataRow row in data.Tables[0].Rows)
-                    {
-                        listBoxList.Items.Add(data.Tables["Students"].Rows[i]["PID"]);
-                        i++;
-                    }
-                    listBoxList.Sorted = true;
-                }
-                catch (SQLiteException exp)
-                {
-                    MessageBox.Show(exp.Message.ToString());
-                }
-                finally
-                {
-                    if (connect.State == ConnectionState.Open)
-                    {
-                        connect.Close();
-                    }
-                }
-            }
-        }
-
-        private void listBoxList_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            if (comboBoxSelect.SelectedIndex == 0)
-            {
-                string deviceName = (string)listBoxList.SelectedItem.ToString();
-
-                String query = "SELECT CheckOut.PID, CheckOut.SerialNumber, Checkout.Device, CheckOut.CheckOutDate, CheckOut.DueDate, CheckOut.CheckInDate, Checkout.Assets, CheckOut.Comments, Students.FirstName, Students.LastName FROM CheckOut INNER JOIN Students ON CheckOut.PID = Students.PID WHERE CheckOut.Device = '" + deviceName + "';";
-                DataSet data = new DataSet();
-                SQLiteConnection connect = new SQLiteConnection(Login.connection);
-
-                try
-                {
-                    connect.Open();
-                    SQLiteDataAdapter adapter = new SQLiteDataAdapter(query, connect);
-
-                    adapter.Fill(data, "CheckOut");
-                    connect.Close();
-
-                    textBoxPID.Text = data.Tables["CheckOut"].Rows[0]["PID"].ToString();
-                    textBoxSerial.Text = data.Tables["CheckOut"].Rows[0]["SerialNumber"].ToString();
-                    textBoxDevice.Text = data.Tables["Checkout"].Rows[0]["Device"].ToString();
-                    textBoxCheckOut.Text = data.Tables["CheckOut"].Rows[0]["CheckOutDate"].ToString();
-                    textBoxDueDate.Text = data.Tables["CheckOut"].Rows[0]["DueDate"].ToString();
-                    textBoxCheckIn.Text = data.Tables["CheckOut"].Rows[0]["CheckInDate"].ToString();
-                    textBoxAsset.Text = data.Tables["CheckOut"].Rows[0]["Assets"].ToString();
-                    textBoxComments.Text = data.Tables["CheckOut"].Rows[0]["Comments"].ToString();
-
-
-                    connect.Open();
-                    SQLiteDataAdapter adapter2 = new SQLiteDataAdapter(query, connect);
-
-                    adapter2.Fill(data, "Students");
-                    connect.Close();
-
-                    textBoxFirstName.Text = data.Tables["Students"].Rows[0]["FirstName"].ToString();
-                    textBoxLastName.Text = data.Tables["Students"].Rows[0]["LastName"].ToString();
-
-                    //textBoxNewDevice.Text = data.Tables["Students"].Rows[0]["Device"].ToString();
-                    //textBoxNewSerial.Text = data.Tables["Students"].Rows[0]["SerialNumber"].ToString();
-                    //textBoxNewFirstName.Text = data.Tables["Students"].Rows[0]["FirstName"].ToString();
-                    //textBoxNewLastName.Text = data.Tables["Students"].Rows[0]["LastName"].ToString();
-                    //textBoxNewPID.Text = data.Tables["Students"].Rows[0]["PID"].ToString();
-                    //textBoxNewCheckOut.Text = data.Tables["Students"].Rows[0]["CheckOutDate"].ToString();
-                    //textBoxNewCheckIn.Text = data.Tables["Students"].Rows[0]["CheckInDate"].ToString();
-                }
-                catch (SQLiteException exp)
-                {
-                    MessageBox.Show(exp.Message.ToString());
-                }
-                finally
-                {
-                    if (connect.State == ConnectionState.Open)
-                    {
-                        connect.Close();
-                    }
-                }
-            }
-        }
-
         private void EditDatabase_Load(object sender, EventArgs e)
         {
 
+        }
+
+        private void buttonSearch_Click(object sender, EventArgs e)
+        {
+            SQLiteConnection connect = new SQLiteConnection(Login.connection);
+            String query = "SELECT * FROM History WHERE PID = '" + textBoxSearch.Text.ToString() + "' OR Device = '" + textBoxSearch.Text.ToString() + "';";
+
+            try
+            {
+                DataSet data = new DataSet();
+                connect.Open();
+                var da = new SQLiteDataAdapter(query, connect);
+                da.Fill(data);
+                dataGridViewSearch.DataSource = data.Tables[0].DefaultView;
+            }
+            catch (SQLiteException exp)
+            {
+                MessageBox.Show(exp.Message.ToString());
+            }
+            finally
+            {
+                if (connect.State == ConnectionState.Open)
+                {
+                    connect.Close();
+                }
+            }
+        }
+
+        private void textBoxSearch_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == (char)13)
+            {
+                SQLiteConnection connect = new SQLiteConnection(Login.connection);
+                String query = "SELECT * FROM History WHERE PID = '" + textBoxSearch.Text.ToString() + "' OR Device = '" + textBoxSearch.Text.ToString() + "';";
+
+                try
+                {
+                    DataSet data = new DataSet();
+                    connect.Open();
+                    var da = new SQLiteDataAdapter(query, connect);
+                    da.Fill(data);
+                    dataGridViewSearch.DataSource = data.Tables[0].DefaultView;
+                }
+                catch (SQLiteException exp)
+                {
+                    MessageBox.Show(exp.Message.ToString());
+                }
+                finally
+                {
+                    if (connect.State == ConnectionState.Open)
+                    {
+                        connect.Close();
+                    }
+                }
+            }
+        }
+
+        private void dataGridViewSearch_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            SQLiteConnection connect = new SQLiteConnection(Login.connection);
+
+            if (e.RowIndex != -1) 
+            {
+                try
+                {
+
+                    String query = "SELECT * FROM History WHERE CheckOutDate = '" + dataGridViewSearch.Rows[e.RowIndex].Cells["CheckOutDate"].Value + "';";
+                    DataTable dt = new DataTable();
+                    connect.Open();
+                    var da = new SQLiteDataAdapter(query, connect);
+                    da.Fill(dt);
+                    connect.Close();
+
+                    foreach (DataRow dr in dt.Rows)
+                    {
+                        textBoxDevice.Text = dr["Device"].ToString();
+                        textBoxSerial.Text = dr["SerialNumber"].ToString();
+                        textBoxPID.Text = dr["PID"].ToString();
+                        textBoxCheckOut.Text = dr["CheckOutDate"].ToString();
+                        textBoxDueDate.Text = dr["DueDate"].ToString();
+                        textBoxAsset.Text = dr["Assets"].ToString();
+                        textBoxComments.Text = dr["Comments"].ToString();
+                        textBoxCheckIn.Text = dr["CheckInDate"].ToString();
+                        textBoxReturnComments.Text = dr["ReturnComments"].ToString();
+
+                        textBoxNewDevice.Text = dr["Device"].ToString();
+                        textBoxNewSerial.Text = dr["SerialNumber"].ToString();
+                        textBoxNewPID.Text = dr["PID"].ToString();
+                        textBoxNewCheckOut.Text = dr["CheckOutDate"].ToString();
+                        textBoxNewDueDate.Text = dr["DueDate"].ToString();
+                        textBoxNewAsset.Text = dr["Assets"].ToString();
+                        textBoxNewComments.Text = dr["Comments"].ToString();
+                        textBoxNewCheckIn.Text = dr["CheckInDate"].ToString();
+                        textBoxNewReturnComments.Text = dr["ReturnComments"].ToString();
+                    }
+                }
+                catch (SQLiteException exp)
+                {
+                    MessageBox.Show(exp.Message.ToString());
+                }
+                finally
+                {
+                    if (connect.State == ConnectionState.Open)
+                    {
+                        connect.Close();
+                    }
+                }
+
+
+                try
+                {
+                    String queryName = "SELECT * FROM Students WHERE PID = '" + dataGridViewSearch.Rows[e.RowIndex].Cells["PID"].Value + "';";
+                    DataTable dtName = new DataTable();
+                    connect.Open();
+                    var daName = new SQLiteDataAdapter(queryName, connect);
+                    daName.Fill(dtName);
+                    connect.Close();
+
+                    foreach (DataRow dr in dtName.Rows)
+                    {
+                        textBoxFirstName.Text = dr["FirstName"].ToString();
+                        textBoxLastName.Text = dr["LastName"].ToString();
+
+                        textBoxNewFirstName.Text = dr["FirstName"].ToString();
+                        textBoxNewLastName.Text = dr["LastName"].ToString();
+                    }
+
+                }
+                catch (SQLiteException exp)
+                {
+                    MessageBox.Show(exp.Message.ToString());
+                }
+                finally
+                {
+                    if (connect.State == ConnectionState.Open)
+                    {
+                        connect.Close();
+                    }
+                }
+            }
+            else
+            {
+
+            }
         }
     }
 }

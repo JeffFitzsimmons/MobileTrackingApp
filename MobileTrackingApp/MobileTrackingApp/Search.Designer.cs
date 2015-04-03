@@ -41,7 +41,7 @@
             // 
             // buttonBack
             // 
-            this.buttonBack.Location = new System.Drawing.Point(10, 297);
+            this.buttonBack.Location = new System.Drawing.Point(10, 427);
             this.buttonBack.Name = "buttonBack";
             this.buttonBack.Size = new System.Drawing.Size(102, 32);
             this.buttonBack.TabIndex = 5;
@@ -51,9 +51,9 @@
             // 
             // buttonSearch
             // 
-            this.buttonSearch.Location = new System.Drawing.Point(12, 98);
+            this.buttonSearch.Location = new System.Drawing.Point(10, 63);
             this.buttonSearch.Name = "buttonSearch";
-            this.buttonSearch.Size = new System.Drawing.Size(100, 23);
+            this.buttonSearch.Size = new System.Drawing.Size(100, 41);
             this.buttonSearch.TabIndex = 3;
             this.buttonSearch.Text = "Search";
             this.buttonSearch.UseVisualStyleBackColor = true;
@@ -62,7 +62,7 @@
             // label11
             // 
             this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(9, 49);
+            this.label11.Location = new System.Drawing.Point(7, 14);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(156, 13);
             this.label11.TabIndex = 51;
@@ -70,24 +70,25 @@
             // 
             // textBoxSearch
             // 
-            this.textBoxSearch.Location = new System.Drawing.Point(12, 65);
+            this.textBoxSearch.Location = new System.Drawing.Point(10, 30);
             this.textBoxSearch.Name = "textBoxSearch";
             this.textBoxSearch.Size = new System.Drawing.Size(153, 20);
             this.textBoxSearch.TabIndex = 2;
+            this.textBoxSearch.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBoxSearch_KeyPress);
             // 
             // dataGridViewSearch
             // 
             this.dataGridViewSearch.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridViewSearch.Location = new System.Drawing.Point(181, 14);
             this.dataGridViewSearch.Name = "dataGridViewSearch";
-            this.dataGridViewSearch.Size = new System.Drawing.Size(535, 315);
+            this.dataGridViewSearch.Size = new System.Drawing.Size(783, 445);
             this.dataGridViewSearch.TabIndex = 58;
             // 
             // buttonShowAvailable
             // 
-            this.buttonShowAvailable.Location = new System.Drawing.Point(13, 160);
+            this.buttonShowAvailable.Location = new System.Drawing.Point(13, 178);
             this.buttonShowAvailable.Name = "buttonShowAvailable";
-            this.buttonShowAvailable.Size = new System.Drawing.Size(152, 23);
+            this.buttonShowAvailable.Size = new System.Drawing.Size(152, 48);
             this.buttonShowAvailable.TabIndex = 59;
             this.buttonShowAvailable.Text = "Show available devices";
             this.buttonShowAvailable.UseVisualStyleBackColor = true;
@@ -95,9 +96,9 @@
             // 
             // buttonShowCheckedOut
             // 
-            this.buttonShowCheckedOut.Location = new System.Drawing.Point(13, 189);
+            this.buttonShowCheckedOut.Location = new System.Drawing.Point(12, 232);
             this.buttonShowCheckedOut.Name = "buttonShowCheckedOut";
-            this.buttonShowCheckedOut.Size = new System.Drawing.Size(152, 23);
+            this.buttonShowCheckedOut.Size = new System.Drawing.Size(152, 48);
             this.buttonShowCheckedOut.TabIndex = 60;
             this.buttonShowCheckedOut.Text = "Show Checked Out Devices";
             this.buttonShowCheckedOut.UseVisualStyleBackColor = true;
@@ -107,7 +108,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(732, 343);
+            this.ClientSize = new System.Drawing.Size(976, 471);
             this.Controls.Add(this.buttonShowCheckedOut);
             this.Controls.Add(this.buttonShowAvailable);
             this.Controls.Add(this.dataGridViewSearch);

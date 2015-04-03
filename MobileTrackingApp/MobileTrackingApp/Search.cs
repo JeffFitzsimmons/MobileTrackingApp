@@ -65,6 +65,35 @@ namespace MobileTrackingApp
             }
         }
 
+        private void textBoxSearch_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == (char)13)
+            {
+                SQLiteConnection connect = new SQLiteConnection(Login.connection);
+                String query = "SELECT * FROM History WHERE PID = '" + textBoxSearch.Text.ToString() + "' OR Device = '" + textBoxSearch.Text.ToString() + "';";
+
+                try
+                {
+                    DataSet data = new DataSet();
+                    connect.Open();
+                    var da = new SQLiteDataAdapter(query, connect);
+                    da.Fill(data);
+                    dataGridViewSearch.DataSource = data.Tables[0].DefaultView;
+                }
+                catch (SQLiteException exp)
+                {
+                    MessageBox.Show(exp.Message.ToString());
+                }
+                finally
+                {
+                    if (connect.State == ConnectionState.Open)
+                    {
+                        connect.Close();
+                    }
+                }
+            }
+        }
+
         private void buttonShowAvailable_Click(object sender, EventArgs e)
         {
             SQLiteConnection connect = new SQLiteConnection(Login.connection);
@@ -94,7 +123,8 @@ namespace MobileTrackingApp
         private void buttonShowCheckedOut_Click(object sender, EventArgs e)
         {
             SQLiteConnection connect = new SQLiteConnection(Login.connection);
-            String query = "SELECT * FROM History INNER JOIN Device ON History.Device = (SELECT Device.Device FROM Device WHERE CheckOut = 'False')";
+            String query = "SELECT * From CheckOut";
+            //String query = "SELECT * FROM History INNER JOIN Device ON History.Device = (SELECT Device.Device FROM Device WHERE CheckOut = 'False')";
 
             try
             {
