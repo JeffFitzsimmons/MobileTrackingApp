@@ -30,6 +30,8 @@ namespace MobileTrackingApp
             // Code for converting necessary PID and Date fields so the database doesn't have problems
             int PIDparse;
             int pid = Int32.Parse(textBoxPID.Text);
+            dateTimeCheckOut.MinDate = DateTime.Now;
+            dateTimeDueDate.MinDate = DateTime.Now;
             String checkOutDate = dateTimeCheckOut.Value.ToString();
             String dueDate = dateTimeDueDate.Value.ToShortDateString();
 
@@ -62,8 +64,14 @@ namespace MobileTrackingApp
                     String queryAvailable = "SELECT Device FROM CheckOut WHERE Device = '" + textBoxDevice.Text + "';";
                     SQLiteCommand cmdCheck = new SQLiteCommand(queryAvailable, connectAvailable);
                     object check = cmdCheck.ExecuteScalar();
+
+                    SQLiteConnection connectPID = new SQLiteConnection(Login.connection);
+                    connectPID.Open();
+                    String queryPID = "SELECT PID FROM Student WHERE PID = '" + textBoxPID.Text + "';";
+                    SQLiteCommand cmdCheckPID = new SQLiteCommand(queryPID, connectPID);
+                    object checkPID = cmdCheck.ExecuteScalar();
                 
-                    if (check == null)
+                    if (check == null && checkPID != null)
                     {
                         SQLiteConnection connect = new SQLiteConnection(Login.connection);
                         try
@@ -101,6 +109,14 @@ namespace MobileTrackingApp
                             {
                                 connect.Close();
                             }
+                            if (connectAvailable.State == ConnectionState.Open)
+                            {
+                                connectAvailable.Close();
+                            }
+                            if (connectPID.State == ConnectionState.Open)
+                            {
+                                connectPID.Close();
+                            }
                         }
 
                         // Refresh back to Home after New Check Out is completed
@@ -113,7 +129,7 @@ namespace MobileTrackingApp
                     }
                     else
                     {
-                        MessageBox.Show("This device is already checked out. Please verify the device name and serial number on the label.");
+                        MessageBox.Show("There is a problem with the device availability or studnet record. Please check the PID and S/N. (Also verify the student has previously checked out a device)");
                     }
                 }
                 else
@@ -141,10 +157,15 @@ namespace MobileTrackingApp
 
         private void textBoxSerial_TextChanged(object sender, EventArgs e)
         {
-            //if (textBoxSerial.Text.ToString().Length == 12)
-            if (textBoxSerial.Text.ToString().Length == 9)
+            textBoxDevice.Clear();
+            SQLiteConnection connectAvailable = new SQLiteConnection(Login.connection);
+            connectAvailable.Open();
+            String serialNumber = textBoxSerial.Text.ToString();
+            String queryAvailable = "SELECT Device FROM Device WHERE SerialNumber = '" + serialNumber + "';";
+            SQLiteCommand cmdCheck = new SQLiteCommand(queryAvailable, connectAvailable);
+            object check = cmdCheck.ExecuteScalar();
+            if (check != null)
             {
-                String serialNumber = textBoxSerial.Text.ToString();
                 String query = "SELECT Device FROM Device WHERE SerialNumber = '" + serialNumber + "';";
                 SQLiteConnection connect = new SQLiteConnection(Login.connection);
                 DataSet data = new DataSet();
@@ -171,6 +192,19 @@ namespace MobileTrackingApp
                     }
                 }
             }
+        }
+
+        private void dateTimeDueDate_ValueChanged(object sender, EventArgs e)
+        {
+            if (dateTimeCheckOut.Value >= dateTimeDueDate.Value)
+            {
+                MessageBox.Show("The due date is not valid. (Must be a date after the check out date)");
+            }
+        }
+
+        private void textBoxPID_TextChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

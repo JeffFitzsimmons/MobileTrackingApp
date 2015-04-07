@@ -94,22 +94,26 @@ namespace MobileTrackingApp
 
                     try
                     {
-                        String studentPID = textBoxPID.Text.ToString();
-                        String query = "UPDATE History SET DueDate = @DueDate, Assets = @Assets, Comments = @Comments, CheckInDate = @CheckInDate, ReturnComments = @ReturnComments " +
-                            "WHERE PID = '" + textBoxPID.Text + "' AND CheckOutDate = '" + textBoxCheckOut.Text + "';";
-                        SQLiteCommand cmd = new SQLiteCommand(query, connect);
-                        connect.Open();
+                        String[] queries = new String[2];
+                        queries[0] = "UPDATE History SET CheckOutDate = @CheckOutDate, DueDate = @DueDate, Assets = @Assets, Comments = @Comments, CheckInDate = @CheckInDate, ReturnComments = @ReturnComments " +
+                            "WHERE PID = '" + textBoxPID.Text + "' AND CheckOutDate = '" + textBoxCheckOut.Text + "';"; 
+                        queries[1] = "UPDATE CheckOut SET CheckOutDate = @CheckOutDate, DueDate = @DueDate, Assets = @Assets, Comments = @Comments " +
+                            "WHERE CheckOutDate = '" + textBoxCheckOut.Text + "';";
 
-                        //cmd.Parameters.AddWithValue("@Device", textBoxNewDevice.Text);
-                        //cmd.Parameters.AddWithValue("@SerialNumber", textBoxNewSerial.Text);
-                        //cmd.Parameters.AddWithValue("@CheckOutDate", textBoxNewCheckOut.Text);
-                        cmd.Parameters.AddWithValue("@DueDate", textBoxNewDueDate.Text);
-                        cmd.Parameters.AddWithValue("@CheckInDate", textBoxNewCheckIn.Text);
-                        cmd.Parameters.AddWithValue("@Comments", textBoxNewComments.Text);
-                        cmd.Parameters.AddWithValue("@Assets", textBoxNewAsset.Text);
-                        cmd.Parameters.AddWithValue("@ReturnComments", textBoxNewReturnComments.Text);
-                        cmd.ExecuteNonQuery();
-                        connect.Close();
+                        foreach (String query in queries)
+                        {
+                            SQLiteCommand cmd = new SQLiteCommand(query, connect);
+                            connect.Open();
+
+                            cmd.Parameters.AddWithValue("@CheckOutDate", textBoxNewCheckOut.Text);
+                            cmd.Parameters.AddWithValue("@DueDate", textBoxNewDueDate.Text);
+                            cmd.Parameters.AddWithValue("@CheckInDate", textBoxNewCheckIn.Text);
+                            cmd.Parameters.AddWithValue("@Comments", textBoxNewComments.Text);
+                            cmd.Parameters.AddWithValue("@Assets", textBoxNewAsset.Text);
+                            cmd.Parameters.AddWithValue("@ReturnComments", textBoxNewReturnComments.Text);
+                            cmd.ExecuteNonQuery();
+                            connect.Close();
+                        }
                     }
                     catch (SQLiteException exp)
                     {

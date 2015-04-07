@@ -34,6 +34,7 @@ namespace MobileTrackingApp
                     textBoxFirstName.Text = dr["FirstName"].ToString();
                     textBoxLastName.Text = dr["LastName"].ToString();
 
+                    textBoxNewPID.Text = dr["PID"].ToString();
                     textBoxNewFirstName.Text = dr["FirstName"].ToString();
                     textBoxNewLastName.Text = dr["LastName"].ToString();
                 }
@@ -71,17 +72,26 @@ namespace MobileTrackingApp
         {
             if (MessageBox.Show("Are you sure you want to change this student's information?", "Confirmation", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
             {
-                String query = "UPDATE Students SET FirstName = @FirstName, LastName = @LastName WHERE PID = '" + textBoxPID.Text + "';";
                 SQLiteConnection connect = new SQLiteConnection(Login.connection);
 
                 try
                 {
-                    SQLiteCommand cmd = new SQLiteCommand(query, connect);
-                    connect.Open();
-                    cmd.Parameters.AddWithValue("@FirstName", textBoxNewFirstName.Text);
-                    cmd.Parameters.AddWithValue("@LastName", textBoxNewLastName.Text);
-                    cmd.ExecuteNonQuery();
-                    connect.Close();
+                    String[] queries = new String[3];
+
+                    queries[0] = "UPDATE Students SET FirstName = @FirstName, LastName = @LastName, PID = @PID WHERE PID = '" + textBoxPID.Text + "';";
+                    queries[1] = "UPDATE HISTORY SET PID = @PID WHERE PID = '" + textBoxPID.Text + "';";
+                    queries[2] = "UPDATE CheckOut SET PID = @PID WHERE PID = '" + textBoxPID.Text + "';";
+
+                    foreach (String query in queries)
+                    {
+                        SQLiteCommand cmd = new SQLiteCommand(query, connect);
+                        connect.Open();
+                        cmd.Parameters.AddWithValue("@FirstName", textBoxNewFirstName.Text);
+                        cmd.Parameters.AddWithValue("@LastName", textBoxNewLastName.Text);
+                        cmd.Parameters.AddWithValue("@PID", textBoxNewPID.Text);
+                        cmd.ExecuteNonQuery();
+                        connect.Close();
+                    }
                 }
                 catch (SQLiteException exp)
                 {
@@ -94,6 +104,14 @@ namespace MobileTrackingApp
                         connect.Close();
                     }
                 }
+
+                // Refresh back to Edit Database once record is updated
+                this.Visible = false;
+
+                EditDatabase form = new EditDatabase();
+                form.Show();
+
+                this.Dispose();
             }
             else
             {

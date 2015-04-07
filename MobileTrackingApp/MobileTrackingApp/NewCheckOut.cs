@@ -152,10 +152,16 @@ namespace MobileTrackingApp
 
         private void textBoxSerial_TextChanged(object sender, EventArgs e)
         {
-            //if (textBoxSerial.Text.ToString().Length == 12)
-            if (textBoxSerial.Text.ToString().Length == 9)
+            textBoxDevice.Clear();
+            SQLiteConnection connectAvailable = new SQLiteConnection(Login.connection);
+            connectAvailable.Open();
+            String serialNumber = textBoxSerial.Text.ToString();
+            String queryAvailable = "SELECT Device FROM Device WHERE SerialNumber = '" + serialNumber + "';";
+            SQLiteCommand cmdCheck = new SQLiteCommand(queryAvailable, connectAvailable);
+            object check = cmdCheck.ExecuteScalar();
+
+            if (check != null) 
             {
-                String serialNumber = textBoxSerial.Text.ToString();
                 String query = "SELECT Device FROM Device WHERE SerialNumber = '" + serialNumber + "';";
                 SQLiteConnection connect = new SQLiteConnection(Login.connection);
                 DataSet data = new DataSet();
@@ -181,6 +187,7 @@ namespace MobileTrackingApp
                         connect.Close();
                     }
                 }
+                
             }
         }
     }

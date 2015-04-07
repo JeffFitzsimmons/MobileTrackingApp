@@ -438,9 +438,12 @@
             // 
             // dataGridViewSearch
             // 
+            this.dataGridViewSearch.AllowUserToAddRows = false;
+            this.dataGridViewSearch.AllowUserToDeleteRows = false;
             this.dataGridViewSearch.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridViewSearch.Location = new System.Drawing.Point(15, 53);
             this.dataGridViewSearch.Name = "dataGridViewSearch";
+            this.dataGridViewSearch.ReadOnly = true;
             this.dataGridViewSearch.Size = new System.Drawing.Size(394, 348);
             this.dataGridViewSearch.TabIndex = 3;
             this.dataGridViewSearch.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewSearch_CellClick);
@@ -526,7 +529,6 @@
             // 
             this.textBoxNewCheckOut.Location = new System.Drawing.Point(781, 180);
             this.textBoxNewCheckOut.Name = "textBoxNewCheckOut";
-            this.textBoxNewCheckOut.ReadOnly = true;
             this.textBoxNewCheckOut.Size = new System.Drawing.Size(129, 20);
             this.textBoxNewCheckOut.TabIndex = 105;
             // 

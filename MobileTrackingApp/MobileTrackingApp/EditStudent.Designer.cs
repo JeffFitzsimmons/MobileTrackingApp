@@ -43,14 +43,16 @@
             this.textBoxNewFirstName = new System.Windows.Forms.TextBox();
             this.textBoxNewLastName = new System.Windows.Forms.TextBox();
             this.buttonBack = new System.Windows.Forms.Button();
+            this.label8 = new System.Windows.Forms.Label();
+            this.textBoxNewPID = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // buttonSave
             // 
-            this.buttonSave.Location = new System.Drawing.Point(254, 158);
+            this.buttonSave.Location = new System.Drawing.Point(254, 233);
             this.buttonSave.Name = "buttonSave";
             this.buttonSave.Size = new System.Drawing.Size(110, 31);
-            this.buttonSave.TabIndex = 5;
+            this.buttonSave.TabIndex = 7;
             this.buttonSave.Text = "Save";
             this.buttonSave.UseVisualStyleBackColor = true;
             this.buttonSave.Click += new System.EventHandler(this.buttonSave_Click);
@@ -61,7 +63,7 @@
             this.textBoxPID.Name = "textBoxPID";
             this.textBoxPID.ReadOnly = true;
             this.textBoxPID.Size = new System.Drawing.Size(100, 20);
-            this.textBoxPID.TabIndex = 1;
+            this.textBoxPID.TabIndex = 3;
             // 
             // textBoxLastName
             // 
@@ -147,30 +149,48 @@
             this.textBoxNewFirstName.Location = new System.Drawing.Point(264, 83);
             this.textBoxNewFirstName.Name = "textBoxNewFirstName";
             this.textBoxNewFirstName.Size = new System.Drawing.Size(100, 20);
-            this.textBoxNewFirstName.TabIndex = 3;
+            this.textBoxNewFirstName.TabIndex = 4;
             // 
             // textBoxNewLastName
             // 
             this.textBoxNewLastName.Location = new System.Drawing.Point(266, 124);
             this.textBoxNewLastName.Name = "textBoxNewLastName";
             this.textBoxNewLastName.Size = new System.Drawing.Size(100, 20);
-            this.textBoxNewLastName.TabIndex = 4;
+            this.textBoxNewLastName.TabIndex = 5;
             // 
             // buttonBack
             // 
-            this.buttonBack.Location = new System.Drawing.Point(254, 233);
+            this.buttonBack.Location = new System.Drawing.Point(45, 233);
             this.buttonBack.Name = "buttonBack";
             this.buttonBack.Size = new System.Drawing.Size(110, 31);
-            this.buttonBack.TabIndex = 13;
+            this.buttonBack.TabIndex = 8;
             this.buttonBack.Text = "Back";
             this.buttonBack.UseVisualStyleBackColor = true;
             this.buttonBack.Click += new System.EventHandler(this.buttonBack_Click);
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(265, 150);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(25, 13);
+            this.label8.TabIndex = 15;
+            this.label8.Text = "PID";
+            // 
+            // textBoxNewPID
+            // 
+            this.textBoxNewPID.Location = new System.Drawing.Point(266, 169);
+            this.textBoxNewPID.Name = "textBoxNewPID";
+            this.textBoxNewPID.Size = new System.Drawing.Size(100, 20);
+            this.textBoxNewPID.TabIndex = 6;
             // 
             // EditStudent
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(419, 276);
+            this.Controls.Add(this.label8);
+            this.Controls.Add(this.textBoxNewPID);
             this.Controls.Add(this.buttonBack);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.label7);
@@ -211,5 +231,7 @@
         private System.Windows.Forms.TextBox textBoxNewFirstName;
         private System.Windows.Forms.TextBox textBoxNewLastName;
         private System.Windows.Forms.Button buttonBack;
+        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.TextBox textBoxNewPID;
     }
 }

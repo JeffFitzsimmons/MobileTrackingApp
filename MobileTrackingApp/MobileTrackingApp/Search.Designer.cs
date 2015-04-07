@@ -78,15 +78,18 @@
             // 
             // dataGridViewSearch
             // 
+            this.dataGridViewSearch.AllowUserToAddRows = false;
+            this.dataGridViewSearch.AllowUserToDeleteRows = false;
             this.dataGridViewSearch.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridViewSearch.Location = new System.Drawing.Point(181, 14);
             this.dataGridViewSearch.Name = "dataGridViewSearch";
+            this.dataGridViewSearch.ReadOnly = true;
             this.dataGridViewSearch.Size = new System.Drawing.Size(783, 445);
             this.dataGridViewSearch.TabIndex = 58;
             // 
             // buttonShowAvailable
             // 
-            this.buttonShowAvailable.Location = new System.Drawing.Point(13, 178);
+            this.buttonShowAvailable.Location = new System.Drawing.Point(13, 264);
             this.buttonShowAvailable.Name = "buttonShowAvailable";
             this.buttonShowAvailable.Size = new System.Drawing.Size(152, 48);
             this.buttonShowAvailable.TabIndex = 59;
@@ -96,7 +99,7 @@
             // 
             // buttonShowCheckedOut
             // 
-            this.buttonShowCheckedOut.Location = new System.Drawing.Point(12, 232);
+            this.buttonShowCheckedOut.Location = new System.Drawing.Point(13, 318);
             this.buttonShowCheckedOut.Name = "buttonShowCheckedOut";
             this.buttonShowCheckedOut.Size = new System.Drawing.Size(152, 48);
             this.buttonShowCheckedOut.TabIndex = 60;

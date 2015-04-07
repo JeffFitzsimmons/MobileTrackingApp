@@ -74,6 +74,7 @@
             this.textBoxPID.Name = "textBoxPID";
             this.textBoxPID.Size = new System.Drawing.Size(150, 20);
             this.textBoxPID.TabIndex = 3;
+            this.textBoxPID.TextChanged += new System.EventHandler(this.textBoxPID_TextChanged);
             // 
             // label2
             // 
@@ -142,7 +143,7 @@
             this.textBoxDevice.Name = "textBoxDevice";
             this.textBoxDevice.ReadOnly = true;
             this.textBoxDevice.Size = new System.Drawing.Size(150, 20);
-            this.textBoxDevice.TabIndex = 1;
+            this.textBoxDevice.TabIndex = 100;
             // 
             // dateTimeDueDate
             // 
@@ -151,6 +152,7 @@
             this.dateTimeDueDate.Name = "dateTimeDueDate";
             this.dateTimeDueDate.Size = new System.Drawing.Size(104, 20);
             this.dateTimeDueDate.TabIndex = 5;
+            this.dateTimeDueDate.ValueChanged += new System.EventHandler(this.dateTimeDueDate_ValueChanged);
             // 
             // label11
             // 
