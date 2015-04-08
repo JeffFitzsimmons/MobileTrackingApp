@@ -83,7 +83,7 @@
             this.textBoxDevice.Name = "textBoxDevice";
             this.textBoxDevice.ReadOnly = true;
             this.textBoxDevice.Size = new System.Drawing.Size(100, 20);
-            this.textBoxDevice.TabIndex = 1;
+            this.textBoxDevice.TabIndex = 100;
             // 
             // buttonCheckIn
             // 

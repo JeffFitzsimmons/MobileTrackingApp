@@ -74,17 +74,25 @@ namespace MobileTrackingApp
                     SQLiteCommand cmdCheck = new SQLiteCommand(queryAvailable, connectAvailable);
                     object check = cmdCheck.ExecuteScalar();
 
-                    if (check != null) 
+                    SQLiteConnection connectPID = new SQLiteConnection(Login.connection);
+                    connectPID.Open();
+                    String queryPID = "SELECT FirstName FROM Students WHERE PID = '" + textBoxPID.Text + "';";
+                    SQLiteCommand cmdCheckPID = new SQLiteCommand(queryPID, connectPID);
+                    object checkPID = cmdCheckPID.ExecuteScalar();
+
+                    if (checkPID == null)
+                    {
+                        MessageBox.Show("The student is not registered. Please verify that the Student's PID is correct.");
+                    }
+                    
+                    else if (check != null) 
                     {
                         SQLiteConnection connect = new SQLiteConnection(Login.connection);
                         try
                         {
-                            //String studentPID = textBoxPID.Text.ToString();
-                            //String studentDevice = textBoxDevice.Text.ToString();
-                            //String studentSerial = textBoxSerial.Text.ToString();
                             String[] queries = new String[3];
 
-                            queries[0] = "UPDATE History SET CheckInDate = @CheckInDate, ReturnComments = @ReturnComments WHERE SerialNumber = @SerialNumber";
+                            queries[0] = "UPDATE History SET CheckInDate = @CheckInDate, ReturnComments = @ReturnComments WHERE SerialNumber = @SerialNumber AND PID = @PID";
                             queries[1] = "UPDATE Device SET CheckOut = 'False' WHERE SerialNumber = @SerialNumber AND Device = @Device";
                             queries[2] = "DELETE FROM CheckOut WHERE SerialNumber = @SerialNumber";
 

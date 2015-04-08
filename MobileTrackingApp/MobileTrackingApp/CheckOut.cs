@@ -20,30 +20,33 @@ namespace MobileTrackingApp
 
         private void buttonCheckOut_Click(object sender, EventArgs e)
         {
-            
 
+
+            // Check for any blank fields
             if (string.IsNullOrWhiteSpace(textBoxPID.Text))
             {
                 MessageBox.Show("Please enter the student's PID.");
             }
+            else
+            {
+                int pid = Int32.Parse(textBoxPID.Text);
+            }
 
             // Code for converting necessary PID and Date fields so the database doesn't have problems
             int PIDparse;
-            int pid = Int32.Parse(textBoxPID.Text);
             dateTimeCheckOut.MinDate = DateTime.Now;
             dateTimeDueDate.MinDate = DateTime.Now;
             String checkOutDate = dateTimeCheckOut.Value.ToString();
             String dueDate = dateTimeDueDate.Value.ToShortDateString();
 
 
-            // Check for any blank fields
+            // Check for any more blank fields
             if (string.IsNullOrWhiteSpace(textBoxDevice.Text))
             {
                 MessageBox.Show("Please scan the serial number and device name will populate itself.");
             }
 
-            //if (string.IsNullOrWhiteSpace(textBoxSerial.Text) || textBoxSerial.Text.Length != 12)
-            if (string.IsNullOrWhiteSpace(textBoxSerial.Text) || textBoxSerial.Text.Length != 9)
+            if (string.IsNullOrWhiteSpace(textBoxSerial.Text))
             {
                 MessageBox.Show("Please use the scanner or manually input the device serial number.");
             }
@@ -67,11 +70,16 @@ namespace MobileTrackingApp
 
                     SQLiteConnection connectPID = new SQLiteConnection(Login.connection);
                     connectPID.Open();
-                    String queryPID = "SELECT PID FROM Student WHERE PID = '" + textBoxPID.Text + "';";
+                    String queryPID = "SELECT FirstName FROM Students WHERE PID = '" + textBoxPID.Text + "';";
                     SQLiteCommand cmdCheckPID = new SQLiteCommand(queryPID, connectPID);
-                    object checkPID = cmdCheck.ExecuteScalar();
+                    object checkPID = cmdCheckPID.ExecuteScalar();
+
+                    if (checkPID == null) 
+                    {
+                        MessageBox.Show("The student is not registered. Please check out the device using the \"New Check Out\" function");
+                    }
                 
-                    if (check == null && checkPID != null)
+                    else if (check == null)
                     {
                         SQLiteConnection connect = new SQLiteConnection(Login.connection);
                         try
@@ -90,7 +98,7 @@ namespace MobileTrackingApp
 
                                 cmd.Parameters.AddWithValue("@Device", textBoxDevice.Text);
                                 cmd.Parameters.AddWithValue("@SerialNumber", textBoxSerial.Text);
-                                cmd.Parameters.AddWithValue("@PID", pid);
+                                cmd.Parameters.AddWithValue("@PID", textBoxPID.Text);
                                 cmd.Parameters.AddWithValue("@CheckOutDate", checkOutDate);
                                 cmd.Parameters.AddWithValue("@DueDate", dueDate);
                                 cmd.Parameters.AddWithValue("@Comments", textBoxComments.Text);
@@ -129,7 +137,7 @@ namespace MobileTrackingApp
                     }
                     else
                     {
-                        MessageBox.Show("There is a problem with the device availability or studnet record. Please check the PID and S/N. (Also verify the student has previously checked out a device)");
+                        MessageBox.Show("That device is unavailable. Please check the serial number or select another device.");
                     }
                 }
                 else

@@ -36,7 +36,6 @@ namespace MobileTrackingApp
         {
             // Code for converting necessary PID and Date fields so the database doesn't have problems
             int PIDparse;
-            int pid = Int32.Parse(textBoxPID.Text);
             String checkOutDate = dateTimeCheckOut.Value.ToString();
             String dueDate = dateTimeDueDate.Value.ToShortDateString();
 
@@ -46,18 +45,23 @@ namespace MobileTrackingApp
                 MessageBox.Show("Please scan the serial number and device name will populate itself.");
             }
 
-            //if (string.IsNullOrWhiteSpace(textBoxSerial.Text) || textBoxSerial.Text.Length != 12)
-            if (string.IsNullOrWhiteSpace(textBoxSerial.Text) || textBoxSerial.Text.Length != 9)
+            if (string.IsNullOrWhiteSpace(textBoxSerial.Text))
             {
                 MessageBox.Show("Please use the scanner or manually input the device serial number.");
             }
 
-            // Verify that the PID is approprite in length and type (6 numbers)
-            else if (string.IsNullOrWhiteSpace(textBoxPID.Text))
+            if (string.IsNullOrWhiteSpace(textBoxPID.Text))
             {
                 MessageBox.Show("Please enter the student's PID.");
             }
-            else if (textBoxPID.Text.Length != 6 || !int.TryParse(textBoxPID.Text, out PIDparse))
+            else
+            {
+                int pid = Int32.Parse(textBoxPID.Text);
+            }
+
+
+            // Verify that the PID is approprite in length and type (6 numbers)
+            if (textBoxPID.Text.Length != 6 || !int.TryParse(textBoxPID.Text, out PIDparse))
             {
                 MessageBox.Show("The PID entered was not valid. Please enter a valid PID (6 numbers long)");
             }
@@ -102,7 +106,7 @@ namespace MobileTrackingApp
 
                                 cmd.Parameters.AddWithValue("@Device", textBoxDevice.Text);
                                 cmd.Parameters.AddWithValue("@SerialNumber", textBoxSerial.Text);
-                                cmd.Parameters.AddWithValue("@PID", pid);
+                                cmd.Parameters.AddWithValue("@PID", textBoxPID.Text);
                                 cmd.Parameters.AddWithValue("@FirstName", textBoxFirstName.Text);
                                 cmd.Parameters.AddWithValue("@LastName", textBoxLastName.Text);
                                 cmd.Parameters.AddWithValue("@CheckOutDate", checkOutDate);
