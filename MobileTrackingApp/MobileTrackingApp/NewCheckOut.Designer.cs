@@ -235,6 +235,7 @@
             this.dateTimeDueDate.Name = "dateTimeDueDate";
             this.dateTimeDueDate.Size = new System.Drawing.Size(150, 20);
             this.dateTimeDueDate.TabIndex = 7;
+            this.dateTimeDueDate.ValueChanged += new System.EventHandler(this.dateTimeDueDate_ValueChanged);
             // 
             // label11
             // 

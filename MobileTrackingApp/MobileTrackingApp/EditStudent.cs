@@ -17,6 +17,7 @@ namespace MobileTrackingApp
         {
             InitializeComponent();
 
+            // Pull info from the database where the PID is the same as the record selected in the Edit Database form
             String query = "SELECT FirstName, LastName, PID FROM Students WHERE PID = '" + EditDatabase.studentPIDSaved + "'";
             SQLiteConnection connect = new SQLiteConnection(Login.connection);
 
@@ -30,6 +31,7 @@ namespace MobileTrackingApp
 
                 foreach (DataRow dr in dt.Rows)
                 {
+                    // Populates all text boxes for editing
                     textBoxPID.Text = dr["PID"].ToString();
                     textBoxFirstName.Text = dr["FirstName"].ToString();
                     textBoxLastName.Text = dr["LastName"].ToString();
@@ -53,13 +55,9 @@ namespace MobileTrackingApp
             
         }
 
-        private void EditStudent_Load(object sender, EventArgs e)
-        {
-
-        }
-
         private void buttonBack_Click(object sender, EventArgs e)
         {
+            // Return to the Edit Database form
             this.Visible = false;
 
             EditDatabase form = new EditDatabase();
@@ -70,10 +68,12 @@ namespace MobileTrackingApp
 
         private void buttonSave_Click(object sender, EventArgs e)
         {
+            // Prompt for changes
             if (MessageBox.Show("Are you sure you want to change this student's information?", "Confirmation", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
             {
                 SQLiteConnection connect = new SQLiteConnection(Login.connection);
 
+                // Update the database
                 try
                 {
                     String[] queries = new String[3];

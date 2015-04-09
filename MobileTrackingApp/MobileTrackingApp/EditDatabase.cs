@@ -40,9 +40,9 @@ namespace MobileTrackingApp
 
         private void buttonSave_Click(object sender, EventArgs e)
         {
+            // Necessary code for PID error checking
             int PIDparse;
             int pid = Int32.Parse(textBoxPID.Text);
-           
 
             // Check for any blank fields
             if (string.IsNullOrWhiteSpace(textBoxNewDevice.Text))
@@ -65,10 +65,10 @@ namespace MobileTrackingApp
                 MessageBox.Show("Please indicate the correct due date.");
             }
 
-            //if (string.IsNullOrWhiteSpace(textBoxNewCheckIn.Text))
-            //{
-            //    MessageBox.Show("Please indicate the correct check in date.");
-            //}
+            if (string.IsNullOrWhiteSpace(textBoxNewCheckIn.Text))
+            {
+                MessageBox.Show("Please indicate the correct check in date.");
+            }
 
             if (string.IsNullOrWhiteSpace(textBoxNewDueDate.Text))
             {
@@ -88,10 +88,12 @@ namespace MobileTrackingApp
             
             else
             {
+                // Prompt for changes
                 if (MessageBox.Show("Are you sure you want to change the information in the database?", "Confirmation", MessageBoxButtons.YesNo) == DialogResult.Yes)
                 {
                     SQLiteConnection connect = new SQLiteConnection(Login.connection);
 
+                    // Make changes according to the info in the New Information text boxes
                     try
                     {
                         String[] queries = new String[2];
@@ -144,6 +146,7 @@ namespace MobileTrackingApp
 
         private void buttonAddDevice_Click(object sender, EventArgs e)
         {
+            // Bring up the Add Device form
             this.Visible = false;
 
             AddDevice form = new AddDevice();
@@ -159,6 +162,7 @@ namespace MobileTrackingApp
 
         private void buttonSearch_Click(object sender, EventArgs e)
         {
+            // Pull info from the database where the PID or Device is entered in the Search text box
             SQLiteConnection connect = new SQLiteConnection(Login.connection);
             String query = "SELECT * FROM History WHERE PID = '" + textBoxSearch.Text.ToString() + "' OR Device = '" + textBoxSearch.Text.ToString() + "';";
 
@@ -185,6 +189,7 @@ namespace MobileTrackingApp
 
         private void textBoxSearch_KeyPress(object sender, KeyPressEventArgs e)
         {
+            
             if (e.KeyChar == (char)13)
             {
                 SQLiteConnection connect = new SQLiteConnection(Login.connection);
@@ -312,6 +317,32 @@ namespace MobileTrackingApp
             form.Show();
 
             this.Dispose();
+        }
+
+        private void buttonUsers_Click(object sender, EventArgs e)
+        {
+            SQLiteConnection connectLog = new SQLiteConnection(Login.connection);
+            String queryLog = "SELECT * FROM Users;";
+
+            try
+            {
+                DataSet data = new DataSet();
+                connectLog.Open();
+                var da = new SQLiteDataAdapter(queryLog, connectLog);
+                da.Fill(data);
+                dataGridViewSearch.DataSource = data.Tables[0].DefaultView;
+            }
+            catch (SQLiteException exp)
+            {
+                MessageBox.Show(exp.Message.ToString());
+            }
+            finally
+            {
+                if (connectLog.State == ConnectionState.Open)
+                {
+                    connectLog.Close();
+                }
+            }
         }
     }
 }

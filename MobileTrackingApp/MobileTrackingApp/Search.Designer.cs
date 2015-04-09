@@ -89,7 +89,7 @@
             // 
             // buttonShowAvailable
             // 
-            this.buttonShowAvailable.Location = new System.Drawing.Point(13, 264);
+            this.buttonShowAvailable.Location = new System.Drawing.Point(10, 147);
             this.buttonShowAvailable.Name = "buttonShowAvailable";
             this.buttonShowAvailable.Size = new System.Drawing.Size(152, 48);
             this.buttonShowAvailable.TabIndex = 59;
@@ -99,7 +99,7 @@
             // 
             // buttonShowCheckedOut
             // 
-            this.buttonShowCheckedOut.Location = new System.Drawing.Point(13, 318);
+            this.buttonShowCheckedOut.Location = new System.Drawing.Point(10, 201);
             this.buttonShowCheckedOut.Name = "buttonShowCheckedOut";
             this.buttonShowCheckedOut.Size = new System.Drawing.Size(152, 48);
             this.buttonShowCheckedOut.TabIndex = 60;
@@ -124,7 +124,6 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Search";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Search_FormClosing);
-            this.Load += new System.EventHandler(this.Search_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewSearch)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

@@ -33,6 +33,8 @@ namespace MobileTrackingApp
         {
             // Code for converting necessary PID and Date fields so the database doesn't have problems
             int PIDparse;
+            dateTimeSelect.MinDate = DateTime.Now;
+            String date = dateTimeSelect.Value.ToString();
             
             if (string.IsNullOrWhiteSpace(textBoxPID.Text))
             {
@@ -42,8 +44,7 @@ namespace MobileTrackingApp
             {
                 int pid = Int32.Parse(textBoxPID.Text);
             }
-
-            String date = dateTimeSelect.Value.ToString();
+            
 
             // Check for any blank fields
             if (string.IsNullOrWhiteSpace(textBoxDevice.Text))
@@ -76,7 +77,7 @@ namespace MobileTrackingApp
 
                     SQLiteConnection connectPID = new SQLiteConnection(Login.connection);
                     connectPID.Open();
-                    String queryPID = "SELECT FirstName FROM Students WHERE PID = '" + textBoxPID.Text + "';";
+                    String queryPID = "SELECT PID FROM Students WHERE PID = '" + textBoxPID.Text + "';";
                     SQLiteCommand cmdCheckPID = new SQLiteCommand(queryPID, connectPID);
                     object checkPID = cmdCheckPID.ExecuteScalar();
 
@@ -184,6 +185,32 @@ namespace MobileTrackingApp
                     if (connect.State == ConnectionState.Open)
                     {
                         connect.Close();
+                    }
+                }
+
+                String queryPIDFill = "SELECT PID FROM CheckOut WHERE SerialNumber = '" + serialNumber + "';";
+                SQLiteConnection connectPIDFill = new SQLiteConnection(Login.connection);
+                DataSet ds = new DataSet();
+
+                try
+                {
+                    connectPIDFill.Open();
+                    SQLiteDataAdapter adapter = new SQLiteDataAdapter(queryPIDFill, connectPIDFill);
+
+                    adapter.Fill(ds, "CheckOut");
+                    connectPIDFill.Close();
+
+                    textBoxPID.Text = ds.Tables["CheckOut"].Rows[0]["PID"].ToString();
+                }
+                catch (SQLiteException exception)
+                {
+                    MessageBox.Show(exception.Message.ToString());
+                }
+                finally
+                {
+                    if (connect.State == ConnectionState.Open)
+                    {
+                        connectPIDFill.Close();
                     }
                 }
             }

@@ -28,7 +28,7 @@ namespace MobileTrackingApp
 
         private void buttonLogin_Click(object sender, EventArgs e)
         {
-            //initial error checking for blank username or password
+            // Initial error checking for blank username or password
             if (textBoxUsername.Text.ToString() == "")
             {
                 MessageBox.Show("Please enter your username");
@@ -40,7 +40,7 @@ namespace MobileTrackingApp
             }
             else
             {
-
+                // Check credentials against database for login
                 SQLiteConnection connect = new SQLiteConnection(Login.connection);
                 bool login = false;                    
                 DataSet ds = new DataSet();
@@ -66,6 +66,34 @@ namespace MobileTrackingApp
                     
                     if (login == true && textBoxUsername.Text == "admin")
                     {
+                        // Save the login date and time to database
+                        String loginDate = DateTime.Now.ToString();
+                        SQLiteConnection connectLog = new SQLiteConnection(Login.connection);
+                        try
+                        {
+                            String queryLog = "UPDATE Users SET LastLogin = @LastLogin WHERE Username = '" + textBoxUsername.Text + "';";
+                            SQLiteCommand cmd = new SQLiteCommand(queryLog, connectLog);
+                            connectLog.Open();
+                            cmd.Parameters.AddWithValue("@LastLogin", loginDate);
+                            cmd.ExecuteNonQuery();
+                            connectLog.Close();
+                        }
+                        catch (SQLiteException exception)
+                        {
+                            MessageBox.Show(exception.Message.ToString());
+                        }
+                        finally
+                        {
+                            if (connect.State == ConnectionState.Open)
+                            {
+                                connect.Close();
+                            }
+                            else if (connectLog.State == ConnectionState.Open)
+                            {
+                                connectLog.Close();
+                            }
+                        }
+                        
                         //User has administrator rights, Edit Database is available
                         this.Visible = false;
 
@@ -74,7 +102,35 @@ namespace MobileTrackingApp
                     }
                     else if (login == true && textBoxUsername.Text != "admin")
                     {
-                        //User cannot access "edit database"
+                        // Save the login date and time to database
+                        String loginDate = DateTime.Now.ToString();
+                        SQLiteConnection connectLog = new SQLiteConnection(Login.connection);
+                        try
+                        {
+                            String queryLog = "UPDATE Users SET LastLogin = @LastLogin WHERE Username = '" + textBoxUsername.Text + "';";
+                            SQLiteCommand cmd = new SQLiteCommand(queryLog, connectLog);
+                            connectLog.Open();
+                            cmd.Parameters.AddWithValue("@LastLogin", loginDate);
+                            cmd.ExecuteNonQuery();
+                            connectLog.Close();
+                        }
+                        catch (SQLiteException exception)
+                        {
+                            MessageBox.Show(exception.Message.ToString());
+                        }
+                        finally
+                        {
+                            if (connect.State == ConnectionState.Open)
+                            {
+                                connect.Close();
+                            }
+                            else if (connectLog.State == ConnectionState.Open)
+                            {
+                                connectLog.Close();
+                            }
+                        }
+
+                        // User is not admin, edit database is not available
                         this.Visible = false;
 
                         Home form = new Home();

@@ -36,6 +36,8 @@ namespace MobileTrackingApp
         {
             // Code for converting necessary PID and Date fields so the database doesn't have problems
             int PIDparse;
+            dateTimeCheckOut.MinDate = DateTime.Now;
+            dateTimeDueDate.MinDate = DateTime.Now;
             String checkOutDate = dateTimeCheckOut.Value.ToString();
             String dueDate = dateTimeDueDate.Value.ToShortDateString();
 
@@ -192,6 +194,14 @@ namespace MobileTrackingApp
                     }
                 }
                 
+            }
+        }
+
+        private void dateTimeDueDate_ValueChanged(object sender, EventArgs e)
+        {
+            if (dateTimeCheckOut.Value >= dateTimeDueDate.Value)
+            {
+                MessageBox.Show("The due date is not valid. (Must be a date after the check out date)");
             }
         }
     }

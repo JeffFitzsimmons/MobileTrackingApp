@@ -209,7 +209,6 @@
             this.Name = "EditStudent";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Edit Student";
-            this.Load += new System.EventHandler(this.EditStudent_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

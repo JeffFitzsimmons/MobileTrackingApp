@@ -34,16 +34,12 @@ namespace MobileTrackingApp
             Application.Exit();
         }
 
-        private void Search_Load(object sender, EventArgs e)
-        {
-
-        }
-
         private void buttonSearch_Click(object sender, EventArgs e)
         {
+            // Get the database info for the selected PID or device name
             SQLiteConnection connect = new SQLiteConnection(Login.connection);
-            String query = "SELECT * FROM History WHERE PID = '" + textBoxSearch.Text.ToString() + "' OR Device = '" + textBoxSearch.Text.ToString() + "';";
-
+            String query = "SELECT Students.FirstName, Students.LastName, History.PID, History.SerialNumber, History.Device, History.CheckOutDate, History.Assets, History.Comments, History.DueDate, History.CheckInDate, History.ReturnComments FROM History LEFT JOIN Students ON History.PID = Students.PID WHERE History.PID = '" + textBoxSearch.Text.ToString() + "' OR History.Device = '" + textBoxSearch.Text.ToString() + "';";
+            
             try
             {
                 DataSet data = new DataSet();
@@ -67,10 +63,11 @@ namespace MobileTrackingApp
 
         private void textBoxSearch_KeyPress(object sender, KeyPressEventArgs e)
         {
+            // Same code as previous function, but adds functionality for the Enter button instead of clicking the Search button
             if (e.KeyChar == (char)13)
             {
                 SQLiteConnection connect = new SQLiteConnection(Login.connection);
-                String query = "SELECT * FROM History WHERE PID = '" + textBoxSearch.Text.ToString() + "' OR Device = '" + textBoxSearch.Text.ToString() + "';";
+                String query = "SELECT Students.FirstName, Students.LastName, History.PID, History.SerialNumber, History.Device, History.CheckOutDate, History.Assets, History.Comments, History.DueDate, History.CheckInDate, History.ReturnComments FROM History LEFT JOIN Students ON History.PID = Students.PID WHERE History.PID = '" + textBoxSearch.Text.ToString() + "' OR History.Device = '" + textBoxSearch.Text.ToString() + "';";
 
                 try
                 {
@@ -94,6 +91,7 @@ namespace MobileTrackingApp
             }
         }
 
+        // Shows all available devices that are not checked out
         private void buttonShowAvailable_Click(object sender, EventArgs e)
         {
             SQLiteConnection connect = new SQLiteConnection(Login.connection);
@@ -120,10 +118,11 @@ namespace MobileTrackingApp
             }
         }
 
+        // Show all devices that are currently checked out, including info about the student and checkout details
         private void buttonShowCheckedOut_Click(object sender, EventArgs e)
         {
             SQLiteConnection connect = new SQLiteConnection(Login.connection);
-            String query = "SELECT * From CheckOut";
+            String query = "SELECT Students.FirstName, Students.LastName, CheckOut.PID, CheckOut.SerialNumber, CheckOut.Device, CheckOut.CheckOutDate, CheckOut.Assets, CheckOut.Comments, CheckOut.DueDate FROM CheckOut LEFT JOIN Students ON CheckOut.PID = Students.PID";
 
             try
             {
