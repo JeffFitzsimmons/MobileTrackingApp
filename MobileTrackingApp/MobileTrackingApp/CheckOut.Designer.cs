@@ -74,7 +74,6 @@
             this.textBoxPID.Name = "textBoxPID";
             this.textBoxPID.Size = new System.Drawing.Size(150, 20);
             this.textBoxPID.TabIndex = 3;
-            this.textBoxPID.TextChanged += new System.EventHandler(this.textBoxPID_TextChanged);
             // 
             // label2
             // 

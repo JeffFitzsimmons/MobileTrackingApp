@@ -81,16 +81,19 @@ namespace MobileTrackingApp
                     SQLiteCommand cmdCheckPID = new SQLiteCommand(queryPID, connectPID);
                     object checkPID = cmdCheckPID.ExecuteScalar();
 
+                    // Ensures the student has checked out a device previously 
                     if (checkPID == null)
                     {
                         MessageBox.Show("The student is not registered. Please verify that the Student's PID is correct.");
                     }
                     
+                    // Ensures the device has not already been checked in
                     else if (check != null) 
                     {
                         SQLiteConnection connect = new SQLiteConnection(Login.connection);
                         try
                         {
+                            // If the student is in the database and the device is not already checked in, update the database and check in the device
                             String[] queries = new String[3];
 
                             queries[0] = "UPDATE History SET CheckInDate = @CheckInDate, ReturnComments = @ReturnComments WHERE SerialNumber = @SerialNumber AND PID = @PID";
@@ -153,7 +156,9 @@ namespace MobileTrackingApp
 
         private void textBoxSerial_TextChanged(object sender, EventArgs e)
         {
+            // Auto populate the device name when a valid serial number is entered
             textBoxDevice.Clear();
+            textBoxPID.Clear();
             SQLiteConnection connectAvailable = new SQLiteConnection(Login.connection);
             connectAvailable.Open();
             String serialNumber = textBoxSerial.Text.ToString();
@@ -188,6 +193,7 @@ namespace MobileTrackingApp
                     }
                 }
 
+                // Auto populate the PID according to the one in the database relating to that specific checkout instance
                 String queryPIDFill = "SELECT PID FROM CheckOut WHERE SerialNumber = '" + serialNumber + "';";
                 SQLiteConnection connectPIDFill = new SQLiteConnection(Login.connection);
                 DataSet ds = new DataSet();

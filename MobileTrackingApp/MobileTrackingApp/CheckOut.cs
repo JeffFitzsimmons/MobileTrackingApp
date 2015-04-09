@@ -74,16 +74,19 @@ namespace MobileTrackingApp
                     SQLiteCommand cmdCheckPID = new SQLiteCommand(queryPID, connectPID);
                     object checkPID = cmdCheckPID.ExecuteScalar();
 
+                    // Ensures the student has checked out a device previously
                     if (checkPID == null) 
                     {
                         MessageBox.Show("The student is not registered. Please check out the device using the \"New Check Out\" function");
                     }
                 
+                    // Ensures the device is available, not checked out already
                     else if (check == null)
                     {
                         SQLiteConnection connect = new SQLiteConnection(Login.connection);
                         try
                         {
+                            // If the device is available and the student is in the database, check out the device
                             String studentPID = textBoxPID.Text.ToString();
                             String[] queries = new String[3];
 
@@ -165,6 +168,7 @@ namespace MobileTrackingApp
 
         private void textBoxSerial_TextChanged(object sender, EventArgs e)
         {
+            // Auto populate the device name when a valid serial number is entered
             textBoxDevice.Clear();
             SQLiteConnection connectAvailable = new SQLiteConnection(Login.connection);
             connectAvailable.Open();
@@ -204,15 +208,11 @@ namespace MobileTrackingApp
 
         private void dateTimeDueDate_ValueChanged(object sender, EventArgs e)
         {
+            // Compare the checkout date and due date, ensuring the due date is not set before or equal to the checkout date
             if (dateTimeCheckOut.Value >= dateTimeDueDate.Value)
             {
                 MessageBox.Show("The due date is not valid. (Must be a date after the check out date)");
             }
-        }
-
-        private void textBoxPID_TextChanged(object sender, EventArgs e)
-        {
-
         }
     }
 }

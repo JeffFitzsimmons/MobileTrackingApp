@@ -20,10 +20,12 @@ namespace MobileTrackingApp
 
         private void buttonAddDevice_Click(object sender, EventArgs e)
         {
+            // Prompt for changes
             if (MessageBox.Show("Are you sure you want to add this device?", "Confirmation", MessageBoxButtons.YesNo) == DialogResult.Yes)
             {
                 SQLiteConnection connect = new SQLiteConnection(Login.connection);
 
+                // Adds the new Serial Number and Device Name to the Devices table in the database
                 try
                     {
                         String query = "INSERT INTO Device (SerialNumber, Device) VALUES (@SerialNumber, @Device);";
@@ -47,7 +49,7 @@ namespace MobileTrackingApp
                         }
                     }
 
-                    // Refresh back to Home after New Check Out is completed
+                    // Refresh after the device has been added
                     this.Visible = false;
 
                     AddDevice form = new AddDevice();
@@ -66,6 +68,7 @@ namespace MobileTrackingApp
             Application.Exit();
         }
 
+        // Return to the Edit Database form
         private void buttonBack_Click(object sender, EventArgs e)
         {
             this.Visible = false;

@@ -189,7 +189,7 @@ namespace MobileTrackingApp
 
         private void textBoxSearch_KeyPress(object sender, KeyPressEventArgs e)
         {
-            
+            // Pull info from the database where the PID or Device is entered in the Search text box and the Enter key is pressed
             if (e.KeyChar == (char)13)
             {
                 SQLiteConnection connect = new SQLiteConnection(Login.connection);
@@ -221,6 +221,7 @@ namespace MobileTrackingApp
         {
             SQLiteConnection connect = new SQLiteConnection(Login.connection);
 
+            // Pull database info based on the data in the cell that is selected
             if (e.RowIndex != -1) 
             {
                 try
@@ -233,6 +234,7 @@ namespace MobileTrackingApp
                     da.Fill(dt);
                     connect.Close();
 
+                    // Populate the text boxes with the information that is in the database
                     foreach (DataRow dr in dt.Rows)
                     {
                         textBoxDevice.Text = dr["Device"].ToString();
@@ -274,6 +276,7 @@ namespace MobileTrackingApp
 
                 try
                 {
+                    // Populate the first name and last name boxes according to the record that is selected
                     String queryName = "SELECT * FROM Students WHERE PID = '" + dataGridViewSearch.Rows[e.RowIndex].Cells["PID"].Value + "';";
                     DataTable dtName = new DataTable();
                     connect.Open();
@@ -311,6 +314,7 @@ namespace MobileTrackingApp
 
         private void buttonEditStudent_Click(object sender, EventArgs e)
         {
+            // Switch to the Edit Student form for editing studnet information according to the record selected
             this.Visible = false;
 
             EditStudent form = new EditStudent();
@@ -321,6 +325,7 @@ namespace MobileTrackingApp
 
         private void buttonUsers_Click(object sender, EventArgs e)
         {
+            // Show information about users such as last login, username, password
             SQLiteConnection connectLog = new SQLiteConnection(Login.connection);
             String queryLog = "SELECT * FROM Users;";
 

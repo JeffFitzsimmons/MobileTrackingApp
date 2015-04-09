@@ -83,17 +83,20 @@ namespace MobileTrackingApp
                 // Prompts the user for any last changes
                 if (MessageBox.Show("Are you sure you want to check this device out? (Make sure to verify the check out date)", "Confirmation", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                 {
+                    // Pull device info for the one specified
                     SQLiteConnection connectAvailable = new SQLiteConnection(Login.connection);
                     connectAvailable.Open();
                     String queryAvailable = "SELECT Device FROM CheckOut WHERE Device = '" + textBoxDevice.Text + "';";
                     SQLiteCommand cmdCheck = new SQLiteCommand(queryAvailable, connectAvailable);
                     object check = cmdCheck.ExecuteScalar();
 
+                    // Check if the device is available
                     if (check == null)
                     {
                         SQLiteConnection connect = new SQLiteConnection(Login.connection);
                         try
                         {
+                            // If the device is available, update the database, add the new student info, and swith the device to unavailable
                             String[] queries = new String[4];
 
                             queries[0] = "INSERT INTO CheckOut (Device, SerialNumber, PID, CheckOutDate, DueDate, Comments, Assets) VALUES (@Device, @SerialNumber, @PID, @CheckOutDate, @DueDate, @Comments, @Assets)";
@@ -158,6 +161,7 @@ namespace MobileTrackingApp
 
         private void textBoxSerial_TextChanged(object sender, EventArgs e)
         {
+            // Auto populate the device name when a valid serial number is entered
             textBoxDevice.Clear();
             SQLiteConnection connectAvailable = new SQLiteConnection(Login.connection);
             connectAvailable.Open();
@@ -199,6 +203,7 @@ namespace MobileTrackingApp
 
         private void dateTimeDueDate_ValueChanged(object sender, EventArgs e)
         {
+            // Compare the checkout date and due date, ensuring the due date is not set before or equal to the checkout date
             if (dateTimeCheckOut.Value >= dateTimeDueDate.Value)
             {
                 MessageBox.Show("The due date is not valid. (Must be a date after the check out date)");
