@@ -192,8 +192,19 @@ namespace MobileTrackingApp
                         connect.Close();
                     }
                 }
+            }
 
-                // Auto populate the PID according to the one in the database relating to that specific checkout instance
+            // Auto populate the PID according to the one in the database relating to that specific checkout instance
+
+            SQLiteConnection connectAutoPID = new SQLiteConnection(Login.connection);
+            connectAutoPID.Open();
+            String autoPID = "SELECT PID FROM CheckOut WHERE SerialNumber = '" + serialNumber + "';";
+            SQLiteCommand cmdAutoPID = new SQLiteCommand(autoPID, connectAutoPID);
+            object auto = cmdAutoPID.ExecuteScalar();
+
+
+            if (auto != null)
+            {
                 String queryPIDFill = "SELECT PID FROM CheckOut WHERE SerialNumber = '" + serialNumber + "';";
                 SQLiteConnection connectPIDFill = new SQLiteConnection(Login.connection);
                 DataSet ds = new DataSet();
@@ -214,9 +225,9 @@ namespace MobileTrackingApp
                 }
                 finally
                 {
-                    if (connect.State == ConnectionState.Open)
+                    if (connectAutoPID.State == ConnectionState.Open)
                     {
-                        connectPIDFill.Close();
+                        connectAutoPID .Close();
                     }
                 }
             }
