@@ -36,8 +36,8 @@ namespace MobileTrackingApp
         {
             // Code for converting necessary PID and Date fields so the database doesn't have problems
             int PIDparse;
-            dateTimeCheckOut.MinDate = DateTime.Now;
-            dateTimeDueDate.MinDate = DateTime.Now;
+            //dateTimeCheckOut.MinDate = DateTime.Now;
+            //dateTimeDueDate.MinDate = DateTime.Now;
             String checkOutDate = dateTimeCheckOut.Value.ToString();
             String dueDate = dateTimeDueDate.Value.ToShortDateString();
 

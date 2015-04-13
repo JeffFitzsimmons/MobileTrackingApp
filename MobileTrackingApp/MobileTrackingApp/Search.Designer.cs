@@ -36,6 +36,11 @@
             this.dataGridViewSearch = new System.Windows.Forms.DataGridView();
             this.buttonShowAvailable = new System.Windows.Forms.Button();
             this.buttonShowCheckedOut = new System.Windows.Forms.Button();
+            this.dateTimePickerStart = new System.Windows.Forms.DateTimePicker();
+            this.dateTimePickerEnd = new System.Windows.Forms.DateTimePicker();
+            this.buttonTime = new System.Windows.Forms.Button();
+            this.label1 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewSearch)).BeginInit();
             this.SuspendLayout();
             // 
@@ -51,9 +56,9 @@
             // 
             // buttonSearch
             // 
-            this.buttonSearch.Location = new System.Drawing.Point(10, 63);
+            this.buttonSearch.Location = new System.Drawing.Point(10, 56);
             this.buttonSearch.Name = "buttonSearch";
-            this.buttonSearch.Size = new System.Drawing.Size(100, 41);
+            this.buttonSearch.Size = new System.Drawing.Size(100, 27);
             this.buttonSearch.TabIndex = 3;
             this.buttonSearch.Text = "Search";
             this.buttonSearch.UseVisualStyleBackColor = true;
@@ -89,7 +94,7 @@
             // 
             // buttonShowAvailable
             // 
-            this.buttonShowAvailable.Location = new System.Drawing.Point(10, 147);
+            this.buttonShowAvailable.Location = new System.Drawing.Point(10, 293);
             this.buttonShowAvailable.Name = "buttonShowAvailable";
             this.buttonShowAvailable.Size = new System.Drawing.Size(152, 48);
             this.buttonShowAvailable.TabIndex = 59;
@@ -99,7 +104,7 @@
             // 
             // buttonShowCheckedOut
             // 
-            this.buttonShowCheckedOut.Location = new System.Drawing.Point(10, 201);
+            this.buttonShowCheckedOut.Location = new System.Drawing.Point(10, 347);
             this.buttonShowCheckedOut.Name = "buttonShowCheckedOut";
             this.buttonShowCheckedOut.Size = new System.Drawing.Size(152, 48);
             this.buttonShowCheckedOut.TabIndex = 60;
@@ -107,11 +112,60 @@
             this.buttonShowCheckedOut.UseVisualStyleBackColor = true;
             this.buttonShowCheckedOut.Click += new System.EventHandler(this.buttonShowCheckedOut_Click);
             // 
+            // dateTimePickerStart
+            // 
+            this.dateTimePickerStart.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dateTimePickerStart.Location = new System.Drawing.Point(12, 144);
+            this.dateTimePickerStart.Name = "dateTimePickerStart";
+            this.dateTimePickerStart.Size = new System.Drawing.Size(81, 20);
+            this.dateTimePickerStart.TabIndex = 61;
+            // 
+            // dateTimePickerEnd
+            // 
+            this.dateTimePickerEnd.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dateTimePickerEnd.Location = new System.Drawing.Point(10, 185);
+            this.dateTimePickerEnd.Name = "dateTimePickerEnd";
+            this.dateTimePickerEnd.Size = new System.Drawing.Size(83, 20);
+            this.dateTimePickerEnd.TabIndex = 62;
+            // 
+            // buttonTime
+            // 
+            this.buttonTime.Location = new System.Drawing.Point(10, 221);
+            this.buttonTime.Name = "buttonTime";
+            this.buttonTime.Size = new System.Drawing.Size(100, 27);
+            this.buttonTime.TabIndex = 63;
+            this.buttonTime.Text = "Search";
+            this.buttonTime.UseVisualStyleBackColor = true;
+            this.buttonTime.Click += new System.EventHandler(this.buttonTime_Click);
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(99, 150);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(80, 13);
+            this.label1.TabIndex = 64;
+            this.label1.Text = "Beginning Date";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(99, 191);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(66, 13);
+            this.label2.TabIndex = 65;
+            this.label2.Text = "Ending Date";
+            // 
             // Search
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(976, 471);
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.label1);
+            this.Controls.Add(this.buttonTime);
+            this.Controls.Add(this.dateTimePickerEnd);
+            this.Controls.Add(this.dateTimePickerStart);
             this.Controls.Add(this.buttonShowCheckedOut);
             this.Controls.Add(this.buttonShowAvailable);
             this.Controls.Add(this.dataGridViewSearch);
@@ -139,6 +193,11 @@
         private System.Windows.Forms.DataGridView dataGridViewSearch;
         private System.Windows.Forms.Button buttonShowAvailable;
         private System.Windows.Forms.Button buttonShowCheckedOut;
+        private System.Windows.Forms.DateTimePicker dateTimePickerStart;
+        private System.Windows.Forms.DateTimePicker dateTimePickerEnd;
+        private System.Windows.Forms.Button buttonTime;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label label2;
 
     }
 }

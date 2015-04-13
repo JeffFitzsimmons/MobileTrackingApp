@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Data.SQLite;
+using System.Globalization;
 
 namespace MobileTrackingApp
 {
@@ -124,6 +125,34 @@ namespace MobileTrackingApp
             SQLiteConnection connect = new SQLiteConnection(Login.connection);
             String query = "SELECT Students.FirstName, Students.LastName, CheckOut.PID, CheckOut.SerialNumber, CheckOut.Device, CheckOut.CheckOutDate, CheckOut.Assets, CheckOut.Comments, CheckOut.DueDate FROM CheckOut LEFT JOIN Students ON CheckOut.PID = Students.PID";
 
+            try
+            {
+                DataSet data = new DataSet();
+                connect.Open();
+                var da = new SQLiteDataAdapter(query, connect);
+                da.Fill(data);
+                dataGridViewSearch.DataSource = data.Tables[0].DefaultView;
+            }
+            catch (SQLiteException exp)
+            {
+                MessageBox.Show(exp.Message.ToString());
+            }
+            finally
+            {
+                if (connect.State == ConnectionState.Open)
+                {
+                    connect.Close();
+                }
+            }
+        }
+
+        private void buttonTime_Click(object sender, EventArgs e)
+        {
+            String startDate = dateTimePickerStart.Value.ToString();
+            String endDate = dateTimePickerEnd.Value.ToString();
+            SQLiteConnection connect = new SQLiteConnection(Login.connection);
+            String query = "SELECT * FROM History WHERE CheckOutDate >= '" + startDate + "' AND CheckOutDate <= '" + endDate + "';";
+            
             try
             {
                 DataSet data = new DataSet();
