@@ -14,7 +14,7 @@ namespace MobileTrackingApp
 {
     public partial class Login : Form
     {
-        public static String connection = "Data Source=Test.sqlite; Version=3;";
+        public static String connection = "Data Source=PropelDB.sqlite; Version=3;";
         
         public Login()
         {

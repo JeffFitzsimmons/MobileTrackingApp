@@ -52,12 +52,6 @@ namespace MobileTrackingApp
                 MessageBox.Show("Please scan the serial number and device name will populate itself.");
             }
 
-            //else if (string.IsNullOrWhiteSpace(textBoxSerial.Text) || textBoxSerial.Text.Length != 12)
-            else if (string.IsNullOrWhiteSpace(textBoxSerial.Text) || textBoxSerial.Text.Length != 9)
-            {
-                MessageBox.Show("Please use the scanner or manually input the device serial number.");
-            }
-
              // Verify that the PID is approprite in length and type (6 numbers)
             else if (textBoxPID.Text.Length != 6 || !int.TryParse(textBoxPID.Text, out PIDparse))
             {
