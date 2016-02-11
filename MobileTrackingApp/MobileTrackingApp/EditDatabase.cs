@@ -164,7 +164,7 @@ namespace MobileTrackingApp
         {
             // Pull info from the database where the PID or Device is entered in the Search text box
             SQLiteConnection connect = new SQLiteConnection(Login.connection);
-            String query = "SELECT * FROM History WHERE PID = '" + textBoxSearch.Text.ToString() + "' OR Device = '" + textBoxSearch.Text.ToString() + "';";
+            String query = "SELECT * FROM History WHERE PID = '" + textBoxSearch.Text.ToString() + "' OR SerialNumber = '" + textBoxSearch.Text.ToString() + "';";
 
             try
             {
@@ -193,7 +193,7 @@ namespace MobileTrackingApp
             if (e.KeyChar == (char)13)
             {
                 SQLiteConnection connect = new SQLiteConnection(Login.connection);
-                String query = "SELECT * FROM History WHERE PID = '" + textBoxSearch.Text.ToString() + "' OR Device = '" + textBoxSearch.Text.ToString() + "';";
+                String query = "SELECT * FROM History WHERE PID = '" + textBoxSearch.Text.ToString() + "' OR SerialNumber = '" + textBoxSearch.Text.ToString() + "';";
 
                 try
                 {

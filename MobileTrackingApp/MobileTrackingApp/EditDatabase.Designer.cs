@@ -423,9 +423,9 @@
             this.label20.AutoSize = true;
             this.label20.Location = new System.Drawing.Point(12, 9);
             this.label20.Name = "label20";
-            this.label20.Size = new System.Drawing.Size(156, 13);
+            this.label20.Size = new System.Drawing.Size(157, 13);
             this.label20.TabIndex = 92;
-            this.label20.Text = "Search by PID or Device Name";
+            this.label20.Text = "Search by PID or Serial Number";
             // 
             // buttonSearch
             // 

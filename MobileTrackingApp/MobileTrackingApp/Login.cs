@@ -14,8 +14,8 @@ namespace MobileTrackingApp
 {
     public partial class Login : Form
     {
-        public static String connection = "Data Source=PropelDB.sqlite; Version=3;";
-        
+        public static String connection = "Data Source=test.sqlite; Version=3;";
+
         public Login()
         {
             InitializeComponent();
@@ -67,7 +67,7 @@ namespace MobileTrackingApp
                     if (login == true && textBoxUsername.Text == "admin")
                     {
                         // Save the login date and time to database
-                        String loginDate = DateTime.Now.ToString();
+                        String loginDate = DateTime.Now.ToString("yyyy/MM/dd hh:mm:ss tt");
                         SQLiteConnection connectLog = new SQLiteConnection(Login.connection);
                         try
                         {
@@ -103,7 +103,7 @@ namespace MobileTrackingApp
                     else if (login == true && textBoxUsername.Text != "admin")
                     {
                         // Save the login date and time to database
-                        String loginDate = DateTime.Now.ToString();
+                        String loginDate = DateTime.Now.ToString("yyyy/MM/dd hh:mm:ss tt");
                         SQLiteConnection connectLog = new SQLiteConnection(Login.connection);
                         try
                         {

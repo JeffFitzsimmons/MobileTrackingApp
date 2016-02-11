@@ -34,8 +34,8 @@ namespace MobileTrackingApp
             // Code for converting necessary PID and Date fields so the database doesn't have problems
             int PIDparse;
             dateTimeSelect.MinDate = DateTime.Now;
-            String date = dateTimeSelect.Value.ToString();
-            
+            String date = dateTimeSelect.Value.ToString("yyyy/MM/dd hh:mm:ss tt");
+
             if (string.IsNullOrWhiteSpace(textBoxPID.Text))
             {
                 MessageBox.Show("Please enter the student's PID.");

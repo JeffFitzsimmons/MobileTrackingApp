@@ -30,40 +30,44 @@ namespace MobileTrackingApp
             this.Dispose();
         }
 
-                
+
         // Submits new check out data once the data has been checked for errors
         private void buttonCheckOut_Click(object sender, EventArgs e)
         {
             // Code for converting necessary PID and Date fields so the database doesn't have problems
             int PIDparse;
-            //dateTimeCheckOut.MinDate = DateTime.Now;
-            //dateTimeDueDate.MinDate = DateTime.Now;
-            String checkOutDate = dateTimeCheckOut.Value.ToString();
-            String dueDate = dateTimeDueDate.Value.ToShortDateString();
+            String checkOutDate = dateTimeCheckOut.Value.ToString("yyyy/MM/dd hh:mm:ss tt");
+            String dueDate = dateTimeDueDate.Value.ToString("yyyy/MM/dd");
+
+
+            // Verify that the Student is not already registered in the database
+            SQLiteConnection connectStudent = new SQLiteConnection(Login.connection);
+            connectStudent.Open();
+            String queryStudent = "SELECT PID FROM Students WHERE PID = '" + textBoxPID.Text + "';";
+            SQLiteCommand cmdCheckStudent = new SQLiteCommand(queryStudent, connectStudent);
+            object checkStudent = cmdCheckStudent.ExecuteScalar();
+            connectStudent.Close();
+
+            if (checkStudent != null)
+            {
+                MessageBox.Show("This student is already registered in the database. Please use the \"Check Out\" form instead of \"New Check Out\"");
+            }
+
 
             // Check for any blank fields
-            if (string.IsNullOrWhiteSpace(textBoxDevice.Text))
+            else if (string.IsNullOrWhiteSpace(textBoxDevice.Text))
             {
                 MessageBox.Show("Please scan the serial number and device name will populate itself.");
             }
 
-            if (string.IsNullOrWhiteSpace(textBoxSerial.Text))
+            else if (string.IsNullOrWhiteSpace(textBoxSerial.Text))
             {
                 MessageBox.Show("Please use the scanner or manually input the device serial number.");
             }
 
-            if (string.IsNullOrWhiteSpace(textBoxPID.Text))
-            {
-                MessageBox.Show("Please enter the student's PID.");
-            }
-            else
-            {
-                int pid = Int32.Parse(textBoxPID.Text);
-            }
 
-
-            // Verify that the PID is approprite in length and type (6 numbers)
-            if (textBoxPID.Text.Length != 6 || !int.TryParse(textBoxPID.Text, out PIDparse))
+            // Verify that the PID is not blank, approprite in length, and type (6 numbers)
+            else if (textBoxPID.Text.Length != 6 || string.IsNullOrWhiteSpace(textBoxPID.Text) || !int.TryParse(textBoxPID.Text, out PIDparse))
             {
                 MessageBox.Show("The PID entered was not valid. Please enter a valid PID (6 numbers long)");
             }
@@ -77,7 +81,7 @@ namespace MobileTrackingApp
             {
                 MessageBox.Show("Please enter the student's last name.");
             }
-            
+
             else
             {
                 // Prompts the user for any last changes
@@ -151,7 +155,7 @@ namespace MobileTrackingApp
                 {
                     // Discard changes
                 }
-            }         
+            }
         }
 
         private void NewCheckOut_FormClosing(object sender, FormClosingEventArgs e)
@@ -170,7 +174,7 @@ namespace MobileTrackingApp
             SQLiteCommand cmdCheck = new SQLiteCommand(queryAvailable, connectAvailable);
             object check = cmdCheck.ExecuteScalar();
 
-            if (check != null) 
+            if (check != null)
             {
                 String query = "SELECT Device FROM Device WHERE SerialNumber = '" + serialNumber + "';";
                 SQLiteConnection connect = new SQLiteConnection(Login.connection);
@@ -197,7 +201,7 @@ namespace MobileTrackingApp
                         connect.Close();
                     }
                 }
-                
+
             }
         }
 

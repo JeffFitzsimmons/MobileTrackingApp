@@ -18,29 +18,17 @@ namespace MobileTrackingApp
             InitializeComponent();
         }
 
+
         private void buttonCheckOut_Click(object sender, EventArgs e)
         {
 
-
-            // Check for any blank fields
-            if (string.IsNullOrWhiteSpace(textBoxPID.Text))
-            {
-                MessageBox.Show("Please enter the student's PID.");
-            }
-            else
-            {
-                int pid = Int32.Parse(textBoxPID.Text);
-            }
-
             // Code for converting necessary PID and Date fields so the database doesn't have problems
             int PIDparse;
-            //dateTimeCheckOut.MinDate = DateTime.Now;
-            //dateTimeDueDate.MinDate = DateTime.Now;
-            String checkOutDate = dateTimeCheckOut.Value.ToString();
-            String dueDate = dateTimeDueDate.Value.ToShortDateString();
+            String checkOutDate = dateTimeCheckOut.Value.ToString("yyyy/MM/dd hh:mm:ss tt");
+            String dueDate = dateTimeDueDate.Value.ToString("yyyy/MM/dd");
 
 
-            // Check for any more blank fields
+            // Check for blank fields
             if (string.IsNullOrWhiteSpace(textBoxDevice.Text))
             {
                 MessageBox.Show("Please scan the serial number and device name will populate itself.");
@@ -51,8 +39,8 @@ namespace MobileTrackingApp
                 MessageBox.Show("Please use the scanner or manually input the device serial number.");
             }
 
-            // Verify that the PID is approprite in length and type (6 numbers)
-            else if (textBoxPID.Text.Length != 6 || !int.TryParse(textBoxPID.Text, out PIDparse))
+            // Verify that the PID is not blank, approprite in length, and type (6 numbers)
+            else if (textBoxPID.Text.Length != 6 || string.IsNullOrWhiteSpace(textBoxPID.Text) || !int.TryParse(textBoxPID.Text, out PIDparse))
             {
                 MessageBox.Show("The PID entered was not valid. Please enter a valid PID (6 numbers long)");
             }
@@ -62,24 +50,27 @@ namespace MobileTrackingApp
                 // Prompts the user for any last changes
                 if (MessageBox.Show("Are you sure you want check this device out? (Make sure to verify the check out date)", "Confirmation", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                 {
-                    SQLiteConnection connectAvailable = new SQLiteConnection(Login.connection);
-                    connectAvailable.Open();
-                    String queryAvailable = "SELECT Device FROM CheckOut WHERE Device = '" + textBoxDevice.Text + "';";
-                    SQLiteCommand cmdCheck = new SQLiteCommand(queryAvailable, connectAvailable);
-                    object check = cmdCheck.ExecuteScalar();
-
                     SQLiteConnection connectPID = new SQLiteConnection(Login.connection);
                     connectPID.Open();
                     String queryPID = "SELECT FirstName FROM Students WHERE PID = '" + textBoxPID.Text + "';";
                     SQLiteCommand cmdCheckPID = new SQLiteCommand(queryPID, connectPID);
                     object checkPID = cmdCheckPID.ExecuteScalar();
+                    connectPID.Close();
+
+                    SQLiteConnection connectAvailable = new SQLiteConnection(Login.connection);
+                    connectAvailable.Open();
+                    String queryAvailable = "SELECT Device FROM CheckOut WHERE Device = '" + textBoxDevice.Text + "';";
+                    SQLiteCommand cmdCheck = new SQLiteCommand(queryAvailable, connectAvailable);
+                    object check = cmdCheck.ExecuteScalar();
+                    connectAvailable.Close();
+
 
                     // Ensures the student has checked out a device previously
-                    if (checkPID == null) 
+                    if (checkPID == null)
                     {
                         MessageBox.Show("The student is not registered. Please check out the device using the \"New Check Out\" function");
                     }
-                
+
                     // Ensures the device is available, not checked out already
                     else if (check == null)
                     {
@@ -149,7 +140,8 @@ namespace MobileTrackingApp
                 }
             }
         }
-        
+
+
         private void buttonBack_Click(object sender, EventArgs e)
         {
             // Return to Home screen
@@ -161,10 +153,12 @@ namespace MobileTrackingApp
             this.Dispose();
         }
 
+
         private void CheckOut_FormClosing(object sender, FormClosingEventArgs e)
         {
             Application.Exit();
         }
+
 
         private void textBoxSerial_TextChanged(object sender, EventArgs e)
         {
@@ -205,6 +199,7 @@ namespace MobileTrackingApp
                 }
             }
         }
+
 
         private void dateTimeDueDate_ValueChanged(object sender, EventArgs e)
         {

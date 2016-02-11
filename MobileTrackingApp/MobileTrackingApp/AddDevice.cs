@@ -20,8 +20,26 @@ namespace MobileTrackingApp
 
         private void buttonAddDevice_Click(object sender, EventArgs e)
         {
-            // Prompt for changes
-            if (MessageBox.Show("Are you sure you want to add this device?", "Confirmation", MessageBoxButtons.YesNo) == DialogResult.Yes)
+            // Check for blank fields and verify the device is not already added
+            SQLiteConnection connectCheck = new SQLiteConnection(Login.connection);
+            connectCheck.Open();
+            String queryCheckDevice = "SELECT Device, SerialNumber FROM Device WHERE Device = '" + textBoxDevice.Text + "' OR SerialNumber = '" + textBoxSerial.Text + "';";
+            SQLiteCommand cmdCheck = new SQLiteCommand(queryCheckDevice, connectCheck);
+            object checkDevice = cmdCheck.ExecuteScalar();
+            connectCheck.Close();
+
+            if (checkDevice != null)
+            {
+                MessageBox.Show("This Device and/or Serial Number is already in the database.");
+            }
+
+
+            else if (string.IsNullOrWhiteSpace(textBoxDevice.Text) || string.IsNullOrWhiteSpace(textBoxSerial.Text))
+            {
+                MessageBox.Show("Please enter all information for the device.");
+            }
+            
+            else if (MessageBox.Show("Are you sure you want to add this device?", "Confirmation", MessageBoxButtons.YesNo) == DialogResult.Yes)
             {
                 SQLiteConnection connect = new SQLiteConnection(Login.connection);
 

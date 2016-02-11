@@ -39,7 +39,7 @@ namespace MobileTrackingApp
         {
             // Get the database info for the selected PID or device name
             SQLiteConnection connect = new SQLiteConnection(Login.connection);
-            String query = "SELECT Students.FirstName, Students.LastName, History.PID, History.SerialNumber, History.Device, History.CheckOutDate, History.Assets, History.Comments, History.DueDate, History.CheckInDate, History.ReturnComments FROM History LEFT JOIN Students ON History.PID = Students.PID WHERE History.PID = '" + textBoxSearch.Text.ToString() + "' OR History.Device = '" + textBoxSearch.Text.ToString() + "';";
+            String query = "SELECT Students.FirstName, Students.LastName, History.PID, History.SerialNumber, History.Device, History.CheckOutDate, History.Assets, History.Comments, History.DueDate, History.CheckInDate, History.ReturnComments FROM History LEFT JOIN Students ON History.PID = Students.PID WHERE History.PID = '" + textBoxSearch.Text.ToString() + "' OR History.SerialNumber = '" + textBoxSearch.Text.ToString() + "';";
             
             try
             {
@@ -68,7 +68,7 @@ namespace MobileTrackingApp
             if (e.KeyChar == (char)13)
             {
                 SQLiteConnection connect = new SQLiteConnection(Login.connection);
-                String query = "SELECT Students.FirstName, Students.LastName, History.PID, History.SerialNumber, History.Device, History.CheckOutDate, History.Assets, History.Comments, History.DueDate, History.CheckInDate, History.ReturnComments FROM History LEFT JOIN Students ON History.PID = Students.PID WHERE History.PID = '" + textBoxSearch.Text.ToString() + "' OR History.Device = '" + textBoxSearch.Text.ToString() + "';";
+                String query = "SELECT Students.FirstName, Students.LastName, History.PID, History.SerialNumber, History.Device, History.CheckOutDate, History.Assets, History.Comments, History.DueDate, History.CheckInDate, History.ReturnComments FROM History LEFT JOIN Students ON History.PID = Students.PID WHERE History.PID = '" + textBoxSearch.Text.ToString() + "' OR History.SerialNumber = '" + textBoxSearch.Text.ToString() + "';";
 
                 try
                 {
@@ -148,8 +148,8 @@ namespace MobileTrackingApp
 
         private void buttonTime_Click(object sender, EventArgs e)
         {
-            String startDate = dateTimePickerStart.Value.ToString();
-            String endDate = dateTimePickerEnd.Value.ToString();
+            String startDate = dateTimePickerStart.Value.ToString("yyyy/MM/dd");
+            String endDate = dateTimePickerEnd.Value.ToString("yyyy/MM/dd");
             SQLiteConnection connect = new SQLiteConnection(Login.connection);
             String query = "SELECT * FROM History WHERE CheckOutDate >= '" + startDate + "' AND CheckOutDate <= '" + endDate + "';";
             
